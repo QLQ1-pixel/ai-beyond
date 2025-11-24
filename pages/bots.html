@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bots IA | AI & Beyond</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -21,23 +35,35 @@
 <body class="bg-slate-50">
     <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <a href="../index.html" class="flex items-center bg-slate-800 rounded-lg p-2"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto"></a>
+            <div class="flex justify-between items-center h-32">
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto"></a>
+                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">L'IA au service de votre croissance</span>
+                </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="../index.html#services" class="text-gray-700">Services</a>
-                    <a href="rag.html" class="text-gray-700">RAG</a>
-                    <a href="livres.html" class="text-gray-700">Livres</a>
-                    <a href="../index.html#contact" class="bg-indigo-600 text-white px-6 py-2 rounded-full">Contact</a>
+                    <a href="../index.html#services" class="text-gray-700 hover:text-primary transition">Services</a>
+                    <a href="rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
+                    <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
+                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
+    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-5xl font-bold mb-6">🤖 Bots Conversationnels IA</h1>
             <p class="text-xl text-gray-200 max-w-2xl mx-auto">
                 Assistants intelligents pour automatiser votre support, vos ventes et vos opérations
+            </p>
+        </div>
+    </section>
+
+    <!-- Texte vendeur intro -->
+    <section class="py-12 px-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-indigo-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-xl text-gray-700 leading-relaxed">
+                <span class="font-semibold text-indigo-700">Vos clients attendent des réponses instantanées, 24h/24.</span> Nos bots IA qualifient vos leads, répondent aux questions fréquentes et libèrent votre équipe pour les tâches à haute valeur. <span class="font-semibold text-purple-700">Résultat : satisfaction client en hausse, coûts en baisse.</span>
             </p>
         </div>
     </section>
