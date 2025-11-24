@@ -7,9 +7,7 @@
     <title>Livres & Ressources | AI & Beyond</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }
-    </script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' } } } }</script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,136 +17,135 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-exo { font-family: 'Exo 2', sans-serif; }
-        .gradient-text-premium { background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .logo-glow { transition: all 0.4s ease; filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4)); }
-        .logo-glow:hover { filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.7)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.5)); transform: scale(1.03); }
-        .btn-glow { transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
-        .btn-glow:hover { box-shadow: 0 8px 35px rgba(99, 102, 241, 0.6); transform: translateY(-3px); }
-        .card-premium { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(30, 41, 59, 0.8); }
-        .card-premium:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border-color: rgba(99, 102, 241, 0.4); }
-        .glass-effect { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); }
-        .header-container { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .header-hidden { transform: translateY(-100%); }
-        .header-mini .logo-section { max-height: 0; padding: 0; opacity: 0; overflow: hidden; }
-        .logo-section { transition: all 0.3s ease; max-height: 200px; opacity: 1; }
-        .mini-logo { transition: all 0.3s ease; opacity: 0; width: 0; }
-        .header-mini .mini-logo { opacity: 1; width: 44px; margin-right: 1.5rem; }
-        .book-shadow { box-shadow: 20px 20px 60px rgba(0,0,0,0.5), -5px -5px 20px rgba(255,255,255,0.05); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-glow { transition: all 0.4s ease; filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3)); }
+        .logo-glow:hover { filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.5)); transform: scale(1.02); }
+        .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
+        .btn-primary:hover { box-shadow: 0 8px 35px rgba(99, 102, 241, 0.6); transform: translateY(-3px); }
+        .card-light { background: white; border: 1px solid rgba(99, 102, 241, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-light:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.3); }
+        #main-header { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        #main-header.header-hidden { transform: translateY(-100%); }
+        #main-header.header-mini .logo-section { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; overflow: hidden; }
+        .logo-section { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); max-height: 300px; opacity: 1; }
+        .mini-logo { transition: all 0.3s ease; opacity: 0; width: 0; overflow: hidden; }
+        #main-header.header-mini .mini-logo { opacity: 1; width: 50px; margin-right: 2rem; }
+        .book-shadow { box-shadow: 20px 20px 60px rgba(0,0,0,0.2), -5px -5px 20px rgba(255,255,255,0.8); }
     </style>
 </head>
-<body class="bg-slate-900 text-gray-100">
+<body class="bg-gray-50 text-gray-800">
     
     <!-- HEADER -->
-    <header class="fixed w-full z-50 header-container" id="main-header">
-        <div class="logo-section bg-slate-900/95 backdrop-blur-xl border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-4 py-5">
+    <header id="main-header" class="fixed w-full z-50">
+        <div class="logo-section bg-white/95 backdrop-blur-xl border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 py-6">
                 <div class="flex flex-col items-center">
-                    <a href="../index.html" class="logo-glow"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-32 md:h-40 w-auto"></a>
-                    <p class="mt-4 text-xl md:text-2xl font-semibold italic gradient-text-premium font-exo tracking-wide">« L'IA au service de votre croissance »</p>
+                    <a href="../index.html" class="logo-glow"><img src="../assets/images/logo-light.png" alt="AI & Beyond" class="h-36 md:h-44 w-auto"></a>
+                    <p class="mt-4 text-xl md:text-2xl font-semibold italic gradient-text font-exo tracking-wide">« L'IA au service de votre croissance »</p>
                 </div>
             </div>
         </div>
-        <nav class="bg-slate-800/95 backdrop-blur-md border-b border-white/10">
+        <nav class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 shadow-lg">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
-                    <a href="../index.html" class="mini-logo"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-11 w-auto"></a>
+                    <a href="../index.html" class="mini-logo flex-shrink-0"><img src="../assets/images/logo-light.png" alt="AI & Beyond" class="h-12 w-auto"></a>
                     <div class="hidden md:flex items-center space-x-10">
-                        <a href="services.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Services</a>
-                        <a href="rag.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">RAG</a>
-                        <a href="bots.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Bots</a>
-                        <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-7 py-2.5 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
+                        <a href="services.html" class="text-white/90 hover:text-white font-medium text-sm uppercase tracking-wider">Services</a>
+                        <a href="rag.html" class="text-white/90 hover:text-white font-medium text-sm uppercase tracking-wider">RAG</a>
+                        <a href="bots.html" class="text-white/90 hover:text-white font-medium text-sm uppercase tracking-wider">Bots</a>
+                        <a href="../index.html#contact" class="bg-white text-indigo-600 px-7 py-2.5 rounded-full font-semibold hover:bg-gray-100 text-sm uppercase tracking-wider shadow-lg">Contact</a>
                     </div>
-                    <div class="md:hidden"><button id="mobile-menu-btn" class="text-gray-300 p-2"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+                    <div class="md:hidden"><button id="mobile-menu-btn" class="text-white p-2"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-white/10">
+            <div id="mobile-menu" class="hidden md:hidden bg-indigo-700">
                 <div class="px-4 pt-2 pb-4 space-y-2">
-                    <a href="services.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Services</a>
-                    <a href="rag.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">RAG</a>
-                    <a href="bots.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Bots</a>
-                    <a href="../index.html#contact" class="block px-4 py-3 text-white bg-gradient-to-r from-primary to-secondary rounded-lg text-center font-semibold">Contact</a>
+                    <a href="services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Services</a>
+                    <a href="rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">RAG</a>
+                    <a href="bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Bots</a>
+                    <a href="../index.html#contact" class="block px-4 py-3 bg-white text-indigo-600 rounded-lg text-center font-semibold">Contact</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- HERO -->
-    <section class="pt-56 pb-20 px-4 bg-gradient-to-br from-slate-900 via-amber-950/40 to-slate-900">
+    <section class="pt-64 pb-20 px-4 bg-gradient-to-br from-white via-amber-50/50 to-orange-50">
         <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
-            <div class="inline-flex items-center px-5 py-2.5 rounded-full glass-effect mb-8">
+            <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/80 backdrop-blur border border-amber-200 shadow-sm mb-8">
                 <span class="text-2xl mr-3">📚</span>
-                <span class="text-sm text-gray-200 font-medium">Ressources & Publications</span>
+                <span class="text-sm text-gray-700 font-medium">Ressources & Publications</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Livres & <span class="gradient-text-premium">Guides IA</span></h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Maîtrisez la génération d'images par IA avec nos publications expertes</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900">Livres & <span class="gradient-text">Guides IA</span></h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Maîtrisez la génération d'images par IA avec nos publications expertes</p>
         </div>
     </section>
 
     <!-- LIVRE PRINCIPAL -->
-    <section class="py-24 bg-slate-900">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Book Visual -->
                 <div class="relative" data-aos="fade-right">
                     <div class="relative mx-auto w-72 md:w-80">
-                        <div class="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700 rounded-lg p-8 book-shadow transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <div class="bg-slate-900/90 rounded p-6 text-center">
+                        <div class="bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-lg p-8 book-shadow transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <div class="bg-white rounded p-6 text-center">
                                 <div class="text-5xl mb-3">🎨</div>
-                                <h3 class="text-lg font-bold text-white mb-1">La Bible du</h3>
-                                <h2 class="text-2xl font-black gradient-text-premium leading-tight">Prompt Engineering d'Image</h2>
-                                <div class="mt-4 pt-4 border-t border-white/20">
-                                    <p class="text-xs text-gray-400">Le guide ultime de la génération d'images par IA</p>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">La Bible du</h3>
+                                <h2 class="text-2xl font-black gradient-text leading-tight">Prompt Engineering d'Image</h2>
+                                <div class="mt-4 pt-4 border-t border-gray-200">
+                                    <p class="text-xs text-gray-500">Le guide ultime de la génération d'images par IA</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute -top-4 -right-4 bg-accent text-slate-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg">195 PAGES</div>
+                        <div class="absolute -top-4 -right-4 bg-indigo-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">195 PAGES</div>
                     </div>
                 </div>
                 
                 <!-- Book Info -->
                 <div data-aos="fade-left">
-                    <span class="text-amber-500 text-sm uppercase tracking-widest font-semibold">📖 Ouvrage Spécialisé</span>
-                    <h2 class="text-4xl font-bold mt-4 mb-6">La Bible du Prompt Engineering d'Image</h2>
+                    <span class="text-amber-600 text-sm uppercase tracking-widest font-semibold">📖 Ouvrage Spécialisé</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-6 text-gray-900">La Bible du Prompt Engineering d'Image</h2>
                     
-                    <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6">
-                        <p class="text-lg text-gray-200 font-medium">
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6">
+                        <p class="text-lg text-gray-700 font-medium">
                             Le guide <strong>le plus complet</strong> en français sur la génération d'images par IA. 
-                            <span class="text-amber-400">195 pages</span> de techniques avancées, extrêmement précis et détaillé.
+                            <span class="text-amber-600">195 pages</span> de techniques avancées, extrêmement précis et détaillé.
                         </p>
                     </div>
                     
-                    <p class="text-xl text-gray-300 mb-6">Maîtrisez Midjourney, DALL-E, Stable Diffusion et tous les outils de génération d'images.</p>
+                    <p class="text-xl text-gray-600 mb-6">Maîtrisez Midjourney, DALL-E, Stable Diffusion et tous les outils de génération d'images.</p>
                     
                     <div class="space-y-4 mb-8">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center"><span class="text-amber-400">✓</span></div>
-                            <div><h4 class="font-semibold">Syntaxe & Structure des prompts</h4><p class="text-gray-400 text-sm">Formuler des prompts précis et efficaces</p></div>
+                            <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center"><span class="text-amber-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">Syntaxe & Structure des prompts</h4><p class="text-gray-600 text-sm">Formuler des prompts précis et efficaces</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center"><span class="text-orange-400">✓</span></div>
-                            <div><h4 class="font-semibold">200+ Styles artistiques</h4><p class="text-gray-400 text-sm">Artistes, mouvements et références expliqués</p></div>
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center"><span class="text-orange-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">200+ Styles artistiques</h4><p class="text-gray-600 text-sm">Artistes, mouvements et références expliqués</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center"><span class="text-red-400">✓</span></div>
-                            <div><h4 class="font-semibold">Paramètres avancés</h4><p class="text-gray-400 text-sm">Chaos, stylize, seed et tous les paramètres techniques</p></div>
+                            <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"><span class="text-red-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">Paramètres avancés</h4><p class="text-gray-600 text-sm">Chaos, stylize, seed et tous les paramètres techniques</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center"><span class="text-purple-400">✓</span></div>
-                            <div><h4 class="font-semibold">100+ Templates prêts à l'emploi</h4><p class="text-gray-400 text-sm">Prompts testés pour tous les usages</p></div>
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"><span class="text-purple-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">100+ Templates prêts à l'emploi</h4><p class="text-gray-600 text-sm">Prompts testés pour tous les usages</p></div>
                         </div>
                     </div>
                     
-                    <div class="glass-effect rounded-xl p-6 mb-8">
+                    <div class="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
                         <div class="grid grid-cols-3 gap-4 text-center">
-                            <div><div class="text-2xl font-bold text-amber-400">195</div><div class="text-xs text-gray-400">Pages</div></div>
-                            <div><div class="text-2xl font-bold text-orange-400">100+</div><div class="text-xs text-gray-400">Templates</div></div>
-                            <div><div class="text-2xl font-bold text-red-400">200+</div><div class="text-xs text-gray-400">Styles</div></div>
+                            <div><div class="text-2xl font-bold text-amber-600">195</div><div class="text-xs text-gray-500">Pages</div></div>
+                            <div><div class="text-2xl font-bold text-orange-600">100+</div><div class="text-xs text-gray-500">Templates</div></div>
+                            <div><div class="text-2xl font-bold text-red-600">200+</div><div class="text-xs text-gray-500">Styles</div></div>
                         </div>
                     </div>
                     
                     <div class="flex flex-wrap gap-4">
-                        <a href="#notify" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold btn-glow text-lg">🔔 Être notifié à la sortie</a>
-                        <div class="glass-effect px-6 py-4 rounded-full"><span class="text-gray-400 text-sm">Sortie : <strong class="text-white">T1 2025</strong></span></div>
+                        <a href="#notify" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition text-lg">🔔 Être notifié à la sortie</a>
+                        <div class="bg-white border border-gray-200 px-6 py-4 rounded-full shadow-sm"><span class="text-gray-600 text-sm">Sortie : <strong class="text-gray-900">T1 2025</strong></span></div>
                     </div>
                 </div>
             </div>
@@ -156,125 +153,125 @@
     </section>
 
     <!-- SOMMAIRE -->
-    <section class="py-24 bg-gradient-to-b from-slate-800 to-slate-900">
+    <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Ce que vous allez apprendre</span>
-                <h2 class="text-4xl font-bold mt-4">Sommaire détaillé</h2>
+                <span class="text-indigo-600 text-sm uppercase tracking-widest font-semibold">Ce que vous allez apprendre</span>
+                <h2 class="text-4xl font-bold mt-4 text-gray-900">Sommaire détaillé</h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-3xl mb-4">🎯</div>
-                    <h3 class="font-bold mb-2 text-lg">Partie 1 : Fondamentaux</h3>
-                    <p class="text-gray-400 text-sm">Comment fonctionne la génération d'images, anatomie d'un prompt parfait</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 1 : Fondamentaux</h3>
+                    <p class="text-gray-600 text-sm">Comment fonctionne la génération d'images, anatomie d'un prompt parfait</p>
                 </div>
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="150">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="150">
                     <div class="text-3xl mb-4">🎨</div>
-                    <h3 class="font-bold mb-2 text-lg">Partie 2 : Styles & Esthétiques</h3>
-                    <p class="text-gray-400 text-sm">Photo, illustration, 3D, anime, peinture et 200+ styles détaillés</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 2 : Styles & Esthétiques</h3>
+                    <p class="text-gray-600 text-sm">Photo, illustration, 3D, anime, peinture et 200+ styles détaillés</p>
                 </div>
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-3xl mb-4">⚙️</div>
-                    <h3 class="font-bold mb-2 text-lg">Partie 3 : Paramètres Avancés</h3>
-                    <p class="text-gray-400 text-sm">Chaos, stylize, seed, weights, negative prompts</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 3 : Paramètres Avancés</h3>
+                    <p class="text-gray-600 text-sm">Chaos, stylize, seed, weights, negative prompts</p>
                 </div>
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="250">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="250">
                     <div class="text-3xl mb-4">🖼️</div>
-                    <h3 class="font-bold mb-2 text-lg">Partie 4 : Composition</h3>
-                    <p class="text-gray-400 text-sm">Cadrage, éclairage, profondeur de champ, angles de caméra</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 4 : Composition</h3>
+                    <p class="text-gray-600 text-sm">Cadrage, éclairage, profondeur de champ, angles de caméra</p>
                 </div>
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-3xl mb-4">💼</div>
-                    <h3 class="font-bold mb-2 text-lg">Partie 5 : Use Cases Pro</h3>
-                    <p class="text-gray-400 text-sm">Marketing, e-commerce, branding, réseaux sociaux</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 5 : Use Cases Pro</h3>
+                    <p class="text-gray-600 text-sm">Marketing, e-commerce, branding, réseaux sociaux</p>
                 </div>
-                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="350">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="350">
                     <div class="text-3xl mb-4">📋</div>
-                    <h3 class="font-bold mb-2 text-lg">Annexes : Templates</h3>
-                    <p class="text-gray-400 text-sm">100+ prompts prêts à copier/coller, cheatsheets</p>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Annexes : Templates</h3>
+                    <p class="text-gray-600 text-sm">100+ prompts prêts à copier/coller, cheatsheets</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GUIDES GRATUITS -->
-    <section class="py-24 bg-slate-900">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Ressources Gratuites</span>
-                <h2 class="text-4xl font-bold mt-4">Guides & Templates</h2>
+                <span class="text-indigo-600 text-sm uppercase tracking-widest font-semibold">Ressources Gratuites</span>
+                <h2 class="text-4xl font-bold mt-4 text-gray-900">Guides & Templates</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🇫🇷</span></div>
-                    <h3 class="text-xl font-bold mb-3">100+ Prompts IA</h3>
-                    <p class="text-gray-400 text-sm mb-4">Pack de prompts optimisés en français pour ChatGPT, Claude et autres LLMs.</p>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">100+ Prompts IA</h3>
+                    <p class="text-gray-600 text-sm mb-4">Pack de prompts optimisés en français pour ChatGPT, Claude et autres LLMs.</p>
                     <div class="flex items-center gap-2 mb-6">
-                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        <span class="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
                     </div>
-                    <a href="#" class="block w-full bg-slate-700 hover:bg-slate-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
                 </div>
 
-                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🇬🇧</span></div>
-                    <h3 class="text-xl font-bold mb-3">100+ AI Prompts</h3>
-                    <p class="text-gray-400 text-sm mb-4">Optimized prompt pack in English for ChatGPT, Claude and other LLMs.</p>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">100+ AI Prompts</h3>
+                    <p class="text-gray-600 text-sm mb-4">Optimized prompt pack in English for ChatGPT, Claude and other LLMs.</p>
                     <div class="flex items-center gap-2 mb-6">
-                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        <span class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-xs font-semibold">FREE</span>
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs font-semibold">FREE</span>
                     </div>
-                    <a href="#" class="block w-full bg-slate-700 hover:bg-slate-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Download</a>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Download</a>
                 </div>
 
-                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🎨</span></div>
-                    <h3 class="text-xl font-bold mb-3">Cheatsheet Image Gen</h3>
-                    <p class="text-gray-400 text-sm mb-4">Fiche mémo avec les paramètres Midjourney, DALL-E, Stable Diffusion.</p>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Cheatsheet Image Gen</h3>
+                    <p class="text-gray-600 text-sm mb-4">Fiche mémo avec les paramètres Midjourney, DALL-E, Stable Diffusion.</p>
                     <div class="flex items-center gap-2 mb-6">
-                        <span class="bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
-                        <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
+                        <span class="bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
                     </div>
-                    <a href="#" class="block w-full bg-slate-700 hover:bg-slate-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- NEWSLETTER -->
-    <section id="notify" class="py-24 bg-gradient-to-b from-slate-800 to-slate-900">
+    <section id="notify" class="py-24 bg-gray-50">
         <div class="max-w-3xl mx-auto px-4">
-            <div class="glass-effect rounded-3xl p-8 md:p-12 text-center" data-aos="fade-up">
+            <div class="bg-white rounded-3xl p-8 md:p-12 text-center shadow-xl border border-gray-100" data-aos="fade-up">
                 <div class="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6"><span class="text-4xl">🔔</span></div>
-                <h2 class="text-3xl font-bold mb-4">Soyez le premier informé</h2>
-                <p class="text-gray-400 mb-8">Recevez une notification dès la sortie du livre + un chapitre gratuit en avant-première.</p>
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Soyez le premier informé</h2>
+                <p class="text-gray-600 mb-8">Recevez une notification dès la sortie du livre + un chapitre gratuit en avant-première.</p>
                 
                 <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" name="newsletter" method="POST" data-netlify="true">
                     <input type="hidden" name="form-name" value="newsletter">
-                    <input type="email" name="email" required placeholder="votre@email.com" class="flex-1 px-6 py-4 bg-slate-700 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition">
-                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold btn-glow whitespace-nowrap">S'inscrire</button>
+                    <input type="email" name="email" required placeholder="votre@email.com" class="flex-1 px-6 py-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition">
+                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition whitespace-nowrap">S'inscrire</button>
                 </form>
                 
-                <p class="text-xs text-gray-500 mt-4">Pas de spam. Désinscription en 1 clic.</p>
+                <p class="text-xs text-gray-400 mt-4">Pas de spam. Désinscription en 1 clic.</p>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-24 bg-gradient-to-br from-amber-600 to-orange-700">
+    <section class="py-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 text-white">
         <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-6">Besoin d'une formation personnalisée ?</h2>
-            <p class="text-xl mb-8 text-gray-100">Nos experts forment vos équipes à la génération d'images par IA.</p>
-            <a href="services.html" class="bg-white text-amber-700 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">Découvrir nos formations</a>
+            <p class="text-xl mb-8 text-amber-100">Nos experts forment vos équipes à la génération d'images par IA.</p>
+            <a href="services.html" class="bg-white text-amber-600 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-lg">Découvrir nos formations</a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 border-t border-white/5 py-12">
+    <footer class="bg-slate-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-20 w-auto mx-auto logo-glow"></a>
+            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo-dark.png" alt="AI & Beyond" class="h-24 w-auto mx-auto"></a>
             <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
@@ -285,13 +282,13 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
         
         const header = document.getElementById('main-header');
-        let lastScroll = 0;
+        let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            if (currentScroll > lastScroll && currentScroll > 200) header.classList.add('header-hidden');
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 250) header.classList.add('header-hidden');
             else header.classList.remove('header-hidden');
-            header.classList.toggle('header-mini', currentScroll > 100);
-            lastScroll = currentScroll;
+            header.classList.toggle('header-mini', currentScrollY > 150);
+            lastScrollY = currentScrollY;
         });
     </script>
     <script src="../assets/js/bot-config.js"></script>
