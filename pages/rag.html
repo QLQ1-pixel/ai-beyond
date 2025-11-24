@@ -8,58 +8,59 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } }
-        }
+        tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }
     </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
         .gradient-text-premium { background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .logo-glow { transition: all 0.4s ease; filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3)); }
-        .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4)); transform: scale(1.02); }
-        .btn-glow { transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); }
-        .btn-glow:hover { box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); transform: translateY(-2px); }
-        .card-premium { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-premium:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-color: rgba(99, 102, 241, 0.3); }
-        .glass-effect { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .header-collapsed .logo-section { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; overflow: hidden; }
-        .logo-section { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); max-height: 200px; opacity: 1; }
-        .mini-logo { transition: all 0.3s ease; opacity: 0; width: 0; margin-right: 0; }
-        .header-collapsed .mini-logo { opacity: 1; width: 40px; margin-right: 1rem; }
+        .logo-glow { transition: all 0.4s ease; filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4)); }
+        .logo-glow:hover { filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.7)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.5)); transform: scale(1.03); }
+        .btn-glow { transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
+        .btn-glow:hover { box-shadow: 0 8px 35px rgba(99, 102, 241, 0.6); transform: translateY(-3px); }
+        .card-premium { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(30, 41, 59, 0.8); }
+        .card-premium:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border-color: rgba(99, 102, 241, 0.4); }
+        .glass-effect { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); }
+        .header-container { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .header-hidden { transform: translateY(-100%); }
+        .header-mini .logo-section { max-height: 0; padding: 0; opacity: 0; overflow: hidden; }
+        .logo-section { transition: all 0.3s ease; max-height: 200px; opacity: 1; }
+        .mini-logo { transition: all 0.3s ease; opacity: 0; width: 0; }
+        .header-mini .mini-logo { opacity: 1; width: 44px; margin-right: 1.5rem; }
     </style>
 </head>
-<body class="bg-slate-950 text-gray-100">
+<body class="bg-slate-900 text-gray-100">
     
-    <!-- HEADER COLLAPSIBLE -->
-    <header class="fixed w-full z-50" id="main-header">
-        <div class="logo-section bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-4 py-6">
+    <!-- HEADER -->
+    <header class="fixed w-full z-50 header-container" id="main-header">
+        <div class="logo-section bg-slate-900/95 backdrop-blur-xl border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 py-5">
                 <div class="flex flex-col items-center">
-                    <a href="../index.html" class="logo-glow"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-24 md:h-28 w-auto"></a>
-                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">« L'IA au service de votre croissance »</p>
+                    <a href="../index.html" class="logo-glow"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-32 md:h-40 w-auto"></a>
+                    <p class="mt-4 text-xl md:text-2xl font-semibold italic gradient-text-premium font-exo tracking-wide">« L'IA au service de votre croissance »</p>
                 </div>
             </div>
         </div>
-        <nav class="nav-section bg-slate-900/90 backdrop-blur-md border-b border-white/5">
+        <nav class="bg-slate-800/95 backdrop-blur-md border-b border-white/10">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
-                    <a href="../index.html" class="mini-logo"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-10 w-auto"></a>
-                    <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="mini-logo"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-11 w-auto"></a>
+                    <div class="hidden md:flex items-center space-x-10">
                         <a href="services.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Services</a>
                         <a href="bots.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Bots</a>
                         <a href="livres.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Livres</a>
-                        <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
+                        <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-7 py-2.5 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
                     </div>
-                    <div class="md:hidden"><button id="mobile-menu-btn" class="text-gray-300"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+                    <div class="md:hidden"><button id="mobile-menu-btn" class="text-gray-300 p-2"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-white/10">
                 <div class="px-4 pt-2 pb-4 space-y-2">
                     <a href="services.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Services</a>
                     <a href="bots.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Bots</a>
@@ -71,11 +72,11 @@
     </header>
 
     <!-- HERO -->
-    <section class="pt-52 pb-20 px-4 bg-gradient-to-br from-slate-900 via-cyan-950 to-slate-900">
+    <section class="pt-56 pb-20 px-4 bg-gradient-to-br from-slate-900 via-cyan-950/60 to-slate-900">
         <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
-            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-                <span class="text-2xl mr-2">🧠</span>
-                <span class="text-sm text-gray-300">Technologie Avancée</span>
+            <div class="inline-flex items-center px-5 py-2.5 rounded-full glass-effect mb-8">
+                <span class="text-2xl mr-3">🧠</span>
+                <span class="text-sm text-gray-200 font-medium">Technologie Avancée</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-6"><span class="gradient-text-premium">RAG</span>-as-a-Service</h1>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto">Donnez une mémoire à votre IA. Transformez vos documents en assistant intelligent.</p>
@@ -83,16 +84,16 @@
     </section>
 
     <!-- TEXTE VENDEUR -->
-    <section class="py-12 bg-gradient-to-r from-cyan-950/50 to-slate-950/50 border-y border-white/5">
+    <section class="py-12 bg-slate-800/50 border-y border-white/5">
         <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
             <p class="text-xl text-gray-300 leading-relaxed">
-                <span class="font-semibold text-slate-200">Vos documents contiennent une mine d'or d'informations inexploitées.</span> Notre technologie RAG transforme vos PDF, emails et bases de données en assistant intelligent qui répond instantanément. <span class="font-semibold text-accent">Fini les heures perdues à chercher l'information.</span>
+                <span class="font-semibold text-white">Vos documents contiennent une mine d'or d'informations inexploitées.</span> Notre technologie RAG transforme vos PDF, emails et bases de données en assistant intelligent qui répond instantanément. <span class="font-semibold text-accent">Fini les heures perdues à chercher l'information.</span>
             </p>
         </div>
     </section>
 
-    <!-- DEMO RAG -->
-    <section class="py-24 bg-slate-950">
+    <!-- DEMO -->
+    <section class="py-24 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
@@ -101,15 +102,15 @@
                     <p class="text-xl text-gray-300 mb-6"><strong>RAG</strong> (Retrieval-Augmented Generation) permet à une IA de chercher dans VOS documents avant de répondre.</p>
                     <div class="space-y-4 mb-8">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center"><span class="text-accent">1</span></div>
+                            <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center"><span class="text-accent font-bold">1</span></div>
                             <div><h4 class="font-semibold">Indexation</h4><p class="text-gray-400 text-sm">Vos documents sont analysés et indexés</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center"><span class="text-purple-400">2</span></div>
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
                             <div><h4 class="font-semibold">Recherche</h4><p class="text-gray-400 text-sm">L'IA trouve les passages pertinents</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center"><span class="text-indigo-400">3</span></div>
+                            <div class="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center"><span class="text-indigo-400 font-bold">3</span></div>
                             <div><h4 class="font-semibold">Génération</h4><p class="text-gray-400 text-sm">Réponse précise avec sources citées</p></div>
                         </div>
                     </div>
@@ -145,22 +146,22 @@
                             <span class="text-accent">● En ligne</span>
                         </div>
                     </div>
-                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-2xl blur-2xl"></div>
-                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-28 h-28 bg-purple-500/20 rounded-2xl blur-2xl"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- OFFRES -->
-    <section class="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+    <section class="py-24 bg-gradient-to-b from-slate-800 to-slate-900">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-accent text-sm uppercase tracking-widest font-semibold">Nos Offres</span>
                 <h2 class="text-4xl font-bold mt-4">Solutions RAG adaptées</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-premium bg-slate-900 rounded-2xl p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-premium rounded-2xl p-8 text-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4"><span class="text-3xl">☁️</span></div>
                     <h3 class="text-2xl font-bold">RAG Cloud</h3>
                     <div class="text-accent font-bold text-3xl mt-2">5-15K€</div>
@@ -170,10 +171,10 @@
                         <div class="flex items-center gap-2"><span class="text-accent">✓</span> 10 000 documents max</div>
                         <div class="flex items-center gap-2"><span class="text-accent">✓</span> Chiffrement bout-en-bout</div>
                     </div>
-                    <a href="../index.html#contact" class="block w-full bg-slate-800 hover:bg-slate-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Demander un devis</a>
+                    <a href="../index.html#contact" class="block w-full bg-slate-700 hover:bg-slate-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Demander un devis</a>
                 </div>
                 
-                <div class="card-premium bg-slate-900 rounded-2xl p-8 text-center relative ring-2 ring-accent" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-premium rounded-2xl p-8 text-center relative ring-2 ring-accent" data-aos="fade-up" data-aos-delay="200">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-accent text-slate-900 px-4 py-1 rounded-full text-sm font-bold">POPULAIRE</span></div>
                     <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 mt-2"><span class="text-3xl">🏢</span></div>
                     <h3 class="text-2xl font-bold">RAG On-Premise</h3>
@@ -187,7 +188,7 @@
                     <a href="../index.html#contact" class="block w-full bg-gradient-to-r from-primary to-secondary text-center text-white px-6 py-3 rounded-lg font-semibold">Demander un devis</a>
                 </div>
                 
-                <div class="card-premium bg-slate-900 rounded-2xl p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-premium rounded-2xl p-8 text-center" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4"><span class="text-3xl">🏛️</span></div>
                     <h3 class="text-2xl font-bold">RAG Enterprise</h3>
                     <div class="text-emerald-400 font-bold text-3xl mt-2">Sur devis</div>
@@ -208,14 +209,14 @@
         <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-6">Prêt à donner une mémoire à votre IA ?</h2>
             <p class="text-xl mb-8 text-gray-100">Démonstration gratuite avec vos propres documents</p>
-            <a href="../index.html#contact" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">Demander une démo</a>
+            <a href="../index.html#contact" class="bg-white text-primary px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">Demander une démo</a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-white/5 py-12">
+    <footer class="bg-slate-900 border-t border-white/5 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto logo-glow"></a>
+            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-20 w-auto mx-auto logo-glow"></a>
             <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
@@ -224,7 +225,16 @@
     <script>
         AOS.init({ duration: 800, once: true, offset: 100 });
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-        window.addEventListener('scroll', () => { document.getElementById('main-header').classList.toggle('header-collapsed', window.scrollY > 100); });
+        
+        const header = document.getElementById('main-header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            if (currentScroll > lastScroll && currentScroll > 200) header.classList.add('header-hidden');
+            else header.classList.remove('header-hidden');
+            header.classList.toggle('header-mini', currentScroll > 100);
+            lastScroll = currentScroll;
+        });
     </script>
     <script src="../assets/js/bot-config.js"></script>
     <script src="../assets/js/ai-chat-bot.js"></script>

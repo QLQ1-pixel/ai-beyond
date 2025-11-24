@@ -32,23 +32,24 @@
         }
     </script>
     
-    <!-- Fonts -->
+    <!-- Fonts - Exo 2 pour le slogan -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
     
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
         
-        /* Gradient Text Cyan to Violet */
+        .font-exo {
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        /* Gradient Text */
         .gradient-text-premium {
             background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
@@ -56,182 +57,112 @@
             background-clip: text;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Animated Gradient Background */
-        .hero-gradient {
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a5f, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Logo Glow Effect */
+        /* Logo Glow */
         .logo-glow {
             transition: all 0.4s ease;
-            filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+            filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4));
         }
-        
         .logo-glow:hover {
-            filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4));
-            transform: scale(1.02);
+            filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.7)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.5));
+            transform: scale(1.03);
         }
         
-        /* Button Glow */
+        /* Button Effects */
         .btn-glow {
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
-        
         .btn-glow:hover {
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(99, 102, 241, 0.6);
+            transform: translateY(-3px);
         }
         
-        .btn-glow-accent {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-        }
-        
-        .btn-glow-accent:hover {
-            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        /* Card Premium Hover */
+        /* Card Premium */
         .card-premium {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.8);
         }
-        
         .card-premium:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 102, 241, 0.4);
+            background: rgba(30, 41, 59, 0.95);
         }
         
         /* Glass Effect */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
-        /* Partner Logos */
-        .partner-logo {
-            filter: grayscale(100%) opacity(50%);
-            transition: all 0.3s ease;
+        /* ═══════════════════════════════════════════ */
+        /* SMART HIDE HEADER                           */
+        /* ═══════════════════════════════════════════ */
+        .header-container {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .partner-logo:hover {
-            filter: grayscale(0%) opacity(100%);
+        .header-hidden {
+            transform: translateY(-100%);
         }
-        
-        /* Marquee Animation */
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .marquee-track {
-            animation: marquee 30s linear infinite;
-        }
-        
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
-        
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        
-        .particle-cyan {
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, rgba(6, 182, 212, 0) 70%);
-            animation: float-particle-1 20s ease-in-out infinite;
-        }
-        
-        .particle-purple {
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
-            animation: float-particle-2 25s ease-in-out infinite;
-        }
-        
-        .particle-indigo {
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0) 70%);
-            animation: float-particle-3 18s ease-in-out infinite;
-        }
-        
-        @keyframes float-particle-1 {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
-            25% { transform: translateY(-40px) translateX(30px) scale(1.1); opacity: 0.8; }
-            50% { transform: translateY(-20px) translateX(-20px) scale(0.9); opacity: 0.5; }
-            75% { transform: translateY(-60px) translateX(40px) scale(1.05); opacity: 0.7; }
-        }
-        
-        @keyframes float-particle-2 {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
-            33% { transform: translateY(-50px) translateX(-40px) scale(1.2); opacity: 0.7; }
-            66% { transform: translateY(-30px) translateX(30px) scale(0.8); opacity: 0.4; }
-        }
-        
-        @keyframes float-particle-3 {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
-            50% { transform: translateY(-70px) translateX(50px) scale(1.3); opacity: 0.6; }
-        }
-        
-        /* Header Transitions */
-        .header-full {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .header-collapsed .logo-section {
+        .header-mini .logo-section {
             max-height: 0;
-            padding-top: 0;
-            padding-bottom: 0;
+            padding: 0;
             opacity: 0;
             overflow: hidden;
         }
-        
-        .header-collapsed .nav-section {
-            background: rgba(15, 23, 42, 0.95);
-        }
-        
         .logo-section {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             max-height: 200px;
             opacity: 1;
         }
-        
-        /* Mini logo in collapsed nav */
         .mini-logo {
             transition: all 0.3s ease;
             opacity: 0;
             width: 0;
-            margin-right: 0;
+        }
+        .header-mini .mini-logo {
+            opacity: 1;
+            width: 44px;
+            margin-right: 1.5rem;
         }
         
-        .header-collapsed .mini-logo {
-            opacity: 1;
-            width: 40px;
-            margin-right: 1rem;
+        /* ═══════════════════════════════════════════ */
+        /* NEURAL NETWORK PARTICLES                    */
+        /* ═══════════════════════════════════════════ */
+        .neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Marquee */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 35s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .partner-logo {
+            filter: grayscale(100%) opacity(60%);
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%) opacity(100%);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-gray-100">
+<body class="bg-slate-900 text-gray-100">
     
-    <!-- Formulaire caché pour Netlify Forms - Leads Lyra -->
+    <!-- Netlify Forms Hidden -->
     <form name="lyra-leads" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="email" />
         <input type="text" name="phone" />
@@ -242,47 +173,46 @@
     </form>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HEADER PREMIUM - Collapsible on Scroll -->
+    <!-- HEADER - Smart Hide                                     -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <header class="fixed w-full z-50 header-full" id="main-header">
-        <!-- Logo Section (disparaît au scroll) -->
-        <div class="logo-section bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-4 py-6">
+    <header class="fixed w-full z-50 header-container" id="main-header">
+        <!-- Logo Section -->
+        <div class="logo-section bg-slate-900/95 backdrop-blur-xl border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 py-5">
                 <div class="flex flex-col items-center">
-                    <!-- Grand Logo Centré -->
                     <a href="/" class="logo-glow">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-28 md:h-36 w-auto">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-32 md:h-40 w-auto">
                     </a>
-                    <!-- Slogan Premium -->
-                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
+                    <!-- Slogan Exo 2 -->
+                    <p class="mt-4 text-xl md:text-2xl font-semibold italic gradient-text-premium font-exo tracking-wide">
                         « L'IA au service de votre croissance »
                     </p>
                 </div>
             </div>
         </div>
         
-        <!-- Navigation Bar -->
-        <nav class="nav-section bg-slate-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-400">
+        <!-- Navigation -->
+        <nav class="bg-slate-800/95 backdrop-blur-md border-b border-white/10">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
-                    <!-- Mini Logo (apparaît au scroll) -->
+                    <!-- Mini Logo -->
                     <a href="/" class="mini-logo">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-10 w-auto">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-11 w-auto">
                     </a>
                     
                     <!-- Desktop Menu -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#services" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Services</a>
-                        <a href="#rag" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">RAG</a>
-                        <a href="pages/livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Livres</a>
-                        <a href="pages/bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Bots IA</a>
-                        <a href="#about" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">À propos</a>
-                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#services" class="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wider">Services</a>
+                        <a href="#rag" class="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wider">RAG</a>
+                        <a href="pages/livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wider">Livres</a>
+                        <a href="pages/bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wider">Bots IA</a>
+                        <a href="#about" class="text-gray-300 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wider">À propos</a>
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-7 py-2.5 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
                     </div>
                     
-                    <!-- Mobile menu button -->
+                    <!-- Mobile Menu Button -->
                     <div class="md:hidden">
-                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2">
                             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                             </svg>
@@ -291,8 +221,8 @@
                 </div>
             </div>
             
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-white/10">
                 <div class="px-4 pt-2 pb-4 space-y-2">
                     <a href="#services" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Services</a>
                     <a href="#rag" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">RAG</a>
@@ -306,25 +236,18 @@
     </header>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HERO SECTION - Animated Gradient + Particles -->
+    <!-- HERO - Neural Network Particles                         -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-52 pb-20">
-        <!-- Enhanced Floating Particles -->
-        <div class="particle particle-cyan w-32 h-32" style="top: 15%; left: 5%;"></div>
-        <div class="particle particle-purple w-40 h-40" style="top: 35%; left: 85%; animation-delay: -5s;"></div>
-        <div class="particle particle-indigo w-24 h-24" style="top: 55%; left: 15%; animation-delay: -10s;"></div>
-        <div class="particle particle-cyan w-36 h-36" style="top: 25%; left: 75%; animation-delay: -8s;"></div>
-        <div class="particle particle-purple w-28 h-28" style="top: 65%; left: 55%; animation-delay: -3s;"></div>
-        <div class="particle particle-indigo w-20 h-20" style="top: 75%; left: 25%; animation-delay: -12s;"></div>
-        <div class="particle particle-cyan w-16 h-16" style="top: 45%; left: 45%; animation-delay: -7s;"></div>
-        <div class="particle particle-purple w-24 h-24" style="top: 10%; left: 60%; animation-delay: -15s;"></div>
+    <section class="min-h-screen flex items-center relative overflow-hidden pt-56 pb-24 bg-gradient-to-br from-slate-900 via-indigo-950/80 to-slate-900">
+        <!-- Neural Network Canvas -->
+        <canvas id="neural-canvas" class="neural-canvas"></canvas>
         
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
                 <!-- Badge -->
-                <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8" data-aos="fade-down" data-aos-delay="200">
-                    <span class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
-                    <span class="text-sm text-gray-300">Solutions IA Enterprise</span>
+                <div class="inline-flex items-center px-5 py-2.5 rounded-full glass-effect mb-8" data-aos="fade-down" data-aos-delay="200">
+                    <span class="w-2.5 h-2.5 bg-accent rounded-full mr-3 animate-pulse"></span>
+                    <span class="text-sm text-gray-200 font-medium">Solutions IA Enterprise</span>
                 </div>
                 
                 <!-- Main Title -->
@@ -334,39 +257,39 @@
                 
                 <!-- Subtitle -->
                 <p class="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-                    Automatisation intelligente, bots conversationnels et RAG-as-a-Service pour entreprises ambitieuses. Des solutions concrètes, un ROI mesurable.
+                    Automatisation intelligente, bots conversationnels et RAG-as-a-Service pour entreprises ambitieuses. <strong class="text-white">Des solutions concrètes, un ROI mesurable.</strong>
                 </p>
                 
                 <!-- CTA Buttons -->
-                <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold btn-glow text-lg">
+                <div class="flex flex-wrap justify-center gap-5 mb-14" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full font-semibold btn-glow text-lg">
                         Demander un audit gratuit
                     </a>
-                    <a href="#services" class="border-2 border-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all duration-300 text-lg">
+                    <a href="#services" class="border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-white/50 transition-all text-lg">
                         Découvrir nos services
                     </a>
                 </div>
                 
-                <!-- Trust Badges (remplace les stats) -->
+                <!-- Trust Badges -->
                 <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
-                        <span class="text-accent">✓</span>
-                        <span class="text-sm text-gray-300">Enterprise Ready</span>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-accent text-lg">✓</span>
+                        <span class="text-sm text-gray-200 font-medium">Enterprise Ready</span>
                     </div>
-                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
-                        <span class="text-purple-400">🔒</span>
-                        <span class="text-sm text-gray-300">100% Sécurisé</span>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-purple-400 text-lg">🔒</span>
+                        <span class="text-sm text-gray-200 font-medium">100% Sécurisé</span>
                     </div>
-                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
-                        <span class="text-emerald-400">📈</span>
-                        <span class="text-sm text-gray-300">ROI Garanti</span>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-emerald-400 text-lg">📈</span>
+                        <span class="text-sm text-gray-200 font-medium">ROI Garanti</span>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
             </svg>
@@ -374,90 +297,53 @@
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- SECTION PARTENAIRES / TECHNOLOGIES -->
+    <!-- PARTNERS MARQUEE                                        -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="py-16 bg-slate-900/50 border-y border-white/5 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 mb-8">
-            <p class="text-center text-gray-500 text-sm uppercase tracking-widest" data-aos="fade-up">Technologies & Partenaires</p>
+    <section class="py-14 bg-slate-800/50 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-6">
+            <p class="text-center text-gray-400 text-sm uppercase tracking-widest font-medium" data-aos="fade-up">Technologies & Partenaires</p>
         </div>
         
-        <!-- Marquee Container -->
         <div class="relative">
             <div class="flex marquee-track">
-                <!-- First Set -->
-                <div class="flex items-center gap-16 px-8">
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold tracking-tight">OpenAI</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold tracking-tight">Anthropic</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">⚡ Zapier</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">Make</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">📝 Notion</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">💬 Slack</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">☁️ AWS</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">▲ Vercel</span>
-                    </div>
+                <div class="flex items-center gap-20 px-10">
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold tracking-tight text-gray-300">OpenAI</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold tracking-tight text-gray-300">Anthropic</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">⚡ Zapier</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">Make</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">📝 Notion</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">💬 Slack</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">☁️ AWS</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">▲ Vercel</span></div>
                 </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="flex items-center gap-16 px-8">
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold tracking-tight">OpenAI</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold tracking-tight">Anthropic</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">⚡ Zapier</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">Make</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">📝 Notion</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">💬 Slack</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">☁️ AWS</span>
-                    </div>
-                    <div class="partner-logo flex items-center justify-center w-40 h-16">
-                        <span class="text-2xl font-bold">▲ Vercel</span>
-                    </div>
+                <div class="flex items-center gap-20 px-10">
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold tracking-tight text-gray-300">OpenAI</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold tracking-tight text-gray-300">Anthropic</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">⚡ Zapier</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">Make</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">📝 Notion</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">💬 Slack</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">☁️ AWS</span></div>
+                    <div class="partner-logo flex items-center justify-center w-36 h-14"><span class="text-xl font-bold text-gray-300">▲ Vercel</span></div>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- SERVICES SECTION -->
+    <!-- SERVICES                                                -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="services" class="py-24 bg-slate-950">
+    <section id="services" class="py-24 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-accent text-sm uppercase tracking-widest font-semibold">Nos Solutions</span>
                 <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Des services sur mesure pour votre croissance</h2>
                 <p class="text-xl text-gray-400 max-w-2xl mx-auto">Solutions IA adaptées à vos enjeux business. De l'audit à l'implémentation.</p>
             </div>
             
-            <!-- Services Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Bots IA -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
                         <span class="text-2xl">🤖</span>
                     </div>
@@ -471,7 +357,7 @@
                 </div>
                 
                 <!-- Automatisation -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6">
                         <span class="text-2xl">⚡</span>
                     </div>
@@ -485,7 +371,7 @@
                 </div>
                 
                 <!-- RAG -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mb-6">
                         <span class="text-2xl">🧠</span>
                     </div>
@@ -499,7 +385,7 @@
                 </div>
                 
                 <!-- Consulting -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mb-6">
                         <span class="text-2xl">🎯</span>
                     </div>
@@ -516,17 +402,14 @@
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- RAG SECTION -->
+    <!-- RAG SECTION                                             -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="rag" class="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
+    <section id="rag" class="py-24 bg-gradient-to-b from-slate-800 to-slate-900">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Content -->
                 <div data-aos="fade-right">
                     <span class="text-accent text-sm uppercase tracking-widest font-semibold">Technologie Avancée</span>
-                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
-                        RAG-as-a-Service
-                    </h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">RAG-as-a-Service</h2>
                     <p class="text-xl text-gray-300 mb-8 leading-relaxed">
                         Donnez une <span class="text-accent font-semibold">mémoire</span> à votre IA. Notre technologie RAG transforme vos documents, emails et bases de données en assistant intelligent.
                     </p>
@@ -597,21 +480,19 @@
                         </div>
                     </div>
                     
-                    <!-- Floating Elements -->
-                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-2xl blur-2xl"></div>
-                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-28 h-28 bg-purple-500/20 rounded-2xl blur-2xl"></div>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT                                                   -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="about" class="py-24 bg-slate-950">
+    <section id="about" class="py-24 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Visual -->
                 <div class="relative order-2 lg:order-1" data-aos="fade-right">
                     <div class="glass-effect rounded-3xl p-8">
                         <img src="assets/images/logo.png" alt="AI & Beyond" class="w-full max-w-sm mx-auto logo-glow">
@@ -622,12 +503,9 @@
                     </div>
                 </div>
                 
-                <!-- Content -->
                 <div class="order-1 lg:order-2" data-aos="fade-left">
                     <span class="text-accent text-sm uppercase tracking-widest font-semibold">À propos</span>
-                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
-                        Votre partenaire IA de confiance
-                    </h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Votre partenaire IA de confiance</h2>
                     <p class="text-xl text-gray-300 mb-6 leading-relaxed">
                         AI & Beyond accompagne les entreprises ambitieuses dans leur transformation digitale grâce à l'intelligence artificielle.
                     </p>
@@ -636,11 +514,11 @@
                     </p>
                     
                     <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center p-4 bg-slate-900 rounded-xl">
+                        <div class="text-center p-4 bg-slate-800 rounded-xl">
                             <div class="text-3xl font-bold text-accent">50+</div>
                             <div class="text-sm text-gray-400">Projets livrés</div>
                         </div>
-                        <div class="text-center p-4 bg-slate-900 rounded-xl">
+                        <div class="text-center p-4 bg-slate-800 rounded-xl">
                             <div class="text-3xl font-bold text-purple-400">98%</div>
                             <div class="text-sm text-gray-400">Clients satisfaits</div>
                         </div>
@@ -651,30 +529,27 @@
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT                                                 -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="contact" class="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+    <section id="contact" class="py-24 bg-gradient-to-b from-slate-900 to-slate-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-16">
-                <!-- Contact Info -->
                 <div data-aos="fade-right">
                     <span class="text-accent text-sm uppercase tracking-widest font-semibold">Contact</span>
-                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
-                        Discutons de votre projet
-                    </h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Discutons de votre projet</h2>
                     <p class="text-xl text-gray-300 mb-8">
                         Audit gratuit de 30 minutes pour évaluer vos besoins et identifier les opportunités IA pour votre entreprise.
                     </p>
                     
                     <div class="space-y-6 mb-8">
                         <a href="mailto:contact@aiandbeyond.eu" class="flex items-center gap-4 text-gray-300 hover:text-accent transition group">
-                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
+                            <div class="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
                             <span>contact@aiandbeyond.eu</span>
                         </a>
                         <a href="https://linkedin.com/company/ai-and-beyond" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-accent transition group">
-                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
+                            <div class="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </div>
                             <span>LinkedIn</span>
@@ -688,33 +563,33 @@
                         <p class="text-gray-400 text-sm mb-4">
                             Réservez 30 minutes pour discuter de votre projet. Nous vous offrons un audit préliminaire et des recommandations concrètes.
                         </p>
-                        <a href="https://calendly.com/ai-and-beyond" target="_blank" class="inline-flex items-center gap-2 bg-accent hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold btn-glow-accent transition">
+                        <a href="https://calendly.com/ai-and-beyond" target="_blank" class="inline-flex items-center gap-2 bg-accent hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition">
                             Réserver un créneau
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </a>
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
+                <!-- Form -->
                 <div data-aos="fade-left">
                     <form id="contact-form" class="glass-effect rounded-2xl p-8" name="contact" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="contact">
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Nom complet</label>
-                                <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="John Doe">
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-700 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="John Doe">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Email professionnel</label>
-                                <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="john@entreprise.com">
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-700 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="john@entreprise.com">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Entreprise</label>
-                                <input type="text" name="company" class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="Votre entreprise">
+                                <input type="text" name="company" class="w-full px-4 py-3 bg-slate-700 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="Votre entreprise">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Service qui vous intéresse</label>
-                                <select name="service" class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent transition">
+                                <select name="service" class="w-full px-4 py-3 bg-slate-700 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent transition">
                                     <option value="">Sélectionnez un service</option>
                                     <option value="bots">Bots IA</option>
                                     <option value="automatisation">Automatisation</option>
@@ -725,7 +600,7 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">Votre message</label>
-                                <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none" placeholder="Décrivez votre projet ou vos besoins..."></textarea>
+                                <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-slate-700 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none" placeholder="Décrivez votre projet ou vos besoins..."></textarea>
                             </div>
                             <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl font-semibold btn-glow text-lg">
                                 Envoyer le message
@@ -738,22 +613,20 @@
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- FOOTER -->
+    <!-- FOOTER                                                  -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <footer class="bg-slate-950 border-t border-white/5 py-16">
+    <footer class="bg-slate-900 border-t border-white/5 py-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand -->
                 <div class="md:col-span-1">
                     <a href="/" class="inline-block mb-4">
                         <img src="assets/images/logo.png" alt="AI & Beyond" class="h-20 w-auto logo-glow">
                     </a>
-                    <p class="text-sm text-gray-500 italic" style="font-family: 'Rajdhani', sans-serif;">
+                    <p class="text-sm text-gray-500 italic font-exo">
                         « L'IA au service de votre croissance »
                     </p>
                 </div>
                 
-                <!-- Services -->
                 <div>
                     <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Services</h4>
                     <ul class="space-y-3 text-sm">
@@ -764,7 +637,6 @@
                     </ul>
                 </div>
                 
-                <!-- Resources -->
                 <div>
                     <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Ressources</h4>
                     <ul class="space-y-3 text-sm">
@@ -774,7 +646,6 @@
                     </ul>
                 </div>
                 
-                <!-- Legal -->
                 <div>
                     <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Légal</h4>
                     <ul class="space-y-3 text-sm">
@@ -785,7 +656,6 @@
                 </div>
             </div>
             
-            <!-- Bottom Bar -->
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
@@ -798,10 +668,8 @@
     </footer>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- SCRIPTS -->
+    <!-- SCRIPTS                                                 -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    
-    <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
@@ -813,44 +681,157 @@
             offset: 100
         });
         
-        // Mobile menu toggle
+        // Mobile menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     mobileMenu.classList.add('hidden');
                 }
             });
         });
         
-        // Header collapse on scroll
+        // ═══════════════════════════════════════════════════════
+        // SMART HIDE HEADER
+        // ═══════════════════════════════════════════════════════
         const header = document.getElementById('main-header');
         let lastScroll = 0;
+        let isScrollingDown = false;
         
         window.addEventListener('scroll', () => {
             const currentScroll = window.scrollY;
             
-            if (currentScroll > 100) {
-                header.classList.add('header-collapsed');
+            // Determine scroll direction
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                // Scrolling DOWN - hide header
+                if (!isScrollingDown) {
+                    header.classList.add('header-hidden');
+                    isScrollingDown = true;
+                }
             } else {
-                header.classList.remove('header-collapsed');
+                // Scrolling UP - show header
+                if (isScrollingDown) {
+                    header.classList.remove('header-hidden');
+                    isScrollingDown = false;
+                }
+            }
+            
+            // Mini header when scrolled
+            if (currentScroll > 100) {
+                header.classList.add('header-mini');
+            } else {
+                header.classList.remove('header-mini');
             }
             
             lastScroll = currentScroll;
         });
+        
+        // ═══════════════════════════════════════════════════════
+        // NEURAL NETWORK PARTICLES
+        // ═══════════════════════════════════════════════════════
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        let animationId;
+        
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 2;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.color = Math.random() > 0.5 ? 'rgba(6, 182, 212, 0.8)' : 'rgba(139, 92, 246, 0.8)';
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                
+                // Glow effect
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+        }
+        
+        function connectParticles() {
+            const maxDistance = 180;
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < maxDistance) {
+                        const opacity = (1 - distance / maxDistance) * 0.4;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function initParticles() {
+            resizeCanvas();
+            particles = [];
+            
+            const particleCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 15000));
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+            
+            if (animationId) cancelAnimationFrame(animationId);
+            animate();
+        }
+        
+        window.addEventListener('load', initParticles);
+        window.addEventListener('resize', initParticles);
         
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -860,14 +841,9 @@
         });
     </script>
 
-    <!-- 🤖 BOT LYRA - AI Assistant -->
+    <!-- Bot Lyra -->
     <script src="assets/js/bot-config.js"></script>
     <script src="assets/js/ai-chat-bot.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🤖 Lyra AI Assistant loaded');
-        });
-    </script>
 
 </body>
 </html>
