@@ -9,16 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        dark: '#0f172a',
-                        accent: '#06b6d4'
-                    }
-                }
-            }
+            theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } }
         }
     </script>
     
@@ -26,89 +17,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-text-premium {
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .logo-glow {
-            transition: all 0.4s ease;
-        }
-        .logo-glow:hover {
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
-            transform: scale(1.02);
-        }
-        .btn-glow {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-        .btn-glow:hover {
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
-            transform: translateY(-2px);
-        }
-        .card-premium {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-premium:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .gradient-text-premium { background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-glow { transition: all 0.4s ease; filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3)); }
+        .logo-glow:hover { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4)); transform: scale(1.02); }
+        .btn-glow { transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); }
+        .btn-glow:hover { box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); transform: translateY(-2px); }
+        .card-premium { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .card-premium:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-color: rgba(99, 102, 241, 0.3); }
+        .glass-effect { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .header-collapsed .logo-section { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; overflow: hidden; }
+        .logo-section { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); max-height: 200px; opacity: 1; }
+        .mini-logo { transition: all 0.3s ease; opacity: 0; width: 0; margin-right: 0; }
+        .header-collapsed .mini-logo { opacity: 1; width: 40px; margin-right: 1rem; }
     </style>
 </head>
 <body class="bg-slate-950 text-gray-100">
     
-    <!-- HEADER PREMIUM -->
-    <header class="fixed w-full z-50 transition-all duration-500" id="main-header">
-        <div class="bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+    <!-- HEADER COLLAPSIBLE -->
+    <header class="fixed w-full z-50" id="main-header">
+        <div class="logo-section bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
             <div class="max-w-7xl mx-auto px-4 py-6">
                 <div class="flex flex-col items-center">
-                    <a href="../index.html" class="logo-glow">
-                        <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-24 md:h-32 w-auto">
-                    </a>
-                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
-                        « L'IA au service de votre croissance »
-                    </p>
+                    <a href="../index.html" class="logo-glow"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-24 md:h-28 w-auto"></a>
+                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">« L'IA au service de votre croissance »</p>
                 </div>
             </div>
         </div>
-        
-        <nav class="bg-slate-900/90 backdrop-blur-md border-b border-white/5">
+        <nav class="nav-section bg-slate-900/90 backdrop-blur-md border-b border-white/5">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
-                    <div class="hidden md:flex items-center space-x-10">
-                        <a href="../index.html#services" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Services</a>
-                        <a href="rag.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">RAG</a>
-                        <a href="bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Bots</a>
-                        <a href="livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Livres</a>
+                    <a href="../index.html" class="mini-logo"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-10 w-auto"></a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="rag.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">RAG</a>
+                        <a href="bots.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Bots</a>
+                        <a href="livres.html" class="text-gray-300 hover:text-accent font-medium text-sm uppercase tracking-wider">Livres</a>
                         <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
                     </div>
-                    <div class="md:hidden">
-                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </button>
-                    </div>
+                    <div class="md:hidden"><button id="mobile-menu-btn" class="text-gray-300"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
                 </div>
             </div>
             <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
                 <div class="px-4 pt-2 pb-4 space-y-2">
-                    <a href="../index.html#services" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Services</a>
-                    <a href="rag.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">RAG</a>
-                    <a href="bots.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Bots</a>
-                    <a href="livres.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Livres</a>
+                    <a href="rag.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">RAG</a>
+                    <a href="bots.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Bots</a>
+                    <a href="livres.html" class="block px-4 py-3 text-gray-300 hover:bg-white/5 rounded-lg">Livres</a>
                     <a href="../index.html#contact" class="block px-4 py-3 text-white bg-gradient-to-r from-primary to-secondary rounded-lg text-center font-semibold">Contact</a>
                 </div>
             </div>
@@ -116,18 +71,14 @@
     </header>
 
     <!-- HERO -->
-    <section class="pt-56 pb-20 px-4 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900">
+    <section class="pt-52 pb-20 px-4 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900">
         <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
             <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
                 <span class="text-2xl mr-2">⚡</span>
                 <span class="text-sm text-gray-300">Services IA Enterprise</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                Nos <span class="gradient-text-premium">Services IA</span>
-            </h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                Solutions complètes pour automatiser, optimiser et transformer votre activité avec l'intelligence artificielle
-            </p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Nos <span class="gradient-text-premium">Services IA</span></h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Solutions complètes pour automatiser, optimiser et transformer votre activité</p>
         </div>
     </section>
 
@@ -147,201 +98,59 @@
                 <!-- Audit -->
                 <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Audit Prompt Engineering</h3>
-                            <div class="text-accent font-bold text-3xl">500-1K€</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">📊</span>
-                        </div>
+                        <div><h3 class="text-2xl font-bold mb-2">Audit Prompt Engineering</h3><div class="text-accent font-bold text-3xl">500-1K€</div></div>
+                        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center"><span class="text-2xl">📊</span></div>
                     </div>
                     <p class="text-gray-400 mb-6">Analyse de votre usage IA actuel et identification des opportunités d'optimisation.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Analyse usage IA actuel
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> 10-20 use cases identifiés
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Roadmap priorisée 20-30 pages
-                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-accent">✓</span> 10-20 use cases identifiés</div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-accent">✓</span> Roadmap priorisée 20-30 pages</div>
                     </div>
-                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">
-                        ⏱️ Durée : 1 semaine • 📈 ROI : Identifie 3-10x opportunités
-                    </div>
+                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">⏱️ Durée : 1 semaine</div>
                 </div>
 
                 <!-- Automatisation -->
                 <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Automatisation Workflows</h3>
-                            <div class="text-purple-400 font-bold text-3xl">3-10K€</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">⚡</span>
-                        </div>
+                        <div><h3 class="text-2xl font-bold mb-2">Automatisation Workflows</h3><div class="text-purple-400 font-bold text-3xl">3-10K€</div></div>
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center"><span class="text-2xl">⚡</span></div>
                     </div>
-                    
-                    <!-- Texte vendeur intégré -->
                     <div class="bg-purple-500/10 border-l-4 border-purple-500 p-4 rounded-r-lg mb-6">
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            <strong>Combien d'heures perdez-vous sur des tâches répétitives ?</strong> Emails, reporting, data entry... Nos solutions connectent vos outils et travaillent pour vous. <strong class="text-purple-400">Récupérez 10 à 40 heures par semaine.</strong>
-                        </p>
+                        <p class="text-gray-300 text-sm"><strong>Combien d'heures perdez-vous sur des tâches répétitives ?</strong> Nos solutions connectent vos outils. <strong class="text-purple-400">Récupérez 10 à 40h/semaine.</strong></p>
                     </div>
-                    
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-purple-400">✓</span> Workflows sur mesure
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-purple-400">✓</span> Intégrations multiples
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-purple-400">✓</span> Formation équipe incluse
-                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-purple-400">✓</span> Workflows sur mesure</div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-purple-400">✓</span> Formation équipe incluse</div>
                     </div>
-                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">
-                        ⏱️ Durée : 3-6 semaines • 📈 ROI : 10-40h/semaine gagnées
-                    </div>
+                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">⏱️ Durée : 3-6 semaines</div>
                 </div>
 
                 <!-- Formation -->
                 <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Formation Équipe</h3>
-                            <div class="text-cyan-400 font-bold text-3xl">1.5-3K€/jour</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🎓</span>
-                        </div>
+                        <div><h3 class="text-2xl font-bold mb-2">Formation Équipe</h3><div class="text-cyan-400 font-bold text-3xl">1.5-3K€/jour</div></div>
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-xl flex items-center justify-center"><span class="text-2xl">🎓</span></div>
                     </div>
                     <p class="text-gray-400 mb-6">Formez vos équipes au Prompt Engineering et à l'IA générative.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-cyan-400">✓</span> Workshops pratiques
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-cyan-400">✓</span> Support post-formation
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-cyan-400">✓</span> Certification interne
-                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-cyan-400">✓</span> Workshops pratiques</div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-cyan-400">✓</span> Support post-formation</div>
                     </div>
-                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">
-                        ⏱️ Durée : 1-3 jours • 👥 Jusqu'à 12 participants
-                    </div>
+                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">👥 Jusqu'à 12 participants</div>
                 </div>
 
                 <!-- Consulting -->
                 <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="400">
                     <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Consulting Stratégique</h3>
-                            <div class="text-emerald-400 font-bold text-3xl">Sur devis</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🎯</span>
-                        </div>
+                        <div><h3 class="text-2xl font-bold mb-2">Consulting Stratégique</h3><div class="text-emerald-400 font-bold text-3xl">Sur devis</div></div>
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center"><span class="text-2xl">🎯</span></div>
                     </div>
                     <p class="text-gray-400 mb-6">Accompagnement stratégique pour votre transformation IA.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-emerald-400">✓</span> Stratégie IA sur mesure
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-emerald-400">✓</span> Accompagnement long-terme
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-emerald-400">✓</span> Reporting et KPIs
-                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-emerald-400">✓</span> Stratégie IA sur mesure</div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300"><span class="text-emerald-400">✓</span> Accompagnement long-terme</div>
                     </div>
-                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">
-                        ⏱️ Engagement : 3-12 mois • 📈 ROI garanti
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTIONS RAG PHYSIQUES -->
-    <section class="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Solutions Clé en Main</span>
-                <h2 class="text-4xl font-bold mt-4 mb-6">RAG Physique On-Premise</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Votre propre serveur IA, installé chez vous. 100% sécurisé, 100% local.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Mac Studio -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Mac Studio RAG Pro</h3>
-                            <div class="text-white font-bold text-3xl">15-20K€</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-slate-600 to-slate-800 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">💻</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-6">Solution complète clé en main avec matériel Apple Mac Studio et installation système RAG.</p>
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Mac Studio M2 Ultra + 192 Go RAM
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Installation complète système RAG
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Formation équipe 2 jours
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-accent">✓</span> Support 6 mois + mises à jour
-                        </div>
-                    </div>
-                    <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 text-sm text-emerald-300 mb-6">
-                        🔒 100% local • Pas d'abonnement cloud • Vos données restent chez vous
-                    </div>
-                    <a href="rag.html" class="block w-full bg-slate-800 hover:bg-slate-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
-                        En savoir plus
-                    </a>
-                </div>
-
-                <!-- Mac Mini -->
-                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-start justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Mac Mini RAG Essential</h3>
-                            <div class="text-blue-400 font-bold text-3xl">8-12K€</div>
-                        </div>
-                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🖥️</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-6">Solution compacte et économique pour PME et artisans avec Mac Mini.</p>
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-blue-400">✓</span> Mac Mini M2 Pro + 32-64 Go RAM
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-blue-400">✓</span> Installation système RAG optimisé
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-blue-400">✓</span> Formation 1 jour
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-300">
-                            <span class="text-blue-400">✓</span> Support 3 mois
-                        </div>
-                    </div>
-                    <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 text-sm text-blue-300 mb-6">
-                        📦 Compact • 💡 Facile d'utilisation • 🚀 Déploiement rapide
-                    </div>
-                    <a href="rag.html" class="block w-full bg-blue-600 hover:bg-blue-500 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
-                        En savoir plus
-                    </a>
+                    <div class="glass-effect rounded-lg p-4 text-sm text-gray-400">📈 ROI garanti</div>
                 </div>
             </div>
         </div>
@@ -351,38 +160,24 @@
     <section class="py-24 bg-gradient-to-br from-primary to-secondary">
         <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-6">Prêt à transformer votre activité avec l'IA ?</h2>
-            <p class="text-xl mb-8 text-gray-100">
-                Réservez un appel découverte gratuit de 30 minutes
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="../index.html#contact" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">
-                    Demander un devis
-                </a>
-                <a href="https://calendly.com/ai-and-beyond" target="_blank" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition text-lg">
-                    Réserver un appel
-                </a>
-            </div>
+            <p class="text-xl mb-8 text-gray-100">Réservez un appel découverte gratuit de 30 minutes</p>
+            <a href="../index.html#contact" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">Demander un devis</a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-slate-950 border-t border-white/5 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4">
-                <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto logo-glow">
-            </a>
+            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto logo-glow"></a>
             <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
-        
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        window.addEventListener('scroll', () => { document.getElementById('main-header').classList.toggle('header-collapsed', window.scrollY > 100); });
     </script>
     <script src="../assets/js/bot-config.js"></script>
     <script src="../assets/js/ai-chat-bot.js"></script>

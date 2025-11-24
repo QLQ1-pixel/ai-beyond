@@ -79,10 +79,11 @@
         /* Logo Glow Effect */
         .logo-glow {
             transition: all 0.4s ease;
+            filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
         }
         
         .logo-glow:hover {
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+            filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4));
             transform: scale(1.02);
         }
         
@@ -150,30 +151,81 @@
             animation-play-state: paused;
         }
         
-        /* Counter Animation */
-        .stat-number {
-            font-variant-numeric: tabular-nums;
-        }
-        
         /* Floating Particles */
         .particle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(6, 182, 212, 0.3);
-            animation: float-particle 20s ease-in-out infinite;
+            pointer-events: none;
         }
         
-        @keyframes float-particle {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-            25% { transform: translateY(-30px) translateX(20px); opacity: 0.6; }
-            50% { transform: translateY(-10px) translateX(-10px); opacity: 0.4; }
-            75% { transform: translateY(-40px) translateX(30px); opacity: 0.5; }
+        .particle-cyan {
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, rgba(6, 182, 212, 0) 70%);
+            animation: float-particle-1 20s ease-in-out infinite;
         }
         
-        /* Nav Sticky Effect */
-        .nav-scrolled {
-            background: rgba(15, 23, 42, 0.95) !important;
-            backdrop-filter: blur(20px);
+        .particle-purple {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
+            animation: float-particle-2 25s ease-in-out infinite;
+        }
+        
+        .particle-indigo {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0) 70%);
+            animation: float-particle-3 18s ease-in-out infinite;
+        }
+        
+        @keyframes float-particle-1 {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-40px) translateX(30px) scale(1.1); opacity: 0.8; }
+            50% { transform: translateY(-20px) translateX(-20px) scale(0.9); opacity: 0.5; }
+            75% { transform: translateY(-60px) translateX(40px) scale(1.05); opacity: 0.7; }
+        }
+        
+        @keyframes float-particle-2 {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
+            33% { transform: translateY(-50px) translateX(-40px) scale(1.2); opacity: 0.7; }
+            66% { transform: translateY(-30px) translateX(30px) scale(0.8); opacity: 0.4; }
+        }
+        
+        @keyframes float-particle-3 {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+            50% { transform: translateY(-70px) translateX(50px) scale(1.3); opacity: 0.6; }
+        }
+        
+        /* Header Transitions */
+        .header-full {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-collapsed .logo-section {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .header-collapsed .nav-section {
+            background: rgba(15, 23, 42, 0.95);
+        }
+        
+        .logo-section {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 200px;
+            opacity: 1;
+        }
+        
+        /* Mini logo in collapsed nav */
+        .mini-logo {
+            transition: all 0.3s ease;
+            opacity: 0;
+            width: 0;
+            margin-right: 0;
+        }
+        
+        .header-collapsed .mini-logo {
+            opacity: 1;
+            width: 40px;
+            margin-right: 1rem;
         }
     </style>
 </head>
@@ -190,19 +242,19 @@
     </form>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HEADER PREMIUM - Logo Bar Style -->
+    <!-- HEADER PREMIUM - Collapsible on Scroll -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <header class="fixed w-full z-50 transition-all duration-500" id="main-header">
-        <!-- Logo Section -->
-        <div class="bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+    <header class="fixed w-full z-50 header-full" id="main-header">
+        <!-- Logo Section (disparaît au scroll) -->
+        <div class="logo-section bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
             <div class="max-w-7xl mx-auto px-4 py-6">
                 <div class="flex flex-col items-center">
                     <!-- Grand Logo Centré -->
                     <a href="/" class="logo-glow">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-32 md:h-40 w-auto">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-28 md:h-36 w-auto">
                     </a>
                     <!-- Slogan Premium -->
-                    <p class="mt-4 text-xl md:text-2xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
+                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
                         « L'IA au service de votre croissance »
                     </p>
                 </div>
@@ -210,13 +262,18 @@
         </div>
         
         <!-- Navigation Bar -->
-        <nav class="bg-slate-900/90 backdrop-blur-md border-b border-white/5">
+        <nav class="nav-section bg-slate-900/90 backdrop-blur-md border-b border-white/5 transition-all duration-400">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
+                    <!-- Mini Logo (apparaît au scroll) -->
+                    <a href="/" class="mini-logo">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-10 w-auto">
+                    </a>
+                    
                     <!-- Desktop Menu -->
-                    <div class="hidden md:flex items-center space-x-10">
+                    <div class="hidden md:flex items-center space-x-8">
                         <a href="#services" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Services</a>
-                        <a href="#rag" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">RAG-as-a-Service</a>
+                        <a href="#rag" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">RAG</a>
                         <a href="pages/livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Livres</a>
                         <a href="pages/bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Bots IA</a>
                         <a href="#about" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">À propos</a>
@@ -238,7 +295,7 @@
             <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
                 <div class="px-4 pt-2 pb-4 space-y-2">
                     <a href="#services" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Services</a>
-                    <a href="#rag" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">RAG-as-a-Service</a>
+                    <a href="#rag" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">RAG</a>
                     <a href="pages/livres.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Livres</a>
                     <a href="pages/bots.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Bots IA</a>
                     <a href="#about" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">À propos</a>
@@ -249,16 +306,18 @@
     </header>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HERO SECTION - Animated Gradient + Stats Counter -->
+    <!-- HERO SECTION - Animated Gradient + Particles -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-64 pb-20">
-        <!-- Floating Particles -->
-        <div class="particle w-2 h-2" style="top: 20%; left: 10%;"></div>
-        <div class="particle w-3 h-3" style="top: 40%; left: 80%; animation-delay: -5s;"></div>
-        <div class="particle w-2 h-2" style="top: 60%; left: 20%; animation-delay: -10s;"></div>
-        <div class="particle w-4 h-4" style="top: 30%; left: 70%; animation-delay: -15s;"></div>
-        <div class="particle w-2 h-2" style="top: 70%; left: 60%; animation-delay: -7s;"></div>
-        <div class="particle w-3 h-3" style="top: 80%; left: 30%; animation-delay: -12s;"></div>
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-52 pb-20">
+        <!-- Enhanced Floating Particles -->
+        <div class="particle particle-cyan w-32 h-32" style="top: 15%; left: 5%;"></div>
+        <div class="particle particle-purple w-40 h-40" style="top: 35%; left: 85%; animation-delay: -5s;"></div>
+        <div class="particle particle-indigo w-24 h-24" style="top: 55%; left: 15%; animation-delay: -10s;"></div>
+        <div class="particle particle-cyan w-36 h-36" style="top: 25%; left: 75%; animation-delay: -8s;"></div>
+        <div class="particle particle-purple w-28 h-28" style="top: 65%; left: 55%; animation-delay: -3s;"></div>
+        <div class="particle particle-indigo w-20 h-20" style="top: 75%; left: 25%; animation-delay: -12s;"></div>
+        <div class="particle particle-cyan w-16 h-16" style="top: 45%; left: 45%; animation-delay: -7s;"></div>
+        <div class="particle particle-purple w-24 h-24" style="top: 10%; left: 60%; animation-delay: -15s;"></div>
         
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
@@ -288,19 +347,19 @@
                     </a>
                 </div>
                 
-                <!-- Stats Counter -->
-                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-accent stat-number" data-target="60">0</div>
-                        <div class="text-lg text-gray-400 mt-2">% tickets réduits</div>
+                <!-- Trust Badges (remplace les stats) -->
+                <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
+                        <span class="text-accent">✓</span>
+                        <span class="text-sm text-gray-300">Enterprise Ready</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-purple-400 stat-number" data-target="40" data-suffix="h">0</div>
-                        <div class="text-lg text-gray-400 mt-2">/semaine gagnées</div>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
+                        <span class="text-purple-400">🔒</span>
+                        <span class="text-sm text-gray-300">100% Sécurisé</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl md:text-5xl font-bold text-indigo-400 stat-number" data-target="12" data-suffix="x">0</div>
-                        <div class="text-lg text-gray-400 mt-2">ROI moyen</div>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-2">
+                        <span class="text-emerald-400">📈</span>
+                        <span class="text-sm text-gray-300">ROI Garanti</span>
                     </div>
                 </div>
             </div>
@@ -687,7 +746,7 @@
                 <!-- Brand -->
                 <div class="md:col-span-1">
                     <a href="/" class="inline-block mb-4">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-24 w-auto logo-glow">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-20 w-auto logo-glow">
                     </a>
                     <p class="text-sm text-gray-500 italic" style="font-family: 'Rajdhani', sans-serif;">
                         « L'IA au service de votre croissance »
@@ -777,49 +836,21 @@
             });
         });
         
-        // Header scroll effect
+        // Header collapse on scroll
         const header = document.getElementById('main-header');
+        let lastScroll = 0;
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('nav-scrolled');
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                header.classList.add('header-collapsed');
             } else {
-                header.classList.remove('nav-scrolled');
+                header.classList.remove('header-collapsed');
             }
+            
+            lastScroll = currentScroll;
         });
-        
-        // Animated Counter
-        const animateCounter = (element, target, suffix = '') => {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + suffix;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + suffix;
-                }
-            }, 30);
-        };
-        
-        // Intersection Observer for counters
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const observerOptions = {
-            threshold: 0.5
-        };
-        
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.dataset.target);
-                    const suffix = entry.target.dataset.suffix || '';
-                    animateCounter(entry.target, target, suffix);
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        statNumbers.forEach(stat => counterObserver.observe(stat));
         
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
