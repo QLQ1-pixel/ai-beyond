@@ -1,5 +1,5 @@
-// AI & Beyond - Bot Intelligence avec Claude API
-// Partie 2 : Logique métier, qualification leads, génération devis
+// AI & Beyond - Bot Intelligence (Version Gratuite)
+// Système de réponses intelligentes basé sur des règles
 
 class AIBotIntelligence {
   constructor() {
@@ -8,347 +8,343 @@ class AIBotIntelligence {
         name: "Bots Conversationnels",
         prix_min: 2000,
         prix_max: 8000,
-        description: "Assistants IA pour support client, qualification leads, réservations",
-        facteurs: ["complexité", "intégrations", "volume"]
+        description: "Assistants IA pour support client, qualification leads, réservations automatisées"
       },
       automatisation: {
         name: "Automatisation Workflows",
         prix_min: 3000,
         prix_max: 15000,
-        description: "Automatisation tâches répétitives : emails, CRM, reporting",
-        facteurs: ["nombre_workflows", "outils", "complexité"]
+        description: "Automatisation de vos tâches répétitives : emails, CRM, reporting, onboarding"
       },
       rag: {
         name: "RAG-as-a-Service",
         prix_min: 1500,
         prix_max: 10000,
-        prix_mensuel: true,
-        description: "IA avec accès à vos données propriétaires",
-        facteurs: ["volume_données", "requêtes_mensuelles", "intégrations"]
+        monthly: true,
+        description: "IA avec accès à vos données propriétaires pour des réponses contextuelles"
+      },
+      ragPhysique: {
+        name: "RAG Physique (Mac Studio/Mini)",
+        prix_min: 8000,
+        prix_max: 25000,
+        description: "Solution IA locale complète : matériel + installation + formation"
       },
       consulting: {
         name: "Consulting & Audit IA",
         prix_min: 500,
         prix_max: 5000,
-        description: "Audit, roadmap, formation Prompt Engineering",
-        facteurs: ["durée", "équipe_size", "expertise"]
+        description: "Audit de vos processus, roadmap IA, recommandations stratégiques"
       },
       formation: {
         name: "Formation Prompt Engineering",
         prix_min: 800,
         prix_max: 3000,
-        description: "Formation équipes au Prompt Engineering",
-        facteurs: ["participants", "durée", "niveau"]
+        description: "Formation de vos équipes aux techniques avancées de Prompt Engineering"
       }
     };
     
-    this.conversationState = {
-      stage: 'initial', // initial, qualifying, quoting, closing
-      intent: null,
-      collectedInfo: {},
-      leadScore: 0
+    this.collectedInfo = {
+      name: null,
+      email: null,
+      phone: null,
+      company: null,
+      need: null,
+      budget: null,
+      service: null
     };
-  }
-  
-  // Analyser l'intention de l'utilisateur
-  analyzeIntent(message) {
-    const lower = message.toLowerCase();
     
-    // Intentions de devis
-    if (lower.includes('devis') || lower.includes('prix') || lower.includes('coût') || lower.includes('tarif')) {
+    this.conversationStage = 'initial';
+    this.whatsappNumber = '+351920833889';
+  }
+
+  processMessage(message) {
+    const lower = message.toLowerCase().trim();
+    this.extractInfo(message);
+    const intent = this.detectIntent(lower);
+    return this.generateResponse(intent, lower, message);
+  }
+
+  detectIntent(lower) {
+    if (this.matchKeywords(lower, ['bonjour', 'salut', 'hello', 'bonsoir', 'hey', 'coucou'])) {
+      return 'greeting';
+    }
+    if (this.matchKeywords(lower, ['devis', 'prix', 'coût', 'tarif', 'combien', 'budget', 'estimation'])) {
       return 'quote';
     }
-    
-    // Intentions de découverte
-    if (lower.includes('service') || lower.includes('proposez') || lower.includes('faites')) {
-      return 'discover';
+    if (this.matchKeywords(lower, ['service', 'proposez', 'offre', 'faites', 'quoi', 'activité'])) {
+      return 'services';
     }
-    
-    // Intentions de rendez-vous
-    if (lower.includes('rendez-vous') || lower.includes('rdv') || lower.includes('appel') || lower.includes('rencontrer')) {
+    if (this.matchKeywords(lower, ['bot', 'chatbot', 'assistant'])) {
+      return 'bots';
+    }
+    if (this.matchKeywords(lower, ['automatisation', 'automatiser', 'workflow', 'automation'])) {
+      return 'automation';
+    }
+    if (this.matchKeywords(lower, ['rag', 'données', 'documents', 'knowledge', 'base de connaissance'])) {
+      return 'rag';
+    }
+    if (this.matchKeywords(lower, ['mac', 'studio', 'mini', 'local', 'serveur', 'physique', 'matériel'])) {
+      return 'rag_physical';
+    }
+    if (this.matchKeywords(lower, ['formation', 'former', 'apprendre', 'cours', 'training'])) {
+      return 'training';
+    }
+    if (this.matchKeywords(lower, ['audit', 'conseil', 'consulting', 'stratégie'])) {
+      return 'consulting';
+    }
+    if (this.matchKeywords(lower, ['rendez-vous', 'rdv', 'appel', 'rencontrer', 'discuter', 'call', 'calendly'])) {
       return 'meeting';
     }
-    
-    // Intentions de questions
-    if (lower.includes('?') || lower.includes('comment') || lower.includes('pourquoi') || lower.includes('c\'est quoi')) {
-      return 'question';
+    if (this.matchKeywords(lower, ['whatsapp', 'wa', 'téléphone', 'appeler'])) {
+      return 'whatsapp';
     }
-    
+    if (this.matchKeywords(lower, ['humain', 'personne', 'quelqu\'un', 'parler à', 'contact', 'email'])) {
+      return 'human';
+    }
+    if (this.matchKeywords(lower, ['merci', 'thanks', 'super', 'parfait', 'génial', 'excellent'])) {
+      return 'thanks';
+    }
+    if (this.matchKeywords(lower, ['oui', 'ok', 'd\'accord', 'yes', 'allons-y', 'on y va', 'envoyez', 'envoyer'])) {
+      return 'confirm';
+    }
+    if (this.matchKeywords(lower, ['non', 'pas maintenant', 'plus tard', 'no'])) {
+      return 'decline';
+    }
+    if (this.containsEmail(lower)) {
+      return 'email_provided';
+    }
     return 'general';
   }
-  
-  // Générer le prompt système pour Claude
-  getSystemPrompt() {
-    return `Tu es Lyra, l'assistante IA virtuelle d'AI & Beyond, une entreprise spécialisée dans les services d'intelligence artificielle pour PME.
 
-MISSION : Qualifier les visiteurs du site et les aider à trouver le service adapté à leurs besoins.
+  generateResponse(intent, lower, originalMessage) {
+    let response = { message: '', quickReplies: [], action: null };
 
-SERVICES PROPOSÉS :
-${Object.entries(this.services).map(([key, service]) => 
-  `- ${service.name} : ${service.description} (${service.prix_min}€ - ${service.prix_max}€${service.prix_mensuel ? '/mois' : ''})`
-).join('\n')}
+    switch(intent) {
+      case 'greeting':
+        response.message = `Bonjour ! 👋 Je suis Lyra, votre assistante IA chez AI & Beyond.\n\nComment puis-je vous aider ?`;
+        response.quickReplies = ['Découvrir vos services', 'Obtenir un devis', 'Prendre rendez-vous'];
+        break;
 
-TON STYLE :
-- Professionnel mais accessible
-- Concis et direct (max 3-4 phrases par réponse)
-- Orienté action et résultats
-- Utilise des emojis avec parcimonie (1 par message max)
+      case 'services':
+        response.message = `Chez AI & Beyond, nous proposons :\n\n🤖 **Bots IA** (2-8K€)\n⚡ **Automatisation** (3-15K€)\n🧠 **RAG Cloud** (1.5-10K€/mois)\n🖥️ **RAG Local** (8-25K€)\n📚 **Formation** (0.8-3K€)\n🔍 **Audit IA** (0.5-5K€)\n\nQuel service vous intéresse ?`;
+        response.quickReplies = ['Bots IA', 'Automatisation', 'RAG', 'Formation'];
+        break;
 
-PROCESSUS DE QUALIFICATION :
-1. Comprendre le besoin du client
-2. Identifier le ou les services pertinents
-3. Poser 2-3 questions pour qualifier (budget, timeline, volume)
-4. Proposer un devis estimé OU un rendez-vous
+      case 'quote':
+        if (!this.collectedInfo.email) {
+          this.conversationStage = 'collecting';
+          response.message = `Avec plaisir ! 📝 Pour vous envoyer un devis, j'ai besoin de votre **email**.`;
+        } else {
+          response.message = `Quel type de projet vous intéresse ?`;
+          response.quickReplies = ['Bot IA', 'Automatisation', 'RAG', 'Audit IA'];
+        }
+        break;
 
-RÈGLES IMPORTANTES :
-- Ne jamais inventer de prix : utilise les fourchettes fournies
-- Toujours qualifier avant de proposer un prix
-- Si le besoin est complexe, propose un appel avec l'équipe
-- Reste dans le périmètre des services AI & Beyond
+      case 'bots':
+        this.collectedInfo.service = 'bots';
+        response.message = `🤖 **Bots Conversationnels** :\n\n• Support client 24/7\n• Qualification de leads\n• Prise de RDV automatique\n\n**Tarifs : 2 000€ - 8 000€**\n\nVoulez-vous un devis ?`;
+        response.quickReplies = ['Obtenir un devis', 'Plus d\'infos', 'Prendre RDV'];
+        break;
 
-INFORMATIONS À COLLECTER (par ordre de priorité) :
-1. Nom et email
-2. Entreprise et secteur
-3. Besoin spécifique
-4. Budget approximatif
-5. Timeline souhaitée
+      case 'automation':
+        this.collectedInfo.service = 'automatisation';
+        response.message = `⚡ **Automatisation** :\n\n• Emails et suivis auto\n• Connexion CRM/outils\n• Reporting automatique\n\n**Tarifs : 3 000€ - 15 000€**\n\nQu'aimeriez-vous automatiser ?`;
+        response.quickReplies = ['Obtenir un devis', 'Prendre RDV'];
+        break;
 
-Si l'utilisateur demande quelque chose hors périmètre, redirige poliment vers contact@aiandbeyond.eu.`;
+      case 'rag':
+        this.collectedInfo.service = 'rag';
+        response.message = `🧠 **RAG-as-a-Service** :\n\n• IA sur vos documents\n• Recherche intelligente\n• Base de connaissances IA\n\n**Tarifs : 1 500€ - 10 000€/mois**\n\nIntéressé par le RAG local aussi ?`;
+        response.quickReplies = ['Obtenir un devis', 'RAG Local/Physique'];
+        break;
+
+      case 'rag_physical':
+        this.collectedInfo.service = 'ragPhysique';
+        response.message = `🖥️ **RAG Physique** (Mac Studio/Mini) :\n\n• 100% local, vos données chez vous\n• RGPD compliant\n• Installation + formation incluses\n\n**Tarifs : 8 000€ - 25 000€**\n\nIdéal pour données sensibles !`;
+        response.quickReplies = ['Obtenir un devis', 'Prendre RDV'];
+        break;
+
+      case 'training':
+        this.collectedInfo.service = 'formation';
+        response.message = `📚 **Formation Prompt Engineering** :\n\n• Techniques avancées\n• Cas pratiques métier\n• Atelier hands-on\n\n**Tarifs : 800€ - 3 000€**`;
+        response.quickReplies = ['Obtenir un devis', 'Programme détaillé'];
+        break;
+
+      case 'consulting':
+        this.collectedInfo.service = 'consulting';
+        response.message = `🔍 **Audit & Consulting IA** :\n\n• Analyse de vos processus\n• Opportunités IA\n• Roadmap transformation\n\n**Tarifs : 500€ - 5 000€**`;
+        response.quickReplies = ['Prendre RDV', 'Obtenir un devis'];
+        break;
+
+      case 'meeting':
+        response.message = `📅 Réservez un créneau de 30 min :\n\n👉 **Calendly** : calendly.com/ai-and-beyond\n\nOu contactez-nous sur WhatsApp !`;
+        response.quickReplies = ['Ouvrir Calendly', 'WhatsApp', 'Email'];
+        response.action = 'show_calendly';
+        break;
+
+      case 'whatsapp':
+        response.message = `📱 Contactez-nous sur WhatsApp :\n\n👉 Cliquez ici : wa.me/${this.whatsappNumber.replace('+', '')}\n\nNous répondons rapidement !`;
+        response.action = 'show_whatsapp';
+        break;
+
+      case 'human':
+        response.message = `📧 **Email** : contact@aiandbeyond.eu\n📱 **WhatsApp** : wa.me/${this.whatsappNumber.replace('+', '')}\n📅 **Calendly** : calendly.com/ai-and-beyond\n\nNous répondons sous 24h !`;
+        response.action = 'show_contact';
+        break;
+
+      case 'email_provided':
+        const email = this.extractEmail(originalMessage);
+        if (email) {
+          this.collectedInfo.email = email;
+          response.message = `Parfait ! 📧 J'ai noté **${email}**.\n\nDécrivez-moi votre projet ou besoin ?`;
+          this.conversationStage = 'qualifying';
+        }
+        break;
+
+      case 'thanks':
+        response.message = `Avec plaisir ! 😊 À bientôt !`;
+        response.quickReplies = ['Autre question', 'Prendre RDV'];
+        break;
+
+      case 'confirm':
+        if (this.conversationStage === 'closing' && this.collectedInfo.email) {
+          response.message = `🎉 Demande transmise à notre équipe !\n\nVous recevrez une réponse sous 24-48h à **${this.collectedInfo.email}**.\n\nMerci !`;
+          response.action = 'send_lead';
+        } else {
+          response.message = `Que souhaitez-vous faire ?`;
+          response.quickReplies = ['Obtenir un devis', 'Prendre RDV'];
+        }
+        break;
+
+      case 'decline':
+        response.message = `Pas de problème ! 😊 Je reste dispo si besoin.`;
+        break;
+
+      default:
+        if (this.conversationStage === 'collecting' && !this.collectedInfo.email) {
+          response.message = `Pour continuer, j'ai besoin de votre **email** 📧`;
+        } else if (this.conversationStage === 'qualifying') {
+          this.collectedInfo.need = originalMessage;
+          this.conversationStage = 'closing';
+          
+          let estimate = '';
+          if (this.collectedInfo.service && this.services[this.collectedInfo.service]) {
+            const s = this.services[this.collectedInfo.service];
+            estimate = `\n\n💼 **${s.name}** : ${s.prix_min.toLocaleString()}€ - ${s.prix_max.toLocaleString()}€${s.monthly ? '/mois' : ''}`;
+          }
+          
+          response.message = `Merci ! 📝${estimate}\n\nJe transmets votre demande ? Notre équipe vous contactera sous 24-48h.`;
+          response.quickReplies = ['Oui, envoyez !', 'J\'ai des questions'];
+        } else {
+          response.message = `Je peux vous aider avec nos services IA. Que recherchez-vous ?`;
+          response.quickReplies = ['Voir les services', 'Obtenir un devis', 'Parler à un humain'];
+        }
+    }
+
+    return response;
   }
-  
-  // Construire le prompt pour Claude avec contexte
-  buildPrompt(userMessage, conversationHistory) {
-    const context = `
-CONTEXTE CONVERSATION :
-- Stage actuel : ${this.conversationState.stage}
-- Intent détecté : ${this.conversationState.intent || 'non défini'}
-- Infos collectées : ${JSON.stringify(this.conversationState.collectedInfo)}
-- Score lead : ${this.conversationState.leadScore}/10
 
-HISTORIQUE :
-${conversationHistory.slice(-6).map(msg => 
-  `${msg.role === 'user' ? 'Client' : 'Lyra'}: ${msg.content}`
-).join('\n')}
-
-NOUVEAU MESSAGE CLIENT : ${userMessage}
-
-INSTRUCTIONS :
-Réponds au client en fonction du contexte ci-dessus. Si tu as assez d'informations pour proposer un devis, inclus "ACTION:QUOTE" à la fin de ta réponse. Si tu veux planifier un RDV, inclus "ACTION:MEETING". Si tu as besoin d'informations critiques (email, nom), demande-les directement.`;
-    
-    return context;
+  matchKeywords(text, keywords) {
+    return keywords.some(kw => text.includes(kw));
   }
-  
-  // Appeler l'API Claude (côté client)
-  async getClaudeResponse(userMessage, conversationHistory) {
-    const systemPrompt = this.getSystemPrompt();
-    const userPrompt = this.buildPrompt(userMessage, conversationHistory);
+
+  containsEmail(text) {
+    return /[\w.-]+@[\w.-]+\.\w+/.test(text);
+  }
+
+  extractEmail(text) {
+    const match = text.match(/[\w.-]+@[\w.-]+\.\w+/);
+    return match ? match[0] : null;
+  }
+
+  extractInfo(message) {
+    const email = this.extractEmail(message);
+    if (email) this.collectedInfo.email = email;
     
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 500,
-          system: systemPrompt,
-          messages: [
-            ...conversationHistory.slice(-5), // Derniers 5 messages pour contexte
-            { role: "user", content: userPrompt }
-          ]
-        })
-      });
-      
-      const data = await response.json();
-      return data.content[0].text;
-    } catch (error) {
-      console.error('Claude API error:', error);
-      throw error;
+    const phoneMatch = message.match(/(?:\+|00)?[0-9\s.-]{9,}/);
+    if (phoneMatch) this.collectedInfo.phone = phoneMatch[0].trim();
+    
+    const budgetMatch = message.match(/(\d+)\s*(?:€|euros?|k€|k\s*€)/i);
+    if (budgetMatch) {
+      let budget = parseInt(budgetMatch[1]);
+      if (message.toLowerCase().includes('k')) budget *= 1000;
+      this.collectedInfo.budget = budget;
     }
   }
-  
-  // Parser la réponse de Claude pour extraire les actions
-  parseResponse(claudeResponse) {
-    let message = claudeResponse;
-    let action = null;
-    let quickReplies = [];
-    
-    // Extraire les actions
-    if (message.includes('ACTION:QUOTE')) {
-      action = 'send_quote';
-      message = message.replace('ACTION:QUOTE', '').trim();
-      quickReplies = ['Recevoir le devis', 'J\'ai d\'autres questions'];
-    } else if (message.includes('ACTION:MEETING')) {
-      action = 'schedule_meeting';
-      message = message.replace('ACTION:MEETING', '').trim();
-      quickReplies = ['Planifier un rendez-vous', 'Pas maintenant'];
-    } else if (message.includes('ACTION:COLLECT_EMAIL')) {
-      action = 'collect_email';
-      message = message.replace('ACTION:COLLECT_EMAIL', '').trim();
-    }
-    
-    // Générer des quick replies contextuels si aucune action spécifique
-    if (!action && this.conversationState.stage === 'initial') {
-      quickReplies = ['Obtenir un devis', 'En savoir plus', 'Planifier un appel'];
-    }
-    
+
+  prepareLeadData() {
     return {
-      message,
-      action,
-      quickReplies
+      ...this.collectedInfo,
+      timestamp: new Date().toISOString(),
+      source: 'chatbot_lyra'
     };
   }
-  
-  // Mettre à jour le state de la conversation
-  updateConversationState(userMessage) {
-    const intent = this.analyzeIntent(userMessage);
-    this.conversationState.intent = intent;
-    
-    // Incrémenter le score lead selon les signaux
-    if (userMessage.toLowerCase().includes('budget') || userMessage.toLowerCase().includes('€')) {
-      this.conversationState.leadScore += 2;
-    }
-    if (userMessage.toLowerCase().includes('urgent') || userMessage.toLowerCase().includes('rapidement')) {
-      this.conversationState.leadScore += 1;
-    }
-    if (userMessage.length > 100) { // Message détaillé = plus engagé
-      this.conversationState.leadScore += 1;
-    }
-    
-    // Progresser dans les stages
-    if (this.conversationState.stage === 'initial' && intent !== 'general') {
-      this.conversationState.stage = 'qualifying';
-    }
-    if (Object.keys(this.conversationState.collectedInfo).length >= 3) {
-      this.conversationState.stage = 'quoting';
-    }
-  }
-  
-  // Extraire les informations du message
-  extractInformation(message) {
-    const lower = message.toLowerCase();
-    const info = {};
-    
-    // Extraire email
-    const emailRegex = /[\w.-]+@[\w.-]+\.\w+/;
-    const emailMatch = message.match(emailRegex);
-    if (emailMatch) {
-      info.email = emailMatch[0];
-    }
-    
-    // Extraire budget (approximatif)
-    const budgetRegex = /(\d+)\s*(?:€|euros?|k€)/i;
-    const budgetMatch = message.match(budgetRegex);
-    if (budgetMatch) {
-      info.budget = parseInt(budgetMatch[1]);
-      if (lower.includes('k€') || lower.includes('k ')) {
-        info.budget *= 1000;
-      }
-    }
-    
-    // Extraire entreprise
-    if (lower.includes('entreprise') || lower.includes('société') || lower.includes('boîte')) {
-      const words = message.split(' ');
-      const index = words.findIndex(w => 
-        w.toLowerCase().includes('entreprise') || 
-        w.toLowerCase().includes('société')
-      );
-      if (index !== -1 && words[index + 1]) {
-        info.entreprise = words[index + 1];
-      }
-    }
-    
-    return info;
-  }
-  
-  // Générer un devis estimé
-  generateQuote(collectedInfo) {
-    // Analyser quel service est le plus pertinent
-    let selectedService = null;
-    let estimatedPrice = { min: 0, max: 0 };
-    
-    // Logique simple pour l'instant (peut être améliorée avec Claude)
-    if (collectedInfo.mention_bot || collectedInfo.mention_chatbot) {
-      selectedService = this.services.bots;
-    } else if (collectedInfo.mention_automatisation) {
-      selectedService = this.services.automatisation;
-    } else if (collectedInfo.mention_rag || collectedInfo.mention_données) {
-      selectedService = this.services.rag;
-    } else if (collectedInfo.mention_formation) {
-      selectedService = this.services.formation;
-    }
-    
-    if (selectedService) {
-      estimatedPrice = {
-        min: selectedService.prix_min,
-        max: selectedService.prix_max,
-        service: selectedService.name
-      };
-      
-      // Ajuster selon budget si fourni
-      if (collectedInfo.budget) {
-        if (collectedInfo.budget < selectedService.prix_min) {
-          estimatedPrice.note = "Budget inférieur au minimum, nous pouvons discuter d'options";
-        } else if (collectedInfo.budget > selectedService.prix_max) {
-          estimatedPrice.note = "Budget confortable pour un projet avancé";
-        }
-      }
-    }
-    
-    return estimatedPrice;
+
+  reset() {
+    this.collectedInfo = { name: null, email: null, phone: null, company: null, need: null, budget: null, service: null };
+    this.conversationStage = 'initial';
   }
 }
 
-// Intégrer l'intelligence au bot principal
+// Intégrer au bot principal
 if (typeof AIChatBot !== 'undefined') {
-  // Étendre le bot avec l'intelligence
   AIChatBot.prototype.botIntelligence = new AIBotIntelligence();
   
-  // Remplacer la fonction callBotAPI
   AIChatBot.prototype.callBotAPI = async function(message) {
-    // Mettre à jour l'état de la conversation
-    this.botIntelligence.updateConversationState(message);
+    const response = this.botIntelligence.processMessage(message);
     
-    // Extraire les informations
-    const extractedInfo = this.botIntelligence.extractInformation(message);
-    Object.assign(this.botIntelligence.conversationState.collectedInfo, extractedInfo);
-    
-    // Appeler Claude pour obtenir une réponse intelligente
-    const claudeResponse = await this.botIntelligence.getClaudeResponse(
-      message, 
-      this.conversationHistory
-    );
-    
-    // Parser la réponse
-    const parsed = this.botIntelligence.parseResponse(claudeResponse);
-    
-    // Si on a assez d'infos et qu'une action de devis est demandée
-    if (parsed.action === 'send_quote') {
-      const quote = this.botIntelligence.generateQuote(
-        this.botIntelligence.conversationState.collectedInfo
-      );
-      
-      if (quote.service) {
-        parsed.message += `\n\n💼 Estimation pour ${quote.service} : ${quote.min}€ - ${quote.max}€`;
-        if (quote.note) {
-          parsed.message += `\n\n📌 ${quote.note}`;
-        }
-      }
-      
-      // Envoyer les données par webhook
-      this.sendToWebhook('quote', {
-        quote,
-        collectedInfo: this.botIntelligence.conversationState.collectedInfo,
-        leadScore: this.botIntelligence.conversationState.leadScore
-      });
+    if (response.action === 'send_lead') {
+      const leadData = this.botIntelligence.prepareLeadData();
+      this.sendLeadNotification(leadData);
     }
     
-    return parsed;
+    if (response.action === 'show_calendly') {
+      setTimeout(() => window.open('https://calendly.com/ai-and-beyond', '_blank'), 500);
+    }
+    
+    if (response.action === 'show_whatsapp') {
+      setTimeout(() => window.open('https://wa.me/351920833889', '_blank'), 500);
+    }
+    
+    return response;
+  };
+  
+  AIChatBot.prototype.sendLeadNotification = function(leadData) {
+    console.log('📧 Nouveau lead Lyra:', leadData);
+    
+    // Créer un formulaire caché pour Netlify Forms
+    const form = document.createElement('form');
+    form.setAttribute('name', 'lyra-leads');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('data-netlify', 'true');
+    form.setAttribute('hidden', 'true');
+    
+    const fields = ['email', 'phone', 'service', 'need', 'budget', 'timestamp'];
+    fields.forEach(field => {
+      const input = document.createElement('input');
+      input.setAttribute('name', field);
+      input.setAttribute('value', leadData[field] || '');
+      form.appendChild(input);
+    });
+    
+    document.body.appendChild(form);
+    
+    // Envoyer via fetch pour Netlify
+    const formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(() => {
+      console.log('✅ Lead envoyé à Netlify Forms');
+      form.remove();
+    }).catch(err => {
+      console.error('❌ Erreur envoi lead:', err);
+      form.remove();
+    });
   };
 }
 
-// Export pour utilisation
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = AIBotIntelligence;
 }
