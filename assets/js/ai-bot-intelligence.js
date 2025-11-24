@@ -287,63 +287,82 @@ class AIBotIntelligence {
 }
 
 // Intégrer au bot principal
-if (typeof AIChatBot !== 'undefined') {
-  AIChatBot.prototype.botIntelligence = new AIBotIntelligence();
-  
-  AIChatBot.prototype.callBotAPI = async function(message) {
-    const response = this.botIntelligence.processMessage(message);
+function attachIntelligence() {
+  if (typeof AIChatBot !== 'undefined') {
+    // Ajouter au prototype
+    AIChatBot.prototype.botIntelligence = new AIBotIntelligence();
     
-    if (response.action === 'send_lead') {
-      const leadData = this.botIntelligence.prepareLeadData();
-      this.sendLeadNotification(leadData);
+    AIChatBot.prototype.callBotAPI = async function(message) {
+      // Initialiser l'intelligence si pas encore fait
+      if (!this.botIntelligence) {
+        this.botIntelligence = new AIBotIntelligence();
+      }
+      
+      const response = this.botIntelligence.processMessage(message);
+      
+      if (response.action === 'send_lead') {
+        const leadData = this.botIntelligence.prepareLeadData();
+        this.sendLeadNotification(leadData);
+      }
+      
+      if (response.action === 'show_calendly') {
+        setTimeout(() => window.open('https://calendly.com/ai-and-beyond', '_blank'), 500);
+      }
+      
+      if (response.action === 'show_whatsapp') {
+        setTimeout(() => window.open('https://wa.me/351920833889', '_blank'), 500);
+      }
+      
+      return response;
+    };
+    
+    AIChatBot.prototype.sendLeadNotification = function(leadData) {
+      console.log('📧 Nouveau lead Lyra:', leadData);
+      
+      const form = document.createElement('form');
+      form.setAttribute('name', 'lyra-leads');
+      form.setAttribute('method', 'POST');
+      form.setAttribute('data-netlify', 'true');
+      form.setAttribute('hidden', 'true');
+      
+      const fields = ['email', 'phone', 'service', 'need', 'budget', 'timestamp'];
+      fields.forEach(field => {
+        const input = document.createElement('input');
+        input.setAttribute('name', field);
+        input.setAttribute('value', leadData[field] || '');
+        form.appendChild(input);
+      });
+      
+      document.body.appendChild(form);
+      
+      const formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(() => {
+        console.log('✅ Lead envoyé à Netlify Forms');
+        form.remove();
+      }).catch(err => {
+        console.error('❌ Erreur envoi lead:', err);
+        form.remove();
+      });
+    };
+    
+    // IMPORTANT: Mettre à jour l'instance existante si elle existe
+    if (window.aiChatBot) {
+      window.aiChatBot.botIntelligence = new AIBotIntelligence();
+      window.aiChatBot.callBotAPI = AIChatBot.prototype.callBotAPI;
+      window.aiChatBot.sendLeadNotification = AIChatBot.prototype.sendLeadNotification;
+      console.log('✅ Lyra Intelligence activée !');
     }
-    
-    if (response.action === 'show_calendly') {
-      setTimeout(() => window.open('https://calendly.com/ai-and-beyond', '_blank'), 500);
-    }
-    
-    if (response.action === 'show_whatsapp') {
-      setTimeout(() => window.open('https://wa.me/351920833889', '_blank'), 500);
-    }
-    
-    return response;
-  };
-  
-  AIChatBot.prototype.sendLeadNotification = function(leadData) {
-    console.log('📧 Nouveau lead Lyra:', leadData);
-    
-    // Créer un formulaire caché pour Netlify Forms
-    const form = document.createElement('form');
-    form.setAttribute('name', 'lyra-leads');
-    form.setAttribute('method', 'POST');
-    form.setAttribute('data-netlify', 'true');
-    form.setAttribute('hidden', 'true');
-    
-    const fields = ['email', 'phone', 'service', 'need', 'budget', 'timestamp'];
-    fields.forEach(field => {
-      const input = document.createElement('input');
-      input.setAttribute('name', field);
-      input.setAttribute('value', leadData[field] || '');
-      form.appendChild(input);
-    });
-    
-    document.body.appendChild(form);
-    
-    // Envoyer via fetch pour Netlify
-    const formData = new FormData(form);
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    }).then(() => {
-      console.log('✅ Lead envoyé à Netlify Forms');
-      form.remove();
-    }).catch(err => {
-      console.error('❌ Erreur envoi lead:', err);
-      form.remove();
-    });
-  };
+  }
 }
+
+// Exécuter immédiatement et aussi après le chargement complet
+attachIntelligence();
+document.addEventListener('DOMContentLoaded', attachIntelligence);
+window.addEventListener('load', attachIntelligence);
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = AIBotIntelligence;
