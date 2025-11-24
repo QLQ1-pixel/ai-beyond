@@ -29,8 +29,8 @@ window.AI_BOT_CONFIG = {
     
     // WhatsApp Business (à configurer)
     whatsapp: {
-      enabled: false,
-      number: null, // Format : '+33612345678'
+      enabled: true,
+      number: '+351920833889', // Format : '+33612345678'
       apiKey: null, // API Key Twilio/360dialog
       webhook: null // URL webhook WhatsApp API
     },
