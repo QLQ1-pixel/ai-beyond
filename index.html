@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI & Beyond - Transformez votre entreprise avec l'intelligence artificielle. Services d'automatisation, bots IA, consulting et RAG-as-a-Service pour PME et entrepreneurs.">
-    <meta name="keywords" content="IA, Intelligence Artificielle, Automatisation, Bots, RAG, Prompt Engineering, Consulting IA, Formation IA">
+    <meta name="description" content="AI & Beyond - Transformez votre entreprise avec l'intelligence artificielle. Services d'automatisation, bots IA, consulting et RAG-as-a-Service pour entreprises ambitieuses.">
+    <meta name="keywords" content="IA, Intelligence Artificielle, Automatisation, Bots, RAG, Prompt Engineering, Consulting IA, Formation IA, Enterprise">
     <meta name="author" content="AI & Beyond">
     
     <!-- Open Graph -->
     <meta property="og:title" content="AI & Beyond - L'IA au service de votre croissance">
-    <meta property="og:description" content="Services d'automatisation IA, bots intelligents et RAG-as-a-Service pour PME et entrepreneurs">
+    <meta property="og:description" content="Services d'automatisation IA, bots intelligents et RAG-as-a-Service pour entreprises ambitieuses">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aiandbeyond.eu">
     
@@ -35,7 +35,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -45,8 +48,12 @@
             font-family: 'Inter', sans-serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Gradient Text Cyan to Violet */
+        .gradient-text-premium {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .gradient-text {
@@ -56,32 +63,121 @@
             background-clip: text;
         }
         
+        /* Animated Gradient Background */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a5f, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Logo Glow Effect */
+        .logo-glow {
+            transition: all 0.4s ease;
+        }
+        
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+            transform: scale(1.02);
+        }
+        
+        /* Button Glow */
+        .btn-glow {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-glow-accent {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+        
+        .btn-glow-accent:hover {
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Card Premium Hover */
+        .card-premium {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        /* Glass Effect */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Partner Logos */
+        .partner-logo {
+            filter: grayscale(100%) opacity(50%);
+            transition: all 0.3s ease;
         }
         
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .partner-logo:hover {
+            filter: grayscale(0%) opacity(100%);
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
+        .marquee-track {
+            animation: marquee 30s linear infinite;
+        }
+        
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Counter Animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(6, 182, 212, 0.3);
+            animation: float-particle 20s ease-in-out infinite;
+        }
+        
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(20px); opacity: 0.6; }
+            50% { transform: translateY(-10px) translateX(-10px); opacity: 0.4; }
+            75% { transform: translateY(-40px) translateX(30px); opacity: 0.5; }
+        }
+        
+        /* Nav Sticky Effect */
+        .nav-scrolled {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(20px);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-900">
+<body class="bg-slate-950 text-gray-100">
     
     <!-- Formulaire caché pour Netlify Forms - Leads Lyra -->
     <form name="lyra-leads" netlify netlify-honeypot="bot-field" hidden>
@@ -93,573 +189,571 @@
         <input type="text" name="timestamp" />
     </form>
     
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-32">
-                <div class="flex items-center gap-4">
-                    <a href="/" class="flex items-center bg-slate-800 rounded-xl p-2">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto">
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- HEADER PREMIUM - Logo Bar Style -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <header class="fixed w-full z-50 transition-all duration-500" id="main-header">
+        <!-- Logo Section -->
+        <div class="bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="flex flex-col items-center">
+                    <!-- Grand Logo Centré -->
+                    <a href="/" class="logo-glow">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-32 md:h-40 w-auto">
                     </a>
-                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">L'IA au service de votre croissance</span>
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="text-gray-700 hover:text-primary transition">Services</a>
-                    <a href="#rag" class="text-gray-700 hover:text-primary transition">RAG-as-a-Service</a>
-                    <a href="pages/livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
-                    <a href="pages/bots.html" class="text-gray-700 hover:text-primary transition">Bots IA</a>
-                    <a href="#about" class="text-gray-700 hover:text-primary transition">À propos</a>
-                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
+                    <!-- Slogan Premium -->
+                    <p class="mt-4 text-xl md:text-2xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
+                        « L'IA au service de votre croissance »
+                    </p>
                 </div>
             </div>
         </div>
         
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#services" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Services</a>
-                <a href="#rag" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">RAG-as-a-Service</a>
-                <a href="pages/livres.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Livres</a>
-                <a href="pages/bots.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Bots IA</a>
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">À propos</a>
-                <a href="#contact" class="block px-3 py-2 text-white bg-primary rounded-md">Contact</a>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 gradient-bg relative overflow-hidden">
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                        Transformez votre business avec l'<span class="text-cyan-300">Intelligence Artificielle</span>
-                    </h1>
-                    <p class="text-xl mb-8 text-gray-100">
-                        Automatisation, bots intelligents, RAG-as-a-Service et consulting IA pour PME et entrepreneurs. Des solutions concrètes, un ROI mesurable.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                            Démarrer un projet
-                        </a>
-                        <a href="#services" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition">
-                            Découvrir nos services
-                        </a>
+        <!-- Navigation Bar -->
+        <nav class="bg-slate-900/90 backdrop-blur-md border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-center items-center h-14">
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#services" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Services</a>
+                        <a href="#rag" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">RAG-as-a-Service</a>
+                        <a href="pages/livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Livres</a>
+                        <a href="pages/bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Bots IA</a>
+                        <a href="#about" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">À propos</a>
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
                     </div>
                     
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/20">
-                        <div>
-                            <div class="text-4xl font-bold text-cyan-300">60%</div>
-                            <div class="text-sm text-gray-200">Réduction des coûts</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-cyan-300">10-40h</div>
-                            <div class="text-sm text-gray-200">Gagnées/semaine</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-cyan-300">3-12x</div>
-                            <div class="text-sm text-gray-200">ROI</div>
-                        </div>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
+                <div class="px-4 pt-2 pb-4 space-y-2">
+                    <a href="#services" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Services</a>
+                    <a href="#rag" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">RAG-as-a-Service</a>
+                    <a href="pages/livres.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Livres</a>
+                    <a href="pages/bots.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Bots IA</a>
+                    <a href="#about" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">À propos</a>
+                    <a href="#contact" class="block px-4 py-3 text-white bg-gradient-to-r from-primary to-secondary rounded-lg text-center font-semibold">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- HERO SECTION - Animated Gradient + Stats Counter -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-64 pb-20">
+        <!-- Floating Particles -->
+        <div class="particle w-2 h-2" style="top: 20%; left: 10%;"></div>
+        <div class="particle w-3 h-3" style="top: 40%; left: 80%; animation-delay: -5s;"></div>
+        <div class="particle w-2 h-2" style="top: 60%; left: 20%; animation-delay: -10s;"></div>
+        <div class="particle w-4 h-4" style="top: 30%; left: 70%; animation-delay: -15s;"></div>
+        <div class="particle w-2 h-2" style="top: 70%; left: 60%; animation-delay: -7s;"></div>
+        <div class="particle w-3 h-3" style="top: 80%; left: 30%; animation-delay: -12s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                <!-- Badge -->
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8" data-aos="fade-down" data-aos-delay="200">
+                    <span class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-sm text-gray-300">Solutions IA Enterprise</span>
+                </div>
                 
-                <div class="hidden md:block float-animation">
-                    <div class="glass-effect rounded-3xl p-8 shadow-2xl">
-                        <div class="space-y-4">
-                            <div class="h-4 bg-white/30 rounded w-3/4"></div>
-                            <div class="h-4 bg-white/30 rounded w-full"></div>
-                            <div class="h-4 bg-white/30 rounded w-5/6"></div>
-                            <div class="h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg mt-8"></div>
-                            <div class="grid grid-cols-2 gap-4 mt-4">
-                                <div class="h-16 bg-white/20 rounded"></div>
-                                <div class="h-16 bg-white/20 rounded"></div>
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                    Transformez votre business avec l'<span class="gradient-text-premium">Intelligence Artificielle</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+                    Automatisation intelligente, bots conversationnels et RAG-as-a-Service pour entreprises ambitieuses. Des solutions concrètes, un ROI mesurable.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold btn-glow text-lg">
+                        Demander un audit gratuit
+                    </a>
+                    <a href="#services" class="border-2 border-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all duration-300 text-lg">
+                        Découvrir nos services
+                    </a>
+                </div>
+                
+                <!-- Stats Counter -->
+                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-accent stat-number" data-target="60">0</div>
+                        <div class="text-lg text-gray-400 mt-2">% tickets réduits</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-purple-400 stat-number" data-target="40" data-suffix="h">0</div>
+                        <div class="text-lg text-gray-400 mt-2">/semaine gagnées</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-indigo-400 stat-number" data-target="12" data-suffix="x">0</div>
+                        <div class="text-lg text-gray-400 mt-2">ROI moyen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECTION PARTENAIRES / TECHNOLOGIES -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="py-16 bg-slate-900/50 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-8">
+            <p class="text-center text-gray-500 text-sm uppercase tracking-widest" data-aos="fade-up">Technologies & Partenaires</p>
+        </div>
+        
+        <!-- Marquee Container -->
+        <div class="relative">
+            <div class="flex marquee-track">
+                <!-- First Set -->
+                <div class="flex items-center gap-16 px-8">
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold tracking-tight">OpenAI</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold tracking-tight">Anthropic</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">⚡ Zapier</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">Make</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">📝 Notion</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">💬 Slack</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">☁️ AWS</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">▲ Vercel</span>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex items-center gap-16 px-8">
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold tracking-tight">OpenAI</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold tracking-tight">Anthropic</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">⚡ Zapier</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">Make</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">📝 Notion</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">💬 Slack</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">☁️ AWS</span>
+                    </div>
+                    <div class="partner-logo flex items-center justify-center w-40 h-16">
+                        <span class="text-2xl font-bold">▲ Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SERVICES SECTION -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section id="services" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Nos Solutions</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Des services sur mesure pour votre croissance</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Solutions IA adaptées à vos enjeux business. De l'audit à l'implémentation.</p>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bots IA -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bots IA</h3>
+                    <p class="text-gray-400 text-sm mb-4">Assistants intelligents 24/7 pour qualifier vos leads et automatiser le support.</p>
+                    <div class="text-accent font-bold text-lg mb-4">2-10K€</div>
+                    <a href="pages/bots.html" class="text-accent hover:text-cyan-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+                
+                <!-- Automatisation -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Automatisation</h3>
+                    <p class="text-gray-400 text-sm mb-4">Connectez vos outils et récupérez 10 à 40 heures par semaine.</p>
+                    <div class="text-purple-400 font-bold text-lg mb-4">3-10K€</div>
+                    <a href="pages/services.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+                
+                <!-- RAG -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">RAG-as-a-Service</h3>
+                    <p class="text-gray-400 text-sm mb-4">Transformez vos documents en assistant intelligent qui répond instantanément.</p>
+                    <div class="text-indigo-400 font-bold text-lg mb-4">5-30K€</div>
+                    <a href="pages/rag.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+                
+                <!-- Consulting -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Consulting IA</h3>
+                    <p class="text-gray-400 text-sm mb-4">Audit, stratégie et accompagnement pour intégrer l'IA dans votre business.</p>
+                    <div class="text-emerald-400 font-bold text-lg mb-4">500-5K€</div>
+                    <a href="pages/services.html" class="text-emerald-400 hover:text-emerald-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- RAG SECTION -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section id="rag" class="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div data-aos="fade-right">
+                    <span class="text-accent text-sm uppercase tracking-widest font-semibold">Technologie Avancée</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
+                        RAG-as-a-Service
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Donnez une <span class="text-accent font-semibold">mémoire</span> à votre IA. Notre technologie RAG transforme vos documents, emails et bases de données en assistant intelligent.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Réponses contextuelles précises</h4>
+                                <p class="text-gray-400 text-sm">Accès à VOS données en temps réel, sources citées</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">100% sécurisé</h4>
+                                <p class="text-gray-400 text-sm">Déploiement on-premise ou cloud privé disponible</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">ROI immédiat</h4>
+                                <p class="text-gray-400 text-sm">Réduction de 60% du temps de recherche d'information</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Decorative elements -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl opacity-20"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl opacity-20"></div>
-    </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Nos Services IA</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Solutions clés en main pour automatiser, optimiser et transformer votre activité
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 hover-lift">
-                    <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Bots Conversationnels</h3>
-                    <p class="text-gray-600 mb-4">
-                        Vos clients attendent des réponses instantanées, 24h/24. Nos bots IA qualifient vos leads, répondent aux questions fréquentes et libèrent votre équipe pour les tâches à haute valeur. Résultat : satisfaction client en hausse, coûts en baisse.
-                    </p>
-                    <div class="text-primary font-semibold mb-4">À partir de 2 000€</div>
-                    <a href="pages/bots.html" class="text-primary hover:text-secondary font-semibold flex items-center">
-                        En savoir plus
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
+                    
+                    <a href="pages/rag.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold btn-glow">
+                        Découvrir le RAG
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 hover-lift">
-                    <div class="w-16 h-16 bg-secondary rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Automatisation Workflows</h3>
-                    <p class="text-gray-600 mb-4">
-                        Combien d'heures perdez-vous sur des tâches répétitives ? Emails, reporting, data entry... Nos solutions connectent vos outils et travaillent pour vous. Récupérez 10 à 40 heures par semaine pour vous concentrer sur la croissance.
-                    </p>
-                    <div class="text-secondary font-semibold mb-4">À partir de 3 000€</div>
-                    <a href="pages/services.html" class="text-secondary hover:text-purple-700 font-semibold flex items-center">
-                        En savoir plus
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 hover-lift">
-                    <div class="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Consulting & Formation</h3>
-                    <p class="text-gray-600 mb-4">
-                        L'IA vous intéresse mais vous ne savez pas par où commencer ? Nos experts analysent votre activité, identifient les quick wins et vous accompagnent pas à pas. Formation incluse pour rendre votre équipe autonome.
-                    </p>
-                    <div class="text-accent font-semibold mb-4">À partir de 500€</div>
-                    <a href="pages/services.html" class="text-accent hover:text-cyan-700 font-semibold flex items-center">
-                        En savoir plus
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- RAG Section -->
-    <section id="rag" class="py-20 px-4 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <div class="inline-block px-4 py-2 bg-accent/20 rounded-full text-accent font-semibold mb-4">
-                    🧠 Innovation
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">RAG-as-a-Service</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Vos documents contiennent une mine d'or d'informations inexploitées. Notre technologie RAG transforme vos PDF, emails et bases de données en assistant intelligent qui répond instantanément à toutes les questions de votre équipe. Fini les heures perdues à chercher l'information.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <h3 class="text-3xl font-bold mb-6">Qu'est-ce que le RAG ?</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Le RAG combine la puissance des LLMs avec vos données internes. Votre IA peut :
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Interroger vos documents, PDFs, bases de données en langage naturel</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Répondre avec précision grâce à vos données propriétaires</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Éviter les hallucinations grâce aux sources vérifiables</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Garder vos données sécurisées et privées</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                    <h4 class="text-2xl font-bold mb-6">Cas d'usage RAG</h4>
-                    <div class="space-y-4">
-                        <div class="bg-white/5 rounded-lg p-4 border-l-4 border-accent">
-                            <h5 class="font-bold mb-2">📚 Assistant Documentation</h5>
-                            <p class="text-sm text-gray-300">Réponses instantanées sur vos manuels, procédures, guides internes</p>
+                <!-- Visual -->
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <div class="bg-slate-800 rounded-2xl p-6 mb-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">👤</div>
+                                    <div class="bg-slate-700 rounded-2xl rounded-tl-none px-4 py-2 text-sm">
+                                        Quelle est notre politique de remboursement ?
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 justify-end">
+                                    <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl rounded-tr-none px-4 py-2 text-sm max-w-xs">
+                                        D'après votre document "CGV_2024.pdf", les remboursements sont possibles sous 14 jours. <span class="text-cyan-300">[Source: page 3]</span>
+                                    </div>
+                                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-xs">🤖</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-white/5 rounded-lg p-4 border-l-4 border-primary">
-                            <h5 class="font-bold mb-2">💼 Support Client Intelligent</h5>
-                            <p class="text-sm text-gray-300">Base de connaissance accessible 24/7 via chat IA</p>
-                        </div>
-                        <div class="bg-white/5 rounded-lg p-4 border-l-4 border-secondary">
-                            <h5 class="font-bold mb-2">🔍 Analyse Documentaire</h5>
-                            <p class="text-sm text-gray-300">Extraction insights de milliers de documents en secondes</p>
-                        </div>
-                        <div class="bg-white/5 rounded-lg p-4 border-l-4 border-cyan-400">
-                            <h5 class="font-bold mb-2">📊 Reporting Automatisé</h5>
-                            <p class="text-sm text-gray-300">Génération de rapports à partir de vos données métier</p>
-                        </div>
-                    </div>
-                    <a href="pages/rag.html" class="mt-6 inline-block bg-accent hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition">
-                        Découvrir nos solutions RAG →
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Pricing RAG -->
-            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                <div class="text-center mb-8">
-                    <h3 class="text-3xl font-bold mb-2">Tarification RAG sur mesure</h3>
-                    <p class="text-gray-300">Solutions adaptées à votre volume de données et besoins</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-accent mb-2">5-10K€</div>
-                        <div class="text-sm text-gray-300">Setup initial + intégration</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-primary mb-2">500-2K€</div>
-                        <div class="text-sm text-gray-300">Maintenance mensuelle</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-secondary mb-2">Sur devis</div>
-                        <div class="text-sm text-gray-300">Projets complexes</div>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="#contact" class="bg-accent hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-semibold inline-block transition">
-                        Demander un devis RAG
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Livre Section -->
-    <section class="py-20 px-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary font-semibold mb-4">
-                        📖 Bestseller
-                    </div>
-                    <h2 class="text-4xl font-bold mb-6">Bible du Prompt Engineering</h2>
-                    <p class="text-xl text-gray-600 mb-6">
-                        Le guide francophone de référence pour maîtriser l'art du Prompt Engineering. 195 pages de techniques, stratégies et cas pratiques.
-                    </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            50+ techniques de prompting avancées
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            Études de cas ROI documentées
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            Templates prêts à l'emploi
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            Bonus : accès communauté privée
-                        </li>
-                    </ul>
-                    <a href="pages/livres.html" class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-full font-semibold inline-block transition">
-                        Acheter le livre (29€)
-                    </a>
-                </div>
-                
-                <div class="bg-white rounded-2xl shadow-2xl p-8 hover-lift">
-                    <div class="aspect-[3/4] bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white">
-                        <div class="text-center p-8">
-                            <div class="text-6xl font-bold mb-4">📘</div>
-                            <div class="text-2xl font-bold mb-2">Bible du PE</div>
-                            <div class="text-sm opacity-90">195 pages</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">À propos d'AI & Beyond</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Une mission : démocratiser l'IA et transformer les promesses en résultats concrets
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h3 class="text-3xl font-bold mb-6">Notre Vision</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        AI & Beyond est né d'une conviction : l'intelligence artificielle doit être accessible, compréhensible et rentable pour tous les entrepreneurs et PME, pas seulement pour les grandes entreprises.
-                    </p>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Nous transformons le buzzword "IA" en outils concrets qui génèrent un ROI mesurable. Pas de promesses vagues, pas de complexité inutile - juste des solutions qui fonctionnent.
-                    </p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="bg-gradient-to-r from-primary to-secondary text-white rounded-xl p-6">
-                        <h4 class="text-2xl font-bold mb-2">60%+</h4>
-                        <p>Réduction moyenne des coûts opérationnels</p>
-                    </div>
-                    <div class="bg-gradient-to-r from-secondary to-pink-500 text-white rounded-xl p-6">
-                        <h4 class="text-2xl font-bold mb-2">10-40h</h4>
-                        <p>Gagnées par semaine grâce à l'automatisation</p>
-                    </div>
-                    <div class="bg-gradient-to-r from-accent to-blue-500 text-white rounded-xl p-6">
-                        <h4 class="text-2xl font-bold mb-2">3-12 mois</h4>
-                        <p>ROI moyen sur les projets clients</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Values -->
-            <div class="mt-20 grid md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Transparence</h4>
-                    <p class="text-sm text-gray-600">Prix publics, pas de devis mystère</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Résultats</h4>
-                    <p class="text-sm text-gray-600">ROI mesurable, pas de promesses vagues</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Pédagogie</h4>
-                    <p class="text-sm text-gray-600">Nous éduquons, pas juste "faisons pour vous"</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-pink-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <h4 class="font-bold mb-2">Éthique</h4>
-                    <p class="text-sm text-gray-600">IA comme outil d'empowerment</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Démarrons votre projet IA</h2>
-                <p class="text-xl text-gray-300">
-                    Parlons de vos défis et trouvons la solution IA qui génèrera le plus de valeur
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Form -->
-                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                    <form id="contact-form" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Nom *</label>
-                            <input type="text" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-accent transition" placeholder="Votre nom">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Email *</label>
-                            <input type="email" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-accent transition" placeholder="vous@entreprise.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Entreprise</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-accent transition" placeholder="Nom de votre entreprise">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Service souhaité</label>
-                            <select class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-accent transition">
-                                <option value="" class="bg-slate-900">Sélectionnez un service</option>
-                                <option value="bot" class="bg-slate-900">Bot Conversationnel</option>
-                                <option value="automation" class="bg-slate-900">Automatisation</option>
-                                <option value="rag" class="bg-slate-900">RAG-as-a-Service</option>
-                                <option value="consulting" class="bg-slate-900">Consulting/Audit</option>
-                                <option value="training" class="bg-slate-900">Formation</option>
-                                <option value="other" class="bg-slate-900">Autre</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Message *</label>
-                            <textarea required rows="4" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-accent transition" placeholder="Décrivez votre projet ou besoin..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-accent hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition">
-                            Envoyer la demande
-                        </button>
-                    </form>
-                </div>
-                
-                <!-- Info -->
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-4">Autres moyens de contact</h3>
-                        <div class="space-y-4">
-                            <a href="mailto:contact@aiandbeyond.eu" class="flex items-center text-gray-300 hover:text-accent transition">
-                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                                contact@aiandbeyond.eu
-                            </a>
-                            <a href="https://linkedin.com/company/ai-and-beyond" target="_blank" class="flex items-center text-gray-300 hover:text-accent transition">
-                                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                                LinkedIn
-                            </a>
+                        <div class="flex items-center justify-between text-sm text-gray-400">
+                            <span>📁 12 documents indexés</span>
+                            <span class="text-accent">● En ligne</span>
                         </div>
                     </div>
                     
-                    <div class="bg-accent/10 border border-accent/30 rounded-xl p-6">
-                        <h4 class="font-bold text-xl mb-3">⚡ Audit Gratuit</h4>
-                        <p class="text-gray-300 mb-4">
-                            Réservez 30 minutes pour discuter de votre projet. Nous vous offrons un audit préliminaire et des recommandations concrètes.
-                        </p>
-                        <a href="https://calendly.com/ai-and-beyond" target="_blank" class="inline-block bg-accent hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition">
-                            Réserver un créneau
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-2xl blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- ABOUT SECTION -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section id="about" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Visual -->
+                <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="w-full max-w-sm mx-auto logo-glow">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-primary to-secondary rounded-2xl p-6 shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-white">5+</div>
+                        <div class="text-sm text-gray-200">Années d'expertise IA</div>
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <span class="text-accent text-sm uppercase tracking-widest font-semibold">À propos</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
+                        Votre partenaire IA de confiance
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+                        AI & Beyond accompagne les entreprises ambitieuses dans leur transformation digitale grâce à l'intelligence artificielle.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Notre approche : comprendre vos enjeux business, identifier les quick wins, et implémenter des solutions IA concrètes avec un ROI mesurable. Pas de buzzwords, que des résultats.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-slate-900 rounded-xl">
+                            <div class="text-3xl font-bold text-accent">50+</div>
+                            <div class="text-sm text-gray-400">Projets livrés</div>
+                        </div>
+                        <div class="text-center p-4 bg-slate-900 rounded-xl">
+                            <div class="text-3xl font-bold text-purple-400">98%</div>
+                            <div class="text-sm text-gray-400">Clients satisfaits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CONTACT SECTION -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <span class="text-accent text-sm uppercase tracking-widest font-semibold">Contact</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">
+                        Discutons de votre projet
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8">
+                        Audit gratuit de 30 minutes pour évaluer vos besoins et identifier les opportunités IA pour votre entreprise.
+                    </p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <a href="mailto:contact@aiandbeyond.eu" class="flex items-center gap-4 text-gray-300 hover:text-accent transition group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <span>contact@aiandbeyond.eu</span>
+                        </a>
+                        <a href="https://linkedin.com/company/ai-and-beyond" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-accent transition group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-accent/20 transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </div>
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                     
-                    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6">
-                        <h4 class="font-bold text-xl mb-3">💌 Newsletter</h4>
-                        <p class="text-gray-300 mb-4">
-                            Recevez nos insights IA, cas d'usage et tendances directement dans votre inbox.
+                    <div class="glass-effect rounded-2xl p-6">
+                        <h4 class="font-bold text-lg mb-3 flex items-center gap-2">
+                            <span class="text-accent">⚡</span> Audit Gratuit
+                        </h4>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Réservez 30 minutes pour discuter de votre projet. Nous vous offrons un audit préliminaire et des recommandations concrètes.
                         </p>
-                        <form class="flex gap-2">
-                            <input type="email" placeholder="votre@email.com" class="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-primary transition">
-                            <button type="submit" class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition">
-                                OK
-                            </button>
-                        </form>
+                        <a href="https://calendly.com/ai-and-beyond" target="_blank" class="inline-flex items-center gap-2 bg-accent hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold btn-glow-accent transition">
+                            Réserver un créneau
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
                     </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <form id="contact-form" class="glass-effect rounded-2xl p-8" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Nom complet</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Email professionnel</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="john@entreprise.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Entreprise</label>
+                                <input type="text" name="company" class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition" placeholder="Votre entreprise">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Service qui vous intéresse</label>
+                                <select name="service" class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent transition">
+                                    <option value="">Sélectionnez un service</option>
+                                    <option value="bots">Bots IA</option>
+                                    <option value="automatisation">Automatisation</option>
+                                    <option value="rag">RAG-as-a-Service</option>
+                                    <option value="consulting">Consulting IA</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Votre message</label>
+                                <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none" placeholder="Décrivez votre projet ou vos besoins..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl font-semibold btn-glow text-lg">
+                                Envoyer le message
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-gray-400 py-12 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- FOOTER -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <footer class="bg-slate-950 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-1">
                     <a href="/" class="inline-block mb-4">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-32 w-auto">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-24 w-auto logo-glow">
                     </a>
-                    <p class="text-sm">
-                        L'intelligence artificielle au service de votre croissance.
+                    <p class="text-sm text-gray-500 italic" style="font-family: 'Rajdhani', sans-serif;">
+                        « L'IA au service de votre croissance »
                     </p>
                 </div>
                 
+                <!-- Services -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="pages/bots.html" class="hover:text-accent transition">Bots IA</a></li>
-                        <li><a href="pages/services.html" class="hover:text-accent transition">Automatisation</a></li>
-                        <li><a href="pages/rag.html" class="hover:text-accent transition">RAG-as-a-Service</a></li>
-                        <li><a href="pages/services.html" class="hover:text-accent transition">Consulting</a></li>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="pages/bots.html" class="text-gray-400 hover:text-accent transition">Bots IA</a></li>
+                        <li><a href="pages/services.html" class="text-gray-400 hover:text-accent transition">Automatisation</a></li>
+                        <li><a href="pages/rag.html" class="text-gray-400 hover:text-accent transition">RAG-as-a-Service</a></li>
+                        <li><a href="pages/services.html" class="text-gray-400 hover:text-accent transition">Consulting IA</a></li>
                     </ul>
                 </div>
                 
+                <!-- Resources -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Ressources</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="pages/livres.html" class="hover:text-accent transition">Livres</a></li>
-                        <li><a href="#about" class="hover:text-accent transition">À propos</a></li>
-                        <li><a href="#contact" class="hover:text-accent transition">Contact</a></li>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Ressources</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="pages/livres.html" class="text-gray-400 hover:text-accent transition">Livres</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-accent transition">À propos</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-accent transition">Contact</a></li>
                     </ul>
                 </div>
                 
+                <!-- Legal -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Légal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="pages/mentions-legales.html" class="hover:text-accent transition">Mentions légales</a></li>
-                        <li><a href="pages/cgv.html" class="hover:text-accent transition">CGV</a></li>
-                        <li><a href="pages/confidentialite.html" class="hover:text-accent transition">Confidentialité</a></li>
+                    <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Légal</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="mentions-legales.html" class="text-gray-400 hover:text-accent transition">Mentions légales</a></li>
+                        <li><a href="cgv.html" class="text-gray-400 hover:text-accent transition">CGV</a></li>
+                        <li><a href="confidentialite.html" class="text-gray-400 hover:text-accent transition">Confidentialité</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm">© 2025 AI & Beyond. Tous droits réservés.</p>
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-accent transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="#" class="hover:text-accent transition">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    <a href="https://linkedin.com/company/ai-and-beyond" target="_blank" class="text-gray-500 hover:text-accent transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
     
-    <!-- Scripts -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SCRIPTS -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100
+        });
+        
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -678,27 +772,60 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
                     mobileMenu.classList.add('hidden');
                 }
             });
         });
         
-        // Form submission (placeholder - integrate with your backend)
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Nous vous répondrons sous 24h.');
-            this.reset();
+        // Header scroll effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('nav-scrolled');
+            } else {
+                header.classList.remove('nav-scrolled');
+            }
         });
         
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg');
-            } else {
-                nav.classList.remove('shadow-lg');
-            }
+        // Animated Counter
+        const animateCounter = (element, target, suffix = '') => {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        };
+        
+        // Intersection Observer for counters
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    const suffix = entry.target.dataset.suffix || '';
+                    animateCounter(entry.target, target, suffix);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        statNumbers.forEach(stat => counterObserver.observe(stat));
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            const btn = this.querySelector('button[type="submit"]');
+            btn.textContent = 'Envoi en cours...';
+            btn.disabled = true;
         });
     </script>
 
@@ -706,7 +833,6 @@
     <script src="assets/js/bot-config.js"></script>
     <script src="assets/js/ai-chat-bot.js"></script>
     <script>
-        // Initialize Lyra bot on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🤖 Lyra AI Assistant loaded');
         });

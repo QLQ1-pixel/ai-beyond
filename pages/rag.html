@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RAG-as-a-Service - Solutions RAG personnalisées pour votre entreprise. Retrieval-Augmented Generation pour des IA précises et contextuelles.">
+    <meta name="description" content="RAG-as-a-Service - Transformez vos documents en assistant IA intelligent. Solutions on-premise et cloud sécurisées.">
     <title>RAG-as-a-Service | AI & Beyond</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,706 +24,407 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/main.css">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .gradient-text-premium {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .logo-glow {
+            transition: all 0.4s ease;
         }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .logo-glow:hover {
+            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+            transform: scale(1.02);
+        }
+        .btn-glow {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+        }
+        .card-premium {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-900">
+<body class="bg-slate-950 text-gray-100">
     
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-32">
-                <div class="flex items-center gap-4">
-                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto"></a>
-                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">L'IA au service de votre croissance</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="../index.html#services" class="text-gray-700 hover:text-primary transition">Services</a>
-                    <a href="../index.html#rag" class="text-gray-700 hover:text-primary transition">RAG</a>
-                    <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
-                    <a href="bots.html" class="text-gray-700 hover:text-primary transition">Bots IA</a>
-                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
+    <!-- HEADER PREMIUM -->
+    <header class="fixed w-full z-50 transition-all duration-500" id="main-header">
+        <div class="bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="flex flex-col items-center">
+                    <a href="../index.html" class="logo-glow">
+                        <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-24 md:h-32 w-auto">
+                    </a>
+                    <p class="mt-3 text-lg md:text-xl font-medium italic gradient-text-premium" style="font-family: 'Rajdhani', sans-serif;">
+                        « L'IA au service de votre croissance »
+                    </p>
                 </div>
             </div>
         </div>
-    </nav>
-    
-    <!-- Hero -->
-    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="inline-block px-4 py-2 bg-accent/20 rounded-full text-accent font-semibold mb-6">
-                🧠 RAG-as-a-Service
+        
+        <nav class="bg-slate-900/90 backdrop-blur-md border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-center items-center h-14">
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="services.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Services</a>
+                        <a href="bots.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Bots</a>
+                        <a href="livres.html" class="text-gray-300 hover:text-accent font-medium transition-colors duration-300 text-sm uppercase tracking-wider">Livres</a>
+                        <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full font-semibold btn-glow text-sm uppercase tracking-wider">Contact</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-white">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Donnez une <span class="text-cyan-300">mémoire</span> à votre IA
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
+                <div class="px-4 pt-2 pb-4 space-y-2">
+                    <a href="services.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Services</a>
+                    <a href="bots.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Bots</a>
+                    <a href="livres.html" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition">Livres</a>
+                    <a href="../index.html#contact" class="block px-4 py-3 text-white bg-gradient-to-r from-primary to-secondary rounded-lg text-center font-semibold">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="pt-56 pb-20 px-4 bg-gradient-to-br from-slate-900 via-cyan-950 to-slate-900">
+        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <span class="text-2xl mr-2">🧠</span>
+                <span class="text-sm text-gray-300">Technologie Avancée</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                <span class="gradient-text-premium">RAG</span>-as-a-Service
             </h1>
             <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                Retrieval-Augmented Generation : La technologie qui permet à votre IA d'accéder à vos données propriétaires pour des réponses ultra-précises, contextuelles et vérifiables.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="../index.html#contact" class="bg-accent hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-semibold transition">
-                    Demander un devis
-                </a>
-                <a href="#use-cases" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-slate-900 transition">
-                    Cas d'usage
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Texte vendeur intro RAG -->
-    <section class="py-12 px-4 bg-gradient-to-r from-cyan-50 to-slate-50 border-b border-cyan-100">
-        <div class="max-w-4xl mx-auto text-center">
-            <p class="text-xl text-gray-700 leading-relaxed">
-                <span class="font-semibold text-slate-800">Vos documents contiennent une mine d'or d'informations inexploitées.</span> Notre technologie RAG transforme vos PDF, emails et bases de données en assistant intelligent qui répond instantanément à toutes les questions de votre équipe. <span class="font-semibold text-cyan-700">Fini les heures perdues à chercher l'information.</span>
+                Donnez une mémoire à votre IA. Transformez vos documents en assistant intelligent.
             </p>
         </div>
     </section>
-    
-    <!-- What is RAG -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6">Qu'est-ce que le RAG ?</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Le <strong>Retrieval-Augmented Generation</strong> est une technique qui combine la puissance des grands modèles de langage (LLMs) avec la capacité de récupérer des informations spécifiques depuis vos bases de données, documents et systèmes internes.
+
+    <!-- TEXTE VENDEUR -->
+    <section class="py-12 bg-gradient-to-r from-cyan-950/50 to-slate-950/50 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
+            <p class="text-xl text-gray-300 leading-relaxed">
+                <span class="font-semibold text-slate-200">Vos documents contiennent une mine d'or d'informations inexploitées.</span> Notre technologie RAG transforme vos PDF, emails et bases de données en assistant intelligent qui répond instantanément à toutes les questions de votre équipe. <span class="font-semibold text-accent">Fini les heures perdues à chercher l'information.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- QU'EST-CE QUE LE RAG -->
+    <section class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div data-aos="fade-right">
+                    <span class="text-accent text-sm uppercase tracking-widest font-semibold">Comment ça marche</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-6">
+                        Qu'est-ce que le RAG ?
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+                        <strong>RAG</strong> (Retrieval-Augmented Generation) permet à une IA de chercher dans VOS documents avant de répondre.
                     </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Au lieu d'avoir une IA généraliste qui "hallucine" parfois, vous obtenez un assistant qui :
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Contrairement à ChatGPT qui répond uniquement avec ses connaissances générales, un système RAG accède à vos données internes (contrats, procédures, emails, documentation) et fournit des réponses précises et contextualisées, avec les sources citées.
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Accède à VOS données en temps réel</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Cite ses sources de manière vérifiable</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Reste à jour avec vos dernières informations</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Minimise les erreurs et hallucinations</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
-                    <h3 class="text-2xl font-bold mb-6">Comment ça fonctionne ?</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                                <span class="text-xl font-bold">1</span>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-accent text-lg">1</span>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2">Indexation</h4>
-                                <p class="text-sm text-gray-300">Vos documents sont transformés en embeddings vectoriels searchable</p>
+                                <h4 class="font-semibold text-white">Indexation</h4>
+                                <p class="text-gray-400 text-sm">Vos documents sont analysés et indexés</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                                <span class="text-xl font-bold">2</span>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-purple-400 text-lg">2</span>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2">Recherche</h4>
-                                <p class="text-sm text-gray-300">À chaque question, le système trouve les passages les plus pertinents</p>
+                                <h4 class="font-semibold text-white">Recherche</h4>
+                                <p class="text-gray-400 text-sm">L'IA trouve les passages pertinents</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                                <span class="text-xl font-bold">3</span>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-indigo-400 text-lg">3</span>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2">Génération</h4>
-                                <p class="text-sm text-gray-300">L'IA génère une réponse basée sur ces passages, avec citations</p>
+                                <h4 class="font-semibold text-white">Génération</h4>
+                                <p class="text-gray-400 text-sm">Réponse précise avec sources citées</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Visual Demo -->
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <div class="bg-slate-800 rounded-2xl p-6 mb-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <span class="text-xs text-gray-500 ml-2">RAG Assistant</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">👤</div>
+                                    <div class="bg-slate-700 rounded-2xl rounded-tl-none px-4 py-3 text-sm max-w-xs">
+                                        Quel est le délai de préavis pour un CDI selon notre convention ?
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 justify-end">
+                                    <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl rounded-tr-none px-4 py-3 text-sm max-w-sm">
+                                        <p class="mb-2">Selon votre convention collective Syntec (Article 15.2), le délai de préavis est de :</p>
+                                        <ul class="text-xs space-y-1 mb-2">
+                                            <li>• <strong>1 mois</strong> pour les ETAM</li>
+                                            <li>• <strong>3 mois</strong> pour les cadres</li>
+                                        </ul>
+                                        <p class="text-cyan-300 text-xs">[Source: Convention_Syntec.pdf, p.42]</p>
+                                    </div>
+                                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-xs">🤖</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm text-gray-400">
+                            <span>📁 247 documents indexés</span>
+                            <span class="text-accent">● En ligne</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Glow Effects -->
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-2xl blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-purple-500/20 rounded-2xl blur-2xl"></div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Use Cases -->
-    <section id="use-cases" class="py-20 px-4 bg-slate-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Cas d'usage RAG</h2>
-                <p class="text-xl text-gray-600">
-                    Applications concrètes dans votre entreprise
-                </p>
+
+    <!-- OFFRES RAG -->
+    <section class="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Nos Offres</span>
+                <h2 class="text-4xl font-bold mt-4 mb-6">Solutions RAG adaptées à vos besoins</h2>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Use Case 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-3xl">📚</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Assistant Documentation</h3>
-                            <div class="text-accent font-semibold">ROI : 70% temps gagné</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Transformez vos manuels, procédures internes, et guides en une IA conversationnelle accessible 24/7.
-                    </p>
-                    <div class="bg-slate-50 rounded-lg p-4 mb-4">
-                        <h4 class="font-bold mb-2">Exemple concret :</h4>
-                        <p class="text-sm text-gray-600">
-                            "Comment installer le module X sur le serveur Y ?"<br>
-                            → L'IA trouve la section exacte dans votre doc technique et fournit les étapes avec le contexte.
-                        </p>
-                    </div>
-                    <div class="border-t pt-4">
-                        <div class="font-semibold mb-2">Idéal pour :</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Support interne</span>
-                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Onboarding</span>
-                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Formation</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Use Case 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-3xl">💼</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Support Client Intelligent</h3>
-                            <div class="text-primary font-semibold">ROI : 60% tickets réduits</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Chatbot qui connaît TOUS vos produits, politiques, et FAQ sur le bout des doigts.
-                    </p>
-                    <div class="bg-slate-50 rounded-lg p-4 mb-4">
-                        <h4 class="font-bold mb-2">Exemple concret :</h4>
-                        <p class="text-sm text-gray-600">
-                            "Quelle est votre politique de retour pour les produits défectueux ?"<br>
-                            → Répond avec la politique exacte + conditions + procédure à suivre.
-                        </p>
-                    </div>
-                    <div class="border-t pt-4">
-                        <div class="font-semibold mb-2">Idéal pour :</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">E-commerce</span>
-                            <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">SaaS</span>
-                            <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">Services B2B</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Use Case 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-3xl">🔍</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Analyse Documentaire</h3>
-                            <div class="text-secondary font-semibold">ROI : 80% temps analyse</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Extrayez des insights de milliers de documents, contrats, rapports en quelques secondes.
-                    </p>
-                    <div class="bg-slate-50 rounded-lg p-4 mb-4">
-                        <h4 class="font-bold mb-2">Exemple concret :</h4>
-                        <p class="text-sm text-gray-600">
-                            "Quels contrats incluent une clause de non-concurrence de plus de 2 ans ?"<br>
-                            → Scanne 500 contrats et retourne la liste avec extraits pertinents.
-                        </p>
-                    </div>
-                    <div class="border-t pt-4">
-                        <div class="font-semibold mb-2">Idéal pour :</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">Juridique</span>
-                            <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">Finance</span>
-                            <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">Recherche</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Use Case 4 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
-                    <div class="flex items-start mb-6">
-                        <div class="w-16 h-16 bg-pink-500/10 rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-3xl">📊</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-2">Reporting Automatisé</h3>
-                            <div class="text-pink-600 font-semibold">ROI : 50% temps reporting</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        Générez des rapports personnalisés à partir de vos données métier en langage naturel.
-                    </p>
-                    <div class="bg-slate-50 rounded-lg p-4 mb-4">
-                        <h4 class="font-bold mb-2">Exemple concret :</h4>
-                        <p class="text-sm text-gray-600">
-                            "Rapport mensuel des ventes par région avec comparaison YoY"<br>
-                            → Génère le rapport complet avec graphiques et analyse automatiquement.
-                        </p>
-                    </div>
-                    <div class="border-t pt-4">
-                        <div class="font-semibold mb-2">Idéal pour :</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-pink-500/10 text-pink-600 rounded-full text-sm">Sales</span>
-                            <span class="px-3 py-1 bg-pink-500/10 text-pink-600 rounded-full text-sm">Analytics</span>
-                            <span class="px-3 py-1 bg-pink-500/10 text-pink-600 rounded-full text-sm">Executive</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Technical Specs -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Notre Stack RAG</h2>
-                <p class="text-xl text-gray-600">Technologies de pointe pour des performances optimales</p>
-            </div>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
-                    <h3 class="text-xl font-bold mb-4">🤖 LLMs</h3>
-                    <ul class="space-y-2 text-gray-700">
-                        <li>• GPT-4 / GPT-4 Turbo</li>
-                        <li>• Claude 3 Opus / Sonnet</li>
-                        <li>• Modèles open-source (Mistral, Llama)</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6">
-                    <h3 class="text-xl font-bold mb-4">📊 Vector DBs</h3>
-                    <ul class="space-y-2 text-gray-700">
-                        <li>• Pinecone</li>
-                        <li>• Weaviate</li>
-                        <li>• Chroma</li>
-                        <li>• FAISS</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6">
-                    <h3 class="text-xl font-bold mb-4">🔧 Frameworks</h3>
-                    <ul class="space-y-2 text-gray-700">
-                        <li>• LangChain</li>
-                        <li>• LlamaIndex</li>
-                        <li>• Custom pipelines</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- RAG Physique / On-Premise -->
-    <section class="py-20 px-4 bg-gradient-to-br from-slate-50 to-gray-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <div class="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full font-semibold mb-6">
-                    🖥️ Solutions On-Premise
-                </div>
-                <h2 class="text-4xl font-bold mb-4">RAG Physique : Vos Données Restent Chez Vous</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Pour les entreprises et artisans qui souhaitent une solution RAG 100% locale, sécurisée et sans abonnement cloud
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <!-- Mac Studio Solution -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift border-2 border-gray-200">
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-8">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold">Mac Studio RAG Pro</h3>
-                            <div class="text-5xl">💻</div>
+                <!-- RAG Cloud -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">☁️</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2">15-20K€</div>
-                        <div class="text-gray-300">Solution complète clé en main</div>
+                        <h3 class="text-2xl font-bold">RAG Cloud</h3>
+                        <div class="text-accent font-bold text-3xl mt-2">5-15K€</div>
+                        <p class="text-gray-500 text-sm">+ abonnement mensuel</p>
                     </div>
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <h4 class="font-bold text-lg mb-3">Configuration matérielle :</h4>
-                            <ul class="space-y-2 text-gray-700">
-                                <li>• Mac Studio M2 Ultra (24 cœurs CPU, 76 cœurs GPU)</li>
-                                <li>• 192 Go RAM unifiée</li>
-                                <li>• 2-8 To SSD</li>
-                                <li>• Parfait pour modèles LLM jusqu'à 70B paramètres</li>
-                            </ul>
+                    
+                    <p class="text-gray-400 text-center mb-6">Solution hébergée, déploiement rapide</p>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-accent">✓</span> Déploiement en 2-4 semaines
                         </div>
-                        <div class="mb-6">
-                            <h4 class="font-bold text-lg mb-3">Ce qui est inclus :</h4>
-                            <ul class="space-y-2 text-gray-700">
-                                <li>✅ Matériel Apple (Mac Studio)</li>
-                                <li>✅ Installation système RAG complète</li>
-                                <li>✅ Modèles LLM locaux (Llama, Mistral...)</li>
-                                <li>✅ Base vectorielle locale (Chroma/FAISS)</li>
-                                <li>✅ Interface web personnalisée</li>
-                                <li>✅ Formation équipe (2 jours)</li>
-                                <li>✅ Support 6 mois</li>
-                                <li>✅ Mises à jour incluses</li>
-                            </ul>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-accent">✓</span> Jusqu'à 10 000 documents
                         </div>
-                        <div class="bg-green-50 rounded-lg p-4 mb-6">
-                            <p class="text-sm text-green-800 font-semibold">
-                                💰 Pas d'abonnement cloud • 🔒 100% local et sécurisé • ⚡ Performances exceptionnelles
-                            </p>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-accent">✓</span> Chiffrement bout-en-bout
                         </div>
-                        <a href="../index.html#contact" class="block w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
-                            Demander un devis Mac Studio
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Mac Mini Solution -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-lift border-2 border-gray-200">
-                    <div class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold">Mac Mini RAG Essential</h3>
-                            <div class="text-5xl">🖥️</div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-accent">✓</span> Support standard inclus
                         </div>
-                        <div class="text-3xl font-bold mb-2">8-12K€</div>
-                        <div class="text-blue-100">Solution compacte et économique</div>
-                    </div>
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <h4 class="font-bold text-lg mb-3">Configuration matérielle :</h4>
-                            <ul class="space-y-2 text-gray-700">
-                                <li>• Mac Mini M2 Pro (12 cœurs CPU, 19 cœurs GPU)</li>
-                                <li>• 32-64 Go RAM</li>
-                                <li>• 1-2 To SSD</li>
-                                <li>• Idéal pour PME et artisans</li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-bold text-lg mb-3">Ce qui est inclus :</h4>
-                            <ul class="space-y-2 text-gray-700">
-                                <li>✅ Matériel Apple (Mac Mini)</li>
-                                <li>✅ Installation système RAG</li>
-                                <li>✅ Modèles LLM locaux optimisés</li>
-                                <li>✅ Base vectorielle locale</li>
-                                <li>✅ Interface web simplifiée</li>
-                                <li>✅ Formation (1 jour)</li>
-                                <li>✅ Support 3 mois</li>
-                            </ul>
-                        </div>
-                        <div class="bg-blue-50 rounded-lg p-4 mb-6">
-                            <p class="text-sm text-blue-800 font-semibold">
-                                📦 Solution compacte • 💡 Facile à utiliser • 🚀 Déploiement rapide
-                            </p>
-                        </div>
-                        <a href="../index.html#contact" class="block w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
-                            Demander un devis Mac Mini
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Autres options matérielles -->
-            <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-gray-300">
-                <div class="text-center mb-6">
-                    <h3 class="text-2xl font-bold mb-3">Solutions personnalisées sur mesure</h3>
-                    <p class="text-gray-600">Vous avez des besoins spécifiques ? Nous pouvons aussi installer votre système RAG sur :</p>
-                </div>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="text-4xl mb-2">🖥️</div>
-                        <div class="font-semibold">Serveur Linux</div>
-                        <div class="text-sm text-gray-600">Ubuntu, Debian, RHEL</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl mb-2">☁️</div>
-                        <div class="font-semibold">Cloud Privé</div>
-                        <div class="text-sm text-gray-600">AWS, Azure, GCP</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl mb-2">🏢</div>
-                        <div class="font-semibold">NAS Enterprise</div>
-                        <div class="text-sm text-gray-600">Synology, QNAP</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl mb-2">🔧</div>
-                        <div class="font-semibold">Votre matériel</div>
-                        <div class="text-sm text-gray-600">Installation sur existant</div>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="../index.html#contact" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-3 rounded-full font-semibold transition">
-                        Discuter de mon projet
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Cas d'usage artisans/PME -->
-            <div class="mt-12 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8 border-2 border-amber-200">
-                <div class="flex items-start">
-                    <div class="text-5xl mr-6">🔨</div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-3">Parfait pour les artisans et PME</h3>
-                        <p class="text-gray-700 mb-4">
-                            Un plombier, électricien ou menuisier peut avoir son propre assistant IA qui connaît TOUS ses devis passés, 
-                            ses catalogues fournisseurs, ses procédures, ses clients... Le tout sans jamais envoyer de données sensibles 
-                            dans le cloud.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-4">
-                            <div class="bg-white rounded-lg p-4">
-                                <div class="font-bold mb-2">📋 Exemple 1 : Plombier</div>
-                                <p class="text-sm text-gray-600">
-                                    "Crée-moi un devis pour une rénovation salle de bain comme celle de M. Dupont en 2023"
-                                </p>
-                            </div>
-                            <div class="bg-white rounded-lg p-4">
-                                <div class="font-bold mb-2">⚡ Exemple 2 : Électricien</div>
-                                <p class="text-sm text-gray-600">
-                                    "Quels matériaux j'ai utilisés pour le chantier du 15 rue Victor Hugo ?"
-                                </p>
-                            </div>
-                            <div class="bg-white rounded-lg p-4">
-                                <div class="font-bold mb-2">🪚 Exemple 3 : Menuisier</div>
-                                <p class="text-sm text-gray-600">
-                                    "Rappelle-moi la procédure de montage pour les portes coulissantes modèle X"
-                                </p>
-                            </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-accent">✓</span> Mises à jour automatiques
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Pricing -->
-    <section class="py-20 px-4 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Tarification RAG</h2>
-                <p class="text-xl text-gray-300">Solutions adaptées à votre volume et complexité</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Starter -->
-                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                    <h3 class="text-2xl font-bold mb-4">Starter</h3>
-                    <div class="text-4xl font-bold mb-2">5-7K€</div>
-                    <div class="text-gray-300 mb-6">Setup + intégration basique</div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Jusqu'à 1000 documents</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>1 cas d'usage</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Support 30 jours</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Formation incluse</span>
-                        </li>
-                    </ul>
-                    <a href="../index.html#contact" class="block w-full bg-accent hover:bg-cyan-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
+                    
+                    <a href="../index.html#contact" class="block w-full bg-slate-800 hover:bg-slate-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
                         Demander un devis
                     </a>
                 </div>
-                
-                <!-- Business -->
-                <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 border-4 border-accent transform scale-105">
-                    <div class="text-accent font-bold mb-2">⭐ RECOMMANDÉ</div>
-                    <h3 class="text-2xl font-bold mb-4">Business</h3>
-                    <div class="text-4xl font-bold mb-2">10-15K€</div>
-                    <div class="text-gray-200 mb-6">Solution complète personnalisée</div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Jusqu'à 10000 documents</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Multi cas d'usage</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Support 90 jours</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Maintenance mensuelle incluse</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Analytics & reporting</span>
-                        </li>
-                    </ul>
-                    <a href="../index.html#contact" class="block w-full bg-white hover:bg-gray-100 text-center text-primary px-6 py-3 rounded-lg font-semibold transition">
+
+                <!-- RAG On-Premise - POPULAIRE -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8 relative ring-2 ring-accent" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-accent text-slate-900 px-4 py-1 rounded-full text-sm font-bold">POPULAIRE</span>
+                    </div>
+                    
+                    <div class="text-center mb-6 mt-2">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">🏢</span>
+                        </div>
+                        <h3 class="text-2xl font-bold">RAG On-Premise</h3>
+                        <div class="text-purple-400 font-bold text-3xl mt-2">15-30K€</div>
+                        <p class="text-gray-500 text-sm">Installation unique</p>
+                    </div>
+                    
+                    <p class="text-gray-400 text-center mb-6">100% chez vous, 0 données externalisées</p>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-purple-400">✓</span> Matériel fourni (Mac Studio)
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-purple-400">✓</span> Documents illimités
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-purple-400">✓</span> 100% air-gapped possible
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-purple-400">✓</span> Formation 2 jours incluse
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-purple-400">✓</span> Support 6 mois + mises à jour
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="block w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
                         Demander un devis
                     </a>
                 </div>
-                
-                <!-- Enterprise -->
-                <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                    <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
-                    <div class="text-4xl font-bold mb-2">Sur devis</div>
-                    <div class="text-gray-300 mb-6">Solutions complexes & scale</div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Volumes illimités</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Architecture custom</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Support prioritaire 24/7</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>SLA garanti</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Déploiement on-premise option</span>
-                        </li>
-                    </ul>
-                    <a href="../index.html#contact" class="block w-full bg-accent hover:bg-cyan-600 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
+
+                <!-- RAG Enterprise -->
+                <div class="card-premium bg-slate-900 rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">🏛️</span>
+                        </div>
+                        <h3 class="text-2xl font-bold">RAG Enterprise</h3>
+                        <div class="text-emerald-400 font-bold text-3xl mt-2">Sur devis</div>
+                        <p class="text-gray-500 text-sm">Solution personnalisée</p>
+                    </div>
+                    
+                    <p class="text-gray-400 text-center mb-6">Pour les grands groupes et cas complexes</p>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-emerald-400">✓</span> Architecture sur mesure
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-emerald-400">✓</span> Multi-sites / Multi-langues
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-emerald-400">✓</span> Intégrations ERP/CRM
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-emerald-400">✓</span> SLA personnalisé
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-emerald-400">✓</span> Accompagnement dédié
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
                         Nous contacter
                     </a>
                 </div>
             </div>
-            
-            <div class="mt-12 text-center">
-                <p class="text-gray-300 mb-4">+ Maintenance mensuelle : 500-2000€/mois selon volume</p>
-                <p class="text-sm text-gray-400">Tous nos projets incluent une garantie satisfaction et un accompagnement personnalisé</p>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent text-sm uppercase tracking-widest font-semibold">Cas d'Usage</span>
+                <h2 class="text-4xl font-bold mt-4">Le RAG pour tous les métiers</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-3xl mb-4 block">⚖️</span>
+                    <h3 class="font-bold mb-2">Juridique</h3>
+                    <p class="text-gray-400 text-sm">Recherche dans contrats, jurisprudence, conformité</p>
+                </div>
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-3xl mb-4 block">👥</span>
+                    <h3 class="font-bold mb-2">RH</h3>
+                    <p class="text-gray-400 text-sm">Conventions, procédures, onboarding automatisé</p>
+                </div>
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+                    <span class="text-3xl mb-4 block">🔧</span>
+                    <h3 class="font-bold mb-2">Support Technique</h3>
+                    <p class="text-gray-400 text-sm">Documentation produit, FAQ, troubleshooting</p>
+                </div>
+                <div class="glass-effect rounded-xl p-6" data-aos="fade-up" data-aos-delay="400">
+                    <span class="text-3xl mb-4 block">📊</span>
+                    <h3 class="font-bold mb-2">Finance</h3>
+                    <p class="text-gray-400 text-sm">Rapports, analyses, procédures comptables</p>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <!-- CTA -->
-    <section class="py-20 px-4 bg-gradient-to-br from-primary to-secondary text-white">
-        <div class="max-w-4xl mx-auto text-center">
+    <section class="py-24 bg-gradient-to-br from-accent to-primary">
+        <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-6">Prêt à donner une mémoire à votre IA ?</h2>
             <p class="text-xl mb-8 text-gray-100">
-                Discutons de votre projet RAG. Audit gratuit de 30 minutes pour évaluer vos besoins.
+                Démonstration gratuite avec vos propres documents
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="../index.html#contact" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                    Demander un devis
+                <a href="../index.html#contact" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg">
+                    Demander une démo
                 </a>
-                <a href="https://calendly.com/ai-and-beyond" target="_blank" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition">
+                <a href="https://calendly.com/ai-and-beyond" target="_blank" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition text-lg">
                     Réserver un appel
                 </a>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-gray-400 py-12 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <a href="/" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto"></a>
-                    <p class="text-sm">L'intelligence artificielle au service de votre croissance.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="bots.html" class="hover:text-accent transition">Bots IA</a></li>
-                        <li><a href="services.html" class="hover:text-accent transition">Automatisation</a></li>
-                        <li><a href="rag.html" class="hover:text-accent transition">RAG-as-a-Service</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Ressources</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="livres.html" class="hover:text-accent transition">Livres</a></li>
-                        <li><a href="../index.html#about" class="hover:text-accent transition">À propos</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Légal</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="mentions-legales.html" class="hover:text-accent transition">Mentions légales</a></li>
-                        <li><a href="cgv.html" class="hover:text-accent transition">CGV</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-sm">© 2025 AI & Beyond. Tous droits réservés.</p>
-            </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <a href="../index.html" class="inline-block mb-4">
+                <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto logo-glow">
+            </a>
+            <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
-    
-    <!-- 🤖 BOT LYRA - AI Assistant -->
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    </script>
     <script src="../assets/js/bot-config.js"></script>
-    
     <script src="../assets/js/ai-chat-bot.js"></script>
 </body>
 </html>
