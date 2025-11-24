@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://aiandbeyond.eu/</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <!-- Services principaux -->
+  <url>
+    <loc>https://aiandbeyond.eu/pages/services.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  
+  <url>
+    <loc>https://aiandbeyond.eu/pages/rag.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  
+  <url>
+    <loc>https://aiandbeyond.eu/pages/bots.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  
+  <!-- Produits -->
+  <url>
+    <loc>https://aiandbeyond.eu/pages/livres.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Pages légales -->
+  <url>
+    <loc>https://aiandbeyond.eu/pages/mentions-legales.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  
+  <url>
+    <loc>https://aiandbeyond.eu/pages/cgv.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  
+  <url>
+    <loc>https://aiandbeyond.eu/pages/confidentialite.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  
+  <!-- Page de succès formulaire -->
+  <url>
+    <loc>https://aiandbeyond.eu/success.html</loc>
+    <lastmod>2025-11-09T15:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
+  </url>
+  
+</urlset>

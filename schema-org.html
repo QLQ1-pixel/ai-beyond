@@ -1,0 +1,144 @@
+<!-- Schema.org JSON-LD pour AI & Beyond -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aiandbeyond.eu/#organization",
+      "name": "AI & Beyond",
+      "url": "https://aiandbeyond.eu",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aiandbeyond.eu/assets/images/logo.svg",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Services d'automatisation IA, bots intelligents, RAG-as-a-Service et consulting pour PME et entrepreneurs",
+      "foundingDate": "2024",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "contact@aiandbeyond.eu",
+        "availableLanguage": ["fr", "en", "pt"]
+      },
+      "sameAs": [
+        "https://linkedin.com/company/aiandbeyond",
+        "https://twitter.com/aiandbeyond"
+      ],
+      "areaServed": {
+        "@type": "Place",
+        "name": "Europe"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aiandbeyond.eu/#website",
+      "url": "https://aiandbeyond.eu",
+      "name": "AI & Beyond",
+      "description": "Transformez votre entreprise avec l'intelligence artificielle",
+      "publisher": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      },
+      "inLanguage": "fr",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://aiandbeyond.eu/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aiandbeyond.eu/#rag-service",
+      "name": "RAG-as-a-Service",
+      "description": "Solution complète de Retrieval-Augmented Generation pour vos données d'entreprise",
+      "provider": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      },
+      "serviceType": "Intelligence Artificielle",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Europe"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "PME, Startups, Entrepreneurs"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aiandbeyond.eu/#consulting",
+      "name": "Consulting IA",
+      "description": "Audit, stratégie et implémentation de solutions d'intelligence artificielle sur mesure",
+      "provider": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      },
+      "serviceType": "Consulting & Formation",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "Sur devis",
+          "priceCurrency": "EUR"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://aiandbeyond.eu/#bible-pe",
+      "name": "La Bible du Prompt Engineering",
+      "description": "Guide complet pour maîtriser l'art du prompt engineering avec Claude et ChatGPT",
+      "brand": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      },
+      "category": "Livre numérique",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "price": "29.99",
+        "priceCurrency": "EUR",
+        "url": "https://aiandbeyond.eu/pages/livres.html"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "45"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://aiandbeyond.eu/#guide-dz",
+      "name": "Le Petit Guide de Survie pour Débutant en IA",
+      "description": "Guide pratique pour débuter avec l'intelligence artificielle sans formation technique",
+      "brand": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      },
+      "category": "Livre numérique",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "price": "19.99",
+        "priceCurrency": "EUR",
+        "url": "https://aiandbeyond.eu/pages/livres.html"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://aiandbeyond.eu/#bots-ia",
+      "name": "Bots IA DR12",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "description": "Collection de bots IA spécialisés pour automatiser vos tâches professionnelles",
+      "provider": {
+        "@id": "https://aiandbeyond.eu/#organization"
+      }
+    }
+  ]
+}
+</script>

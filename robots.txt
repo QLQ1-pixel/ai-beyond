@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Bloquer les dossiers techniques et build
+Disallow: /netlify/
+Disallow: /.netlify/
+Disallow: /node_modules/
+Disallow: /config/
+
+# Autoriser les assets importants pour SEO
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /manifest.json
+Allow: /sitemap.xml
+
+# Bloquer les fichiers de développement
+Disallow: /*.md$
+
+# Sitemap principal
+Sitemap: https://aiandbeyond.eu/sitemap.xml
+
+# Politesse avec les bots
+Crawl-delay: 1
+
+# Agents spécifiques (optionnel)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
