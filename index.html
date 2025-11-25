@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI & Beyond - Transformez votre entreprise avec l'intelligence artificielle. Services d'automatisation, bots IA, consulting et RAG-as-a-Service.">
-    <meta name="keywords" content="IA, Intelligence Artificielle, Automatisation, Bots, RAG, Prompt Engineering, Consulting IA">
+    <meta name="description" content="AI & Beyond - Transformez votre entreprise avec l'intelligence artificielle. Services d'automatisation, bots IA, consulting et RAG-as-a-Service pour PME et entrepreneurs.">
+    <meta name="keywords" content="IA, Intelligence Artificielle, Automatisation, Bots, RAG, Prompt Engineering, Consulting IA, Formation IA">
+    <meta name="author" content="AI & Beyond">
     
+    <!-- Open Graph -->
     <meta property="og:title" content="AI & Beyond - L'IA au service de votre croissance">
-    <meta property="og:description" content="Services d'automatisation IA, bots intelligents et RAG-as-a-Service pour entreprises ambitieuses">
+    <meta property="og:description" content="Services d'automatisation IA, bots intelligents et RAG-as-a-Service pour PME et entrepreneurs">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aiandbeyond.eu">
     
     <title>AI & Beyond - L'IA au service de votre croissance</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,26 +32,39 @@
         }
     </script>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/header-smart.css">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        .font-handwritten { font-family: 'Shadows Into Light', cursive; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
         
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .font-rajdhani {
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        .font-exo {
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        /* Gradient Text Premium */
+        .gradient-text-premium {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #6366f1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        /* Animated Gradient Background */
+        /* Hero Gradient Animé */
         .hero-gradient {
             background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a5f, #0f172a);
             background-size: 400% 400%;
@@ -64,75 +80,33 @@
         /* Logo Glow */
         .logo-glow {
             transition: all 0.4s ease;
-            filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+            filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4));
         }
+        
         .logo-glow:hover {
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+            filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.7)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.5));
             transform: scale(1.02);
         }
         
-        /* HEADER SCROLL BEHAVIOR */
-        header {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Full Header */
-        header.header-full {
-            height: 80px;
-        }
-        
-        /* Mini Header au scroll */
-        header.header-mini {
-            height: 64px;
-        }
-        
-        /* Logo + Slogan container */
-        .logo-slogan-container {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-            max-height: 100px;
-            overflow: hidden;
-        }
-        
-        /* Quand header mini */
-        header.header-mini .logo-slogan-container {
-            opacity: 0;
-            max-height: 0;
-            pointer-events: none;
-        }
-        
-        /* Slogan avec typographies mixtes */
-        .slogan-ia {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .slogan-text {
-            font-family: 'Shadows Into Light', cursive;
-            color: #475569;
-        }
-        
-        /* Buttons */
+        /* Buttons Glow */
         .btn-glow {
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
+        
         .btn-glow:hover {
             box-shadow: 0 8px 35px rgba(99, 102, 241, 0.6);
             transform: translateY(-3px);
         }
         
-        /* Cards */
+        /* Cards Premium */
         .card-premium {
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         .card-premium:hover {
             transform: translateY(-8px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
@@ -152,14 +126,17 @@
             border-radius: 50%;
             pointer-events: none;
         }
+        
         .particle-cyan {
             background: radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, rgba(6, 182, 212, 0) 70%);
             animation: float-particle-1 20s ease-in-out infinite;
         }
+        
         .particle-purple {
             background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
             animation: float-particle-2 25s ease-in-out infinite;
         }
+        
         .particle-indigo {
             background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0) 70%);
             animation: float-particle-3 18s ease-in-out infinite;
@@ -171,54 +148,48 @@
             50% { transform: translateY(-20px) translateX(-20px) scale(0.9); opacity: 0.5; }
             75% { transform: translateY(-60px) translateX(40px) scale(1.05); opacity: 0.7; }
         }
+        
         @keyframes float-particle-2 {
             0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
             33% { transform: translateY(-50px) translateX(-40px) scale(1.2); opacity: 0.7; }
             66% { transform: translateY(-30px) translateX(30px) scale(0.8); opacity: 0.4; }
         }
+        
         @keyframes float-particle-3 {
             0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
             50% { transform: translateY(-70px) translateX(50px) scale(1.3); opacity: 0.6; }
         }
         
-        /* Marquee */
+        /* Marquee Animation */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+        
         .marquee-track {
             animation: marquee 30s linear infinite;
         }
+        
         .marquee-track:hover {
             animation-play-state: paused;
         }
         
-        /* Scroll to Top */
+        /* Scroll to Top Button */
         .scroll-top-btn {
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
         }
+        
         .scroll-top-btn.visible {
             opacity: 1;
             visibility: visible;
-        }
-        
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .slogan-ia { font-size: 1.125rem; }
-            .slogan-text { font-size: 1rem; }
-        }
-        
-        @media (max-width: 375px) {
-            .slogan-ia { font-size: 1rem; }
-            .slogan-text { font-size: 0.875rem; }
         }
     </style>
 </head>
 <body class="bg-slate-950 text-white">
     
-    <!-- Netlify Forms Hidden -->
+    <!-- Formulaire caché pour Netlify Forms - Leads Lyra -->
     <form name="lyra-leads" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="email" />
         <input type="text" name="phone" />
@@ -229,56 +200,57 @@
     </form>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HEADER SOPHISTIQUÉ V16                                   -->
+    <!-- HEADER INTELLIGENT - Smart-Hide au scroll               -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <header id="main-header" class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/10 header-full">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between" style="min-height: 64px;">
-                <!-- Logo + Slogan (disparaît au scroll) -->
-                <div class="logo-slogan-container flex items-center gap-4">
-                    <a href="/" class="logo-glow flex-shrink-0">
-                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-14 w-auto">
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4 logo-container">
+                    <a href="/" class="flex items-center bg-slate-800 rounded-xl p-2 logo-glow">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="w-auto">
                     </a>
-                    <div class="hidden lg:block">
-                        <span class="slogan-ia text-xl">IA</span>
-                        <span class="slogan-text text-lg"> "au service de votre croissance"</span>
-                    </div>
+                    <span class="slogan hidden lg:block text-xl font-semibold text-gray-700 font-rajdhani" style="letter-spacing: 0.5px;">
+                        L'IA au service de votre croissance
+                    </span>
                 </div>
                 
-                <!-- Navigation Desktop -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-gray-300 hover:text-white font-medium transition">Services</a>
-                    <a href="pages/rag.html" class="text-gray-300 hover:text-white font-medium transition">RAG</a>
-                    <a href="pages/livres.html" class="text-gray-300 hover:text-white font-medium transition">Livres</a>
-                    <a href="pages/bots.html" class="text-gray-300 hover:text-white font-medium transition">Bots IA</a>
-                    <a href="#contact" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition shadow-lg">Contact</a>
-                </nav>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#services" class="text-gray-700 hover:text-primary transition">Services</a>
+                    <a href="pages/rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
+                    <a href="pages/livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
+                    <a href="pages/bots.html" class="text-gray-700 hover:text-primary transition">Bots IA</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary transition">À propos</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full hover:bg-secondary transition shadow-md font-semibold">Contact</a>
+                </div>
                 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
         
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-white/10">
-            <div class="px-4 py-4 space-y-2">
-                <a href="#services" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Services</a>
-                <a href="pages/rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">RAG</a>
-                <a href="pages/livres.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Livres</a>
-                <a href="pages/bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Bots IA</a>
-                <a href="#contact" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Services</a>
+                <a href="pages/rag.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">RAG</a>
+                <a href="pages/livres.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Livres</a>
+                <a href="pages/bots.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Bots IA</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">À propos</a>
+                <a href="#contact" class="block px-3 py-2 text-white bg-primary rounded-md">Contact</a>
             </div>
         </div>
     </header>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- HERO - Style V11 avec particules                        -->
+    <!-- HERO - Style V14 avec particules flottantes             -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="min-h-screen flex items-center relative overflow-hidden hero-gradient pt-20">
+    <section class="min-h-screen flex items-center relative overflow-hidden hero-gradient pt-40 md:pt-48 pb-24">
         <!-- Floating Particles -->
         <div class="particle particle-cyan w-96 h-96 -top-20 -left-20"></div>
         <div class="particle particle-purple w-80 h-80 top-1/3 right-10"></div>
@@ -286,7 +258,7 @@
         <div class="particle particle-cyan w-48 h-48 top-1/2 left-10"></div>
         <div class="particle particle-purple w-72 h-72 -bottom-10 -right-10"></div>
         
-        <div class="max-w-7xl mx-auto px-4 relative z-10 py-20">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
                 <!-- Badge -->
                 <div class="inline-flex items-center px-5 py-2.5 rounded-full glass-effect mb-8" data-aos="fade-down" data-aos-delay="200">
@@ -296,7 +268,7 @@
                 
                 <!-- Main Title -->
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                    Transformez votre business avec l'<span class="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">Intelligence Artificielle</span>
+                    Transformez votre business avec l'<span class="gradient-text-premium">Intelligence Artificielle</span>
                 </h1>
                 
                 <!-- Subtitle -->
@@ -307,31 +279,67 @@
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap justify-center gap-5 mb-14" data-aos="fade-up" data-aos-delay="400">
                     <a href="#contact" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-10 py-4 rounded-full font-semibold btn-glow text-lg">
-                        Démarrer votre projet IA
+                        Demander un audit gratuit
                     </a>
-                    <a href="pages/livres.html" class="bg-white/10 backdrop-blur text-white px-10 py-4 rounded-full font-semibold hover:bg-white/20 transition text-lg border border-white/20">
-                        Voir nos guides
+                    <a href="#services" class="border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold hover:bg-white/10 transition-all text-lg">
+                        Découvrir nos services
                     </a>
                 </div>
                 
-                <!-- Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">+50</div>
-                        <div class="text-sm text-gray-400">Projets livrés</div>
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-cyan-400 text-lg">✓</span>
+                        <span class="text-sm text-gray-300 font-medium">Enterprise Ready</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-violet-400 mb-2">98%</div>
-                        <div class="text-sm text-gray-400">Satisfaction client</div>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-violet-400 text-lg">🔒</span>
+                        <span class="text-sm text-gray-300 font-medium">100% Sécurisé</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-cyan-400 mb-2">-60%</div>
-                        <div class="text-sm text-gray-400">Temps de traitement</div>
+                    <div class="glass-effect px-6 py-3 rounded-full flex items-center gap-3">
+                        <span class="text-emerald-400 text-lg">📈</span>
+                        <span class="text-sm text-gray-300 font-medium">ROI Garanti</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-violet-400 mb-2">24/7</div>
-                        <div class="text-sm text-gray-400">Support automatisé</div>
-                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PARTNERS MARQUEE                                        -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="py-10 bg-slate-900/50 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-6">
+            <p class="text-center text-gray-500 text-sm uppercase tracking-widest font-medium">Technologies & Partenaires</p>
+        </div>
+        <div class="relative">
+            <div class="flex marquee-track">
+                <div class="flex items-center gap-20 px-10">
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">OpenAI</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">Anthropic</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">⚡ Zapier</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">Make</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">📝 Notion</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">💬 Slack</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">☁️ AWS</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">▲ Vercel</span>
+                </div>
+                <div class="flex items-center gap-20 px-10">
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">OpenAI</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">Anthropic</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">⚡ Zapier</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">Make</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">📝 Notion</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">💬 Slack</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">☁️ AWS</span>
+                    <span class="text-xl font-bold text-gray-500 opacity-60 hover:opacity-100 transition">▲ Vercel</span>
                 </div>
             </div>
         </div>
@@ -340,65 +348,64 @@
     <!-- ═══════════════════════════════════════════════════════ -->
     <!-- SERVICES                                                -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="services" class="py-24 px-4 bg-slate-900">
-        <div class="max-w-7xl mx-auto">
+    <section id="services" class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Nos Services Premium</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    Solutions IA sur mesure pour propulser votre entreprise
-                </p>
+                <span class="text-cyan-400 text-sm uppercase tracking-widest font-semibold">Nos Solutions</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Des services sur mesure pour votre croissance</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Solutions IA adaptées à vos enjeux business. De l'audit à l'implémentation.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1: RAG -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bots IA -->
                 <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-5xl mb-6">🧠</div>
-                    <h3 class="text-2xl font-bold mb-4">RAG-as-a-Service</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Transformez vos documents en assistant IA intelligent. Réponses précises basées sur VOS données.
-                    </p>
-                    <div class="text-cyan-400 font-bold text-xl mb-6">À partir de 5K€</div>
-                    <a href="pages/rag.html" class="block w-full bg-white/10 hover:bg-white/20 text-center py-3 rounded-lg font-semibold transition border border-white/20">
-                        En savoir plus
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bots IA</h3>
+                    <p class="text-gray-400 text-sm mb-4">Assistants intelligents 24/7 pour qualifier vos leads et automatiser le support.</p>
+                    <div class="text-cyan-400 font-bold text-lg mb-4">2-10K€</div>
+                    <a href="pages/bots.html" class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus →
                     </a>
                 </div>
                 
-                <!-- Service 2: Bots -->
+                <!-- Automatisation -->
                 <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-5xl mb-6">🤖</div>
-                    <h3 class="text-2xl font-bold mb-4">Bots Conversationnels</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Support client 24/7, qualification de leads, automatisation complète de vos interactions.
-                    </p>
-                    <div class="text-violet-400 font-bold text-xl mb-6">À partir de 3K€</div>
-                    <a href="pages/bots.html" class="block w-full bg-white/10 hover:bg-white/20 text-center py-3 rounded-lg font-semibold transition border border-white/20">
-                        En savoir plus
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Automatisation</h3>
+                    <p class="text-gray-400 text-sm mb-4">Connectez vos outils et récupérez 10 à 40 heures par semaine.</p>
+                    <div class="text-purple-400 font-bold text-lg mb-4">3-10K€</div>
+                    <a href="pages/services.html" class="text-purple-400 hover:text-purple-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus →
                     </a>
                 </div>
                 
-                <!-- Service 3: Consulting -->
+                <!-- RAG -->
                 <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-5xl mb-6">💡</div>
-                    <h3 class="text-2xl font-bold mb-4">Consulting IA</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Audit, stratégie et roadmap d'intégration IA. Accompagnement personnalisé de A à Z.
-                    </p>
-                    <div class="text-cyan-400 font-bold text-xl mb-6">Sur devis</div>
-                    <a href="#contact" class="block w-full bg-white/10 hover:bg-white/20 text-center py-3 rounded-lg font-semibold transition border border-white/20">
-                        Nous contacter
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">RAG-as-a-Service</h3>
+                    <p class="text-gray-400 text-sm mb-4">Transformez vos documents en assistant intelligent qui répond instantanément.</p>
+                    <div class="text-indigo-400 font-bold text-lg mb-4">5-30K€</div>
+                    <a href="pages/rag.html" class="text-indigo-400 hover:text-indigo-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus →
                     </a>
                 </div>
                 
-                <!-- Service 4: Formation -->
+                <!-- Consulting -->
                 <div class="card-premium rounded-2xl p-8" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-5xl mb-6">📚</div>
-                    <h3 class="text-2xl font-bold mb-4">Formation & Guides</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Maîtrisez le Prompt Engineering. Guides pratiques et formations pour vos équipes.
-                    </p>
-                    <div class="text-violet-400 font-bold text-xl mb-6">Dès 29€</div>
-                    <a href="pages/livres.html" class="block w-full bg-white/10 hover:bg-white/20 text-center py-3 rounded-lg font-semibold transition border border-white/20">
-                        Voir nos guides
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">💡</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Consulting & Formation</h3>
+                    <p class="text-gray-400 text-sm mb-4">Audits, stratégie IA et formation sur mesure pour rendre vos équipes autonomes.</p>
+                    <div class="text-emerald-400 font-bold text-lg mb-4">500€-5K€</div>
+                    <a href="pages/services.html" class="text-emerald-400 hover:text-emerald-300 text-sm font-semibold inline-flex items-center gap-2 transition">
+                        En savoir plus →
                     </a>
                 </div>
             </div>
@@ -406,150 +413,161 @@
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- SOCIAL PROOF / LOGOS                                    -->
+    <!-- ABOUT                                                   -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="py-16 px-4 bg-slate-950 border-y border-white/10 overflow-hidden">
-        <div class="max-w-7xl mx-auto mb-8">
-            <p class="text-center text-gray-400 text-sm uppercase tracking-wider mb-8">Ils nous font confiance</p>
-        </div>
-        <div class="relative">
-            <div class="flex marquee-track">
-                <div class="flex space-x-16 pr-16">
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏢 Enterprise A</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏪 Retail B</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">⚕️ Health C</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🎓 Edu D</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🚀 Startup E</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏭 Industry F</div>
+    <section id="about" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="w-full max-w-sm mx-auto logo-glow">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-6 shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold">5+</div>
+                        <div class="text-sm text-indigo-200">Années d'expertise IA</div>
+                    </div>
                 </div>
-                <div class="flex space-x-16 pr-16" aria-hidden="true">
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏢 Enterprise A</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏪 Retail B</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">⚕️ Health C</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🎓 Edu D</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🚀 Startup E</div>
-                    <div class="text-2xl text-gray-600 font-bold whitespace-nowrap">🏭 Industry F</div>
+                
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <span class="text-cyan-400 text-sm uppercase tracking-widest font-semibold">À propos</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Votre partenaire IA de confiance</h2>
+                    <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+                        AI & Beyond accompagne les entreprises ambitieuses dans leur transformation digitale grâce à l'intelligence artificielle.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Notre approche : comprendre vos enjeux business, identifier les quick wins, et implémenter des solutions IA concrètes avec un ROI mesurable. Pas de buzzwords, que des résultats.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="glass-effect rounded-xl p-4">
+                            <div class="text-2xl font-bold text-cyan-400 mb-1">100%</div>
+                            <div class="text-sm text-gray-400">Satisfaction client</div>
+                        </div>
+                        <div class="glass-effect rounded-xl p-4">
+                            <div class="text-2xl font-bold text-violet-400 mb-1">ROI x3</div>
+                            <div class="text-sm text-gray-400">En moyenne</div>
+                        </div>
+                    </div>
+                    
+                    <a href="pages/livres.html" class="inline-flex items-center gap-2 text-white hover:text-cyan-400 transition font-semibold">
+                        Découvrir nos ressources →
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- CTA SECTION                                             -->
+    <!-- CONTACT                                                 -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <section class="py-24 px-4 bg-gradient-to-br from-indigo-600 to-violet-600">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Prêt à transformer votre entreprise ?</h2>
-            <p class="text-xl text-indigo-100 mb-10">
-                Discutons de votre projet. Audit gratuit de 30 minutes.
-            </p>
-            <a href="#contact" class="bg-white text-indigo-600 px-12 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-2xl inline-block">
-                Réserver un audit gratuit
-            </a>
-        </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- CONTACT                                                  -->
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <section id="contact" class="py-24 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
+    <section id="contact" class="py-24 bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600">
+        <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h2>
-                <p class="text-xl text-gray-400">
-                    Votre projet mérite une solution sur mesure. Parlons-en.
-                </p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Prêt à transformer votre business ?</h2>
+                <p class="text-xl text-indigo-100">Discutons de votre projet. Audit gratuit offert.</p>
             </div>
             
-            <form id="contact-form" class="bg-slate-800/50 backdrop-blur rounded-2xl p-8 md:p-12 border border-white/10" data-aos="fade-up" data-aos-delay="200">
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Nom complet*</label>
-                        <input type="text" name="name" required class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:border-indigo-500 focus:outline-none transition">
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20" data-aos="fade-up" data-aos-delay="200">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <div hidden>
+                        <input name="bot-field" />
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Email professionnel*</label>
-                        <input type="email" name="email" required class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:border-indigo-500 focus:outline-none transition">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nom *</label>
+                            <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Jean Dupont">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="jean@entreprise.fr">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    
                     <div>
                         <label class="block text-sm font-medium mb-2">Téléphone</label>
-                        <input type="tel" name="phone" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:border-indigo-500 focus:outline-none transition">
+                        <input type="tel" name="phone" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="+33 6 12 34 56 78">
                     </div>
+                    
                     <div>
-                        <label class="block text-sm font-medium mb-2">Service intéressé</label>
-                        <select name="service" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:border-indigo-500 focus:outline-none transition">
-                            <option>RAG-as-a-Service</option>
-                            <option>Bots Conversationnels</option>
-                            <option>Consulting IA</option>
-                            <option>Formation & Guides</option>
-                            <option>Autre</option>
+                        <label class="block text-sm font-medium mb-2">Service souhaité *</label>
+                        <select name="service" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
+                            <option value="" class="text-gray-800">Sélectionnez un service</option>
+                            <option value="bots" class="text-gray-800">Bots IA</option>
+                            <option value="automatisation" class="text-gray-800">Automatisation</option>
+                            <option value="rag" class="text-gray-800">RAG-as-a-Service</option>
+                            <option value="consulting" class="text-gray-800">Consulting</option>
+                            <option value="autre" class="text-gray-800">Autre</option>
                         </select>
                     </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message *</label>
+                        <textarea name="message" required rows="4" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none" placeholder="Décrivez votre projet..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-2xl">
+                        Envoyer ma demande →
+                    </button>
+                </form>
+                
+                <div class="mt-8 pt-8 border-t border-white/20 text-center">
+                    <p class="text-sm text-indigo-100 mb-4">Ou contactez-nous directement :</p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="mailto:contact@aiandbeyond.eu" class="text-white hover:text-cyan-300 transition flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                            contact@aiandbeyond.eu
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="mb-6">
-                    <label class="block text-sm font-medium mb-2">Décrivez votre projet*</label>
-                    <textarea name="message" required rows="5" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-lg focus:border-indigo-500 focus:outline-none transition"></textarea>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition shadow-lg">
-                    Envoyer ma demande
-                </button>
-                
-                <p class="text-sm text-gray-500 mt-4 text-center">
-                    Réponse sous 24h ouvrées. Vos données sont sécurisées.
-                </p>
-            </form>
+            </div>
         </div>
     </section>
     
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- FOOTER                                                   -->
+    <!-- FOOTER                                                  -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <footer class="bg-slate-950 border-t border-white/10 py-12 px-4">
+    <footer class="bg-slate-950 text-gray-400 py-12 px-4 border-t border-white/5">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="font-bold text-lg mb-4">AI & Beyond</h3>
-                    <p class="text-gray-400 text-sm">
-                        Solutions IA premium pour entreprises ambitieuses.
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="assets/images/logo.png" alt="AI & Beyond" class="h-12 w-auto">
+                        <span class="font-bold text-white text-xl">AI & Beyond</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">
+                        Solutions IA pour PME et entrepreneurs. Automatisation, bots intelligents et RAG-as-a-Service.
                     </p>
                 </div>
+                
                 <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="pages/rag.html" class="hover:text-white transition">RAG-as-a-Service</a></li>
+                    <h4 class="font-semibold text-white mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
                         <li><a href="pages/bots.html" class="hover:text-white transition">Bots IA</a></li>
-                        <li><a href="#contact" class="hover:text-white transition">Consulting</a></li>
+                        <li><a href="pages/services.html" class="hover:text-white transition">Automatisation</a></li>
+                        <li><a href="pages/rag.html" class="hover:text-white transition">RAG</a></li>
+                        <li><a href="pages/livres.html" class="hover:text-white transition">Livres</a></li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h4 class="font-semibold mb-4">Ressources</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="pages/livres.html" class="hover:text-white transition">Guides & Livres</a></li>
-                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="#" class="hover:text-white transition">Études de cas</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Légal</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
+                    <h4 class="font-semibold text-white mb-4">Légal</h4>
+                    <ul class="space-y-2 text-sm">
                         <li><a href="#" class="hover:text-white transition">Mentions légales</a></li>
                         <li><a href="#" class="hover:text-white transition">CGV</a></li>
                         <li><a href="#" class="hover:text-white transition">Confidentialité</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 text-center">
-                <p class="text-gray-400 text-sm">&copy; 2025 AI & Beyond. Tous droits réservés.</p>
+            
+            <div class="pt-8 border-t border-white/5 text-center text-sm">
+                <p>&copy; 2025 AI & Beyond. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
     
-    <!-- Scroll to top button -->
+    <!-- Scroll to Top Button -->
     <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 bg-gradient-to-r from-indigo-500 to-violet-500 text-white p-4 rounded-full shadow-2xl z-40 hover:scale-110 transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -558,6 +576,7 @@
     
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/header-scroll.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -566,46 +585,7 @@
             offset: 100
         });
         
-        // ═════════════════════════════════════════════════
-        // HEADER SCROLL BEHAVIOR
-        // ═════════════════════════════════════════════════
-        const header = document.getElementById('main-header');
-        let lastScrollTop = 0;
-        let scrollThreshold = 150;
-        
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Scroll DOWN > 150px → mini header
-            if (scrollTop > scrollThreshold) {
-                header.classList.add('header-mini');
-                header.classList.remove('header-full');
-            }
-            // Scroll UP → réapparition immédiate
-            else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
-                header.classList.remove('header-mini');
-                header.classList.add('header-full');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-        
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Scroll to top
+        // Scroll to Top Button
         const scrollTopBtn = document.getElementById('scroll-top');
         
         window.addEventListener('scroll', () => {
@@ -617,37 +597,7 @@
         });
         
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Contact form
-        const contactForm = document.getElementById('contact-form');
-        
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const button = contactForm.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            
-            button.textContent = 'Envoi en cours...';
-            button.disabled = true;
-            
-            try {
-                // Simulate form submission
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                alert('Message envoyé ! Nous vous recontactons sous 24h.');
-                contactForm.reset();
-            } catch (error) {
-                alert('Erreur lors de l\'envoi. Veuillez réessayer.');
-            } finally {
-                button.textContent = originalText;
-                button.disabled = false;
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>

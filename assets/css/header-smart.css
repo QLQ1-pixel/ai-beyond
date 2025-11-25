@@ -1,0 +1,84 @@
+/* ═══════════════════════════════════════════════════════════════
+   HEADER SMART-HIDE SYSTEM
+   Comportement intelligent au scroll pour économiser l'espace écran
+   ═══════════════════════════════════════════════════════════════ */
+
+/* État par défaut - Header complet */
+header {
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 8rem; /* h-32 initial */
+}
+
+/* État scrollé - Header compact */
+header.header-compact {
+    height: 5rem; /* h-20 */
+}
+
+/* Logo - Transition de taille */
+header .logo-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header .logo-container img {
+    height: 7rem; /* h-28 initial */
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.header-compact .logo-container img {
+    height: 4rem; /* h-16 scrollé */
+}
+
+/* Slogan - Disparition progressive */
+header .slogan {
+    transition: opacity 0.3s ease,
+                transform 0.3s ease,
+                max-height 0.3s ease,
+                margin 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 4rem;
+    overflow: hidden;
+}
+
+header.header-compact .slogan {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    margin: 0;
+}
+
+/* Navigation - Ajustement vertical */
+header nav {
+    transition: padding 0.3s ease;
+}
+
+/* Mobile - Désactiver les transitions complexes */
+@media (max-width: 768px) {
+    header {
+        height: 5rem !important; /* Toujours compact sur mobile */
+    }
+    
+    header .slogan {
+        display: none; /* Masquer le slogan sur mobile */
+    }
+    
+    header .logo-container img {
+        height: 4rem !important; /* Logo fixe sur mobile */
+    }
+}
+
+/* Smooth scroll pour les ancres */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Performance - Hardware acceleration */
+header,
+header .logo-container,
+header .logo-container img,
+header .slogan {
+    will-change: transform, opacity, height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}

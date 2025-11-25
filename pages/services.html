@@ -4,62 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services IA | AI & Beyond</title>
-    <meta name="description" content="Services IA - Automatisation, consulting et formation pour transformer votre entreprise.">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }</script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/header-smart.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
-    
-    <!-- HEADER COMPACT UNIFIÉ (Version Claire) -->
-    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-32">
                 <div class="flex items-center gap-4">
-                    <a href="../index.html" class="flex-shrink-0">
-                        <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-14 w-auto">
-                    </a>
-                    <span class="hidden md:block text-lg font-semibold gradient-text font-rajdhani tracking-wide">
-                        L'IA au service de votre croissance
-                    </span>
+                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto"></a>
+                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">L'IA au service de votre croissance</span>
                 </div>
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="rag.html" class="text-gray-600 hover:text-primary font-medium transition">RAG</a>
-                    <a href="bots.html" class="text-gray-600 hover:text-primary font-medium transition">Bots</a>
-                    <a href="livres.html" class="text-gray-600 hover:text-primary font-medium transition">Livres</a>
-                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-secondary transition shadow-md">Contact</a>
-                </nav>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700 p-2">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html#services" class="text-gray-700 hover:text-primary transition">Services</a>
+                    <a href="rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
+                    <a href="bots.html" class="text-gray-700 hover:text-primary transition">Bots</a>
+                    <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
+                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
+                </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-4 py-4 space-y-2">
-                <a href="rag.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">RAG</a>
-                <a href="bots.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Bots</a>
-                <a href="livres.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Livres</a>
-                <a href="../index.html#contact" class="block px-4 py-2 bg-primary text-white rounded text-center">Contact</a>
-            </div>
-        </div>
-    </header>
+    </nav>
 
-    <!-- HERO -->
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
-        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-5xl font-bold mb-6">Nos Services IA</h1>
             <p class="text-xl text-gray-200 max-w-3xl mx-auto">
                 Solutions complètes pour automatiser, optimiser et transformer votre activité avec l'intelligence artificielle
@@ -67,9 +61,9 @@
         </div>
     </section>
 
-    <!-- Texte vendeur -->
+    <!-- Texte vendeur intro Consulting -->
     <section class="py-12 px-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-indigo-100">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto text-center">
             <p class="text-xl text-gray-700 leading-relaxed">
                 <span class="font-semibold text-indigo-700">L'IA vous intéresse mais vous ne savez pas par où commencer ?</span> Nos experts analysent votre activité, identifient les quick wins et vous accompagnent pas à pas. <span class="font-semibold text-purple-700">Formation incluse pour rendre votre équipe autonome.</span>
             </p>
@@ -81,7 +75,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Audit -->
-                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-indigo-500 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-indigo-500 transition">
                     <div class="flex items-start justify-between mb-6">
                         <div>
                             <h3 class="text-2xl font-bold mb-2">Audit Prompt Engineering</h3>
@@ -91,15 +85,26 @@
                     </div>
                     <p class="text-gray-600 mb-6">Analyse de votre usage IA actuel et identification des opportunités d'optimisation.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Analyse usage IA actuel</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">10-20 use cases identifiés</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Roadmap priorisée 20-30 pages</span></div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Analyse usage IA actuel</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">10-20 use cases identifiés</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Roadmap priorisée 20-30 pages</span>
+                        </div>
                     </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">⏱️ Durée : 1 semaine • 📈 ROI : Identifie 3-10x opportunités</div>
+                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">
+                        ⏱️ Durée : 1 semaine • 📈 ROI : Identifie 3-10x opportunités
+                    </div>
                 </div>
 
                 <!-- Automatisation -->
-                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-purple-500 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-purple-500 transition">
                     <div class="flex items-start justify-between mb-6">
                         <div>
                             <h3 class="text-2xl font-bold mb-2">Automatisation Workflows</h3>
@@ -109,19 +114,31 @@
                     </div>
                     <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg mb-6">
                         <p class="text-gray-700 text-sm leading-relaxed">
-                            <strong>Combien d'heures perdez-vous sur des tâches répétitives ?</strong> Emails, reporting, data entry... Nos solutions connectent vos outils et travaillent pour vous. <strong class="text-purple-700">Récupérez 10 à 40 heures par semaine.</strong>
+                            <strong>Combien d'heures perdez-vous sur des tâches répétitives ?</strong> Emails, reporting, data entry... Nos solutions connectent vos outils et travaillent pour vous. <strong class="text-purple-700">Récupérez 10 à 40 heures par semaine</strong> pour vous concentrer sur la croissance.
                         </p>
                     </div>
+                    <p class="text-gray-600 mb-6">Automatisez vos tâches répétitives avec Zapier, Make et IA.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Workflows sur mesure</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Intégrations multiples</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Formation équipe incluse</span></div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Workflows sur mesure</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Intégrations multiples</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Formation équipe incluse</span>
+                        </div>
                     </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">⏱️ Durée : 3-6 semaines • 📈 ROI : 10-40h/semaine gagnées</div>
+                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">
+                        ⏱️ Durée : 3-6 semaines • 📈 ROI : 10-40h/semaine gagnées
+                    </div>
                 </div>
 
                 <!-- Formation -->
-                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-cyan-500 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-cyan-500 transition">
                     <div class="flex items-start justify-between mb-6">
                         <div>
                             <h3 class="text-2xl font-bold mb-2">Formation Équipe</h3>
@@ -131,66 +148,183 @@
                     </div>
                     <p class="text-gray-600 mb-6">Formez vos équipes au Prompt Engineering et à l'IA générative.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Workshops pratiques</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Support post-formation</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Documentation fournie</span></div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Formation sur-mesure</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">5-30 personnes</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Kit templates & guides</span>
+                        </div>
                     </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">👥 Jusqu'à 12 participants • 📚 Supports inclus</div>
+                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">
+                        ⏱️ Durée : 1-3 jours • 📈 ROI : Compétences immédiatement opérationnelles
+                    </div>
                 </div>
 
-                <!-- Consulting -->
-                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-emerald-500 transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+                <!-- Retainer -->
+                <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-pink-500 transition">
                     <div class="flex items-start justify-between mb-6">
                         <div>
-                            <h3 class="text-2xl font-bold mb-2">Consulting Stratégique</h3>
-                            <div class="text-emerald-600 font-bold text-3xl">Sur devis</div>
+                            <h3 class="text-2xl font-bold mb-2">Accompagnement Mensuel</h3>
+                            <div class="text-pink-600 font-bold text-3xl">2-5K€/mois</div>
                         </div>
-                        <div class="text-4xl">🎯</div>
+                        <div class="text-4xl">🤝</div>
                     </div>
-                    <p class="text-gray-600 mb-6">Accompagnement stratégique pour votre transformation IA.</p>
+                    <p class="text-gray-600 mb-6">Support continu et optimisation de vos systèmes IA.</p>
                     <div class="space-y-3 mb-6">
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Stratégie IA sur mesure</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Accompagnement long-terme</span></div>
-                        <div class="flex items-start"><svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">ROI garanti contractuellement</span></div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">10-20h/mois support</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Optimisations continues</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Veille techno & reporting</span>
+                        </div>
                     </div>
-                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">📈 Accompagnement personnalisé • 🎯 Objectifs mesurables</div>
+                    <div class="bg-slate-50 rounded-lg p-4 text-sm text-gray-600">
+                        ⏱️ Engagement : 6-12 mois • 📈 LTV : 20-60K€
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-20 px-4 bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <h2 class="text-4xl font-bold mb-6">Prêt à transformer votre activité ?</h2>
-            <p class="text-xl mb-8 text-indigo-100">Réservez un appel découverte gratuit de 30 minutes</p>
-            <a href="../index.html#contact" class="bg-white text-indigo-600 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-lg inline-block">Demander un devis</a>
+    <!-- RAG Physique Section -->
+    <section class="py-20 px-4 bg-gradient-to-br from-slate-50 to-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full font-semibold mb-4">
+                    🖥️ Nouveau
+                </div>
+                <h2 class="text-4xl font-bold mb-4">RAG Physique : Solutions On-Premise</h2>
+                <p class="text-xl text-gray-600">
+                    Pour ceux qui veulent leurs données 100% locales, sans abonnement cloud
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Mac Studio -->
+                <div class="bg-white border-2 border-slate-200 rounded-2xl p-8 hover:border-slate-800 transition">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Mac Studio RAG Pro</h3>
+                            <div class="text-slate-800 font-bold text-3xl">15-20K€</div>
+                        </div>
+                        <div class="text-4xl">💻</div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Solution complète clé en main avec matériel Apple Mac Studio et installation système RAG.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Mac Studio M2 Ultra + 192 Go RAM</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Installation complète système RAG</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Formation équipe 2 jours</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Support 6 mois + mises à jour</span>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-sm text-green-800 mb-6">
+                        🔒 100% local • Pas d'abonnement cloud • Vos données restent chez vous
+                    </div>
+                    <a href="rag.html#rag-physique" class="block w-full bg-slate-800 hover:bg-slate-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
+                        En savoir plus
+                    </a>
+                </div>
+
+                <!-- Mac Mini -->
+                <div class="bg-white border-2 border-slate-200 rounded-2xl p-8 hover:border-blue-500 transition">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Mac Mini RAG Essential</h3>
+                            <div class="text-blue-600 font-bold text-3xl">8-12K€</div>
+                        </div>
+                        <div class="text-4xl">🖥️</div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Solution compacte et économique pour PME et artisans avec Mac Mini et système RAG simplifié.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Mac Mini M2 Pro + 32-64 Go RAM</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Installation système RAG optimisé</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Formation 1 jour</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-sm">Support 3 mois</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-4 text-sm text-blue-800 mb-6">
+                        📦 Compact • 💡 Facile d'utilisation • 🚀 Déploiement rapide
+                    </div>
+                    <a href="rag.html#rag-physique" class="block w-full bg-blue-600 hover:bg-blue-500 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+
+            <!-- CTA vers page RAG -->
+            <div class="mt-12 text-center bg-white rounded-xl p-8 border-2 border-dashed border-gray-300">
+                <h3 class="text-2xl font-bold mb-4">Besoin d'une solution sur mesure ?</h3>
+                <p class="text-gray-600 mb-6">
+                    Nous installons aussi votre système RAG sur serveur Linux, NAS enterprise, cloud privé ou votre matériel existant.
+                </p>
+                <a href="rag.html" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-8 py-3 rounded-full font-semibold transition">
+                    Voir toutes les solutions RAG
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto"></a>
-            <p class="text-sm text-gray-400 mb-2 font-rajdhani">L'IA au service de votre croissance</p>
-            <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
+    <!-- CTA -->
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Prêt à transformer votre activité avec l'IA ?</h2>
+            <p class="text-xl mb-8 text-gray-200">
+                Réservez un appel découverte gratuit de 30 minutes
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="../index.html#contact" class="bg-white text-indigo-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                    Demander un devis
+                </a>
+                <a href="https://calendly.com/ai-and-beyond" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-900 transition">
+                    Réserver un appel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
-
-    <!-- Scroll to Top -->
-    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-    </button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true, offset: 100 });
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-        const scrollTopBtn = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
-        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-    </script>
+    <!-- 🤖 BOT LYRA - AI Assistant -->
     <script src="../assets/js/bot-config.js"></script>
+    
     <script src="../assets/js/ai-chat-bot.js"></script>
+    <script src="../assets/js/header-scroll.js"></script>
 </body>
 </html>
