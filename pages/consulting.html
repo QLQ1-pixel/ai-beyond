@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulting IA | AI & Beyond</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/header-smart.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Header -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-32">
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2">
+                        <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto">
+                    </a>
+                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">
+                        L'IA au service de votre croissance
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-primary transition font-medium">Accueil</a>
+                    <a href="services.html" class="text-gray-700 hover:text-primary transition">Services</a>
+                    <a href="rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
+                    <a href="bots.html" class="text-gray-700 hover:text-primary transition">Bots</a>
+                    <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
+                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full font-semibold text-sm mb-6">
+                💼 Consulting IA Premium
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Transformez votre entreprise avec l'IA
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8">
+                Audit complet, roadmap stratégique et accompagnement personnalisé pour intégrer l'IA dans votre organisation
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="../index.html#contact" class="bg-white text-indigo-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">
+                    Réserver un audit gratuit
+                </a>
+                <a href="#tarifs" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition">
+                    Voir les tarifs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description du Service -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-gray-900">
+                        Pourquoi faire appel à notre consulting ?
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        L'intelligence artificielle transforme tous les secteurs, mais <strong class="text-indigo-700">par où commencer ?</strong> Quels outils utiliser ? Comment former vos équipes ? Quel ROI attendre ?
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Notre service de consulting vous accompagne de A à Z : de l'audit de votre situation actuelle jusqu'à l'implémentation de solutions concrètes avec un ROI mesurable.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-indigo-50 rounded-lg">
+                            <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Audit approfondi</h4>
+                                <p class="text-gray-600 text-sm">Analyse de vos processus actuels et identification des opportunités d'optimisation</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-purple-50 rounded-lg">
+                            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Roadmap stratégique</h4>
+                                <p class="text-gray-600 text-sm">Document détaillé de 20-30 pages avec priorisation des actions et estimation ROI</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-cyan-50 rounded-lg">
+                            <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Accompagnement implémentation</h4>
+                                <p class="text-gray-600 text-sm">Nous restons à vos côtés pour concrétiser les quick wins identifiés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-3xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900">Ce que vous obtenez</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">Audit complet de votre usage IA actuel</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">10 à 20 use cases d'IA identifiés et chiffrés</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">Roadmap détaillée priorisée (20-30 pages)</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">Estimation ROI et budget pour chaque action</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">Présentation exécutive pour votre direction</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-gray-700">Support post-audit de 30 jours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-white rounded-lg border-l-4 border-indigo-600">
+                        <p class="text-sm text-gray-700">
+                            <strong class="text-indigo-700">Garantie résultat :</strong> Si nous n'identifions pas au moins 3x opportunités valant votre investissement, nous vous remboursons intégralement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs Section -->
+    <section id="tarifs" class="py-20 px-4 bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Nos Formules de Consulting</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Choisissez la formule adaptée à votre niveau de maturité IA
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Starter -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-indigo-500 transition">
+                    <div class="text-center mb-6">
+                        <div class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-semibold text-sm mb-4">
+                            Starter
+                        </div>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">500€</div>
+                        <p class="text-gray-600">Audit rapide</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">1 journée d'audit</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">5-8 use cases identifiés</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Document de synthèse (8-10 pages)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">1 session de suivi (2h)</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center text-sm text-gray-600 mb-6">
+                        ⏱️ Livraison : 3-5 jours
+                    </div>
+                    
+                    <a href="../index.html#contact" class="block w-full bg-gray-200 hover:bg-gray-300 text-center text-gray-900 px-6 py-3 rounded-lg font-semibold transition">
+                        Choisir Starter
+                    </a>
+                </div>
+
+                <!-- Pro (Recommandé) -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-indigo-600 hover:border-indigo-700 transition relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-indigo-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
+                            ⭐ Recommandé
+                        </span>
+                    </div>
+                    
+                    <div class="text-center mb-6 mt-4">
+                        <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-semibold text-sm mb-4">
+                            Pro
+                        </div>
+                        <div class="text-5xl font-bold text-indigo-600 mb-2">1 000€</div>
+                        <p class="text-gray-600">Audit complet + Roadmap</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700"><strong>1 semaine</strong> d'audit approfondi</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700"><strong>10-20 use cases</strong> identifiés et chiffrés</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700"><strong>Roadmap détaillée</strong> (20-30 pages)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Priorisation et estimation ROI</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Présentation exécutive PowerPoint</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700"><strong>30 jours</strong> de support post-audit</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center text-sm text-gray-600 mb-6">
+                        ⏱️ Livraison : 1-2 semaines
+                    </div>
+                    
+                    <a href="../index.html#contact" class="block w-full bg-indigo-600 hover:bg-indigo-700 text-center text-white px-6 py-4 rounded-lg font-semibold transition shadow-lg">
+                        Choisir Pro
+                    </a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-purple-200 hover:border-purple-500 transition">
+                    <div class="text-center mb-6">
+                        <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold text-sm mb-4">
+                            Enterprise
+                        </div>
+                        <div class="text-5xl font-bold text-purple-600 mb-2">Sur devis</div>
+                        <p class="text-gray-600">Transformation complète</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Audit multi-départements</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Roadmap stratégique 3 ans</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Accompagnement implémentation</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Formation des équipes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Support prioritaire dédié</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="text-sm text-gray-700">Revues trimestrielles</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="text-center text-sm text-gray-600 mb-6">
+                        ⏱️ Durée : Sur mesure
+                    </div>
+                    
+                    <a href="../index.html#contact" class="block w-full bg-purple-600 hover:bg-purple-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
+                        Discutons de votre projet
+                    </a>
+                </div>
+            </div>
+
+            <!-- Garantie -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center max-w-4xl mx-auto">
+                <div class="text-4xl mb-4">🎯</div>
+                <h3 class="text-2xl font-bold mb-4">Garantie Résultats</h3>
+                <p class="text-lg opacity-90 mb-6">
+                    Si nous n'identifions pas au moins <strong>3 opportunités</strong> valant chacune plus de <strong>3x votre investissement</strong> dans les 12 prochains mois, nous vous remboursons intégralement.
+                </p>
+                <p class="text-sm opacity-75">
+                    Nous sommes tellement confiants dans la qualité de notre audit que nous prenons ce risque pour vous.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6 text-gray-900">Notre Processus</h2>
+                <p class="text-xl text-gray-600">Comment se déroule un audit AI & Beyond</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-indigo-600">
+                        1
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Premier contact</h4>
+                    <p class="text-gray-600 text-sm">
+                        Appel de 30 min pour comprendre vos enjeux et définir le périmètre
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-purple-600">
+                        2
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Analyse terrain</h4>
+                    <p class="text-gray-600 text-sm">
+                        Interviews des équipes et analyse des processus actuels
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-cyan-600">
+                        3
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Roadmap & Présentation</h4>
+                    <p class="text-gray-600 text-sm">
+                        Livraison du document complet et présentation exécutive
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-green-600">
+                        4
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Support continu</h4>
+                    <p class="text-gray-600 text-sm">
+                        30 jours d'accompagnement pour répondre à vos questions
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Prêt à transformer votre entreprise avec l'IA ?
+            </h2>
+            <p class="text-xl text-gray-200 mb-8">
+                Réservez un appel de 30 minutes pour discuter de votre projet (gratuit et sans engagement)
+            </p>
+            <a href="../index.html#contact" class="inline-block bg-white text-indigo-900 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-xl text-lg">
+                Réserver un appel gratuit
+            </a>
+            <p class="text-sm text-gray-300 mt-6">
+                ⚡ Premiers créneaux disponibles sous 48h • 📞 Par visio ou téléphone
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-400 mb-4">&copy; 2024 AI & Beyond. Tous droits réservés.</p>
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="../index.html" class="text-gray-400 hover:text-white transition">Accueil</a>
+                <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
+                <a href="../index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/header-scroll.js"></script>
+</body>
+</html>
