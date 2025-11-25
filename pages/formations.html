@@ -3,70 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formations IA | AI & Beyond</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        dark: '#0f172a',
-                        accent: '#06b6d4'
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Services IA | AI & Beyond</title>
+    <meta name="description" content="Services IA - Automatisation, consulting et formation pour transformer votre entreprise avec l'intelligence artificielle.">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/header-smart.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body class="bg-slate-50">
-    <!-- Header -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+    
+    <!-- HEADER FIXE - Style V9 -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-32">
                 <div class="flex items-center gap-4">
                     <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2">
-                        <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-28 w-auto">
+                        <img src="../assets/images/logo-dark.png" alt="AI & Beyond" class="h-28 w-auto">
                     </a>
-                    <span class="hidden lg:block text-xl font-semibold gradient-text" style="font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;">
-                        L'IA au service de votre croissance
-                    </span>
+                    <span class="hidden lg:block text-xl font-semibold gradient-text font-exo">L'IA au service de votre croissance</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="../index.html" class="text-gray-700 hover:text-primary transition font-medium">Accueil</a>
+                    <a href="../index.html" class="text-gray-700 hover:text-primary transition font-semibold">Accueil</a>
                     <a href="services.html" class="text-gray-700 hover:text-primary transition">Services</a>
                     <a href="rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
                     <a href="bots.html" class="text-gray-700 hover:text-primary transition">Bots</a>
                     <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
                     <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
                 </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded font-semibold">Accueil</a>
+                <a href="services.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Services</a>
+                <a href="rag.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">RAG</a>
+                <a href="bots.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Bots</a>
+                <a href="livres.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Livres</a>
+                <a href="../index.html#contact" class="block px-4 py-2 bg-primary text-white rounded text-center">Contact</a>
+            </div>
 
-    <!-- Hero Section -->
-    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-cyan-900 to-blue-900 text-white">
-        <div class="max-w-7xl mx-auto text-center">
+    <!-- HERO -->
+    <section class="pt-40 pb-20 px-4 bg-gradient-to-br from-cyan-900 to-blue-900 text-white">
+        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
             <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full font-semibold text-sm mb-6">
                 🎓 Formations IA Premium
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Formez vos équipes à l'IA générative
-            </h1>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Formez vos équipes à l'IA générative</h1>
             <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8">
                 Formations sur-mesure en Prompt Engineering, ChatGPT, Claude et automatisation IA pour rendre vos équipes autonomes
             </p>
@@ -81,92 +80,65 @@
         </div>
     </section>
 
-    <!-- Description des Formations -->
+    <!-- Description -->
     <section class="py-20 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 text-gray-900">
-                        Pourquoi former vos équipes à l'IA ?
-                    </h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-6 text-gray-900">Pourquoi former vos équipes à l'IA ?</h2>
                     <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-                        L'IA générative transforme la manière dont nous travaillons. Vos équipes doivent <strong class="text-cyan-700">maîtriser ces outils</strong> pour rester compétitives et gagner en productivité.
+                        L'IA générative transforme la manière dont nous travaillons. Vos équipes doivent <strong class="text-cyan-700">maîtriser ces outils</strong> pour rester compétitives.
                     </p>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Nos formations sont <strong>100% pratiques</strong> et adaptées à votre secteur. En 1 à 3 jours, vos collaborateurs deviennent autonomes sur ChatGPT, Claude, et les outils d'automatisation.
+                        Nos formations sont <strong>100% pratiques</strong> et adaptées à votre secteur. En 1 à 3 jours, vos collaborateurs deviennent autonomes.
                     </p>
-                    
                     <div class="space-y-4">
                         <div class="flex items-start gap-4 p-4 bg-cyan-50 rounded-lg">
                             <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-1">Formation sur-mesure</h4>
-                                <p class="text-gray-600 text-sm">Contenu adapté à votre secteur et vos cas d'usage spécifiques</p>
+                                <p class="text-gray-600 text-sm">Contenu adapté à votre secteur et cas d'usage</p>
                             </div>
                         </div>
-                        
                         <div class="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
                             <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">2</div>
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-1">Approche pratique</h4>
-                                <p class="text-gray-600 text-sm">80% de pratique, 20% de théorie. Vos équipes repartent avec des compétences actionnables</p>
+                                <p class="text-gray-600 text-sm">80% de pratique, 20% de théorie</p>
                             </div>
                         </div>
-                        
                         <div class="flex items-start gap-4 p-4 bg-indigo-50 rounded-lg">
                             <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">3</div>
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-1">Kit complet inclus</h4>
-                                <p class="text-gray-600 text-sm">Templates, guides, prompts prêts à l'emploi pour une adoption immédiate</p>
+                                <p class="text-gray-600 text-sm">Templates, guides et prompts prêts à l'emploi</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-3xl p-8 shadow-xl">
+                <div class="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-3xl p-8 shadow-xl" data-aos="fade-left">
                     <h3 class="text-2xl font-bold mb-6 text-gray-900">Ce que vos équipes apprendront</h3>
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-gray-700">Maîtriser le Prompt Engineering (techniques avancées)</span>
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Maîtriser le Prompt Engineering avancé</span>
                         </div>
                         <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-gray-700">Utiliser ChatGPT & Claude pour leur métier</span>
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Utiliser ChatGPT & Claude efficacement</span>
                         </div>
                         <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-gray-700">Automatiser des tâches avec Zapier & Make</span>
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Automatiser avec Zapier & Make</span>
                         </div>
                         <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
                             <span class="text-gray-700">Créer des workflows intelligents</span>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-gray-700">Identifier les cas d'usage pertinents</span>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-gray-700">Éviter les pièges et erreurs courantes</span>
-                        </div>
                     </div>
-                    
-                    <div class="mt-8 p-4 bg-white rounded-lg border-l-4 border-cyan-600">
+                    <div class="mt-6 p-4 bg-white rounded-lg border-l-4 border-cyan-600">
                         <p class="text-sm text-gray-700">
-                            <strong class="text-cyan-700">Résultat garanti :</strong> 100% de vos participants seront autonomes sur les outils IA dès le lendemain de la formation.
+                            <strong class="text-cyan-700">Résultat garanti :</strong> 100% autonomes dès le lendemain
                         </p>
                     </div>
                 </div>
@@ -174,314 +146,74 @@
         </div>
     </section>
 
-    <!-- Tarifs Section -->
+    <!-- Tarifs -->
     <section id="tarifs" class="py-20 px-4 bg-gradient-to-br from-slate-50 to-cyan-50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Nos Formules de Formation</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Formations adaptées à la taille et aux besoins de votre équipe
-                </p>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Formations adaptées à la taille et aux besoins de votre équipe</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Demi-journée -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-cyan-500 transition">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Découverte -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-cyan-500 transition" data-aos="fade-up">
                     <div class="text-center mb-6">
-                        <div class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-semibold text-sm mb-4">
-                            Découverte
-                        </div>
+                        <div class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-semibold text-sm mb-4">Découverte</div>
                         <div class="text-5xl font-bold text-gray-900 mb-2">750€</div>
                         <p class="text-gray-600">Demi-journée (3h)</p>
                     </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">3 heures de formation intensive</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Jusqu'à 15 participants</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Introduction ChatGPT & Claude</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Prompts de base par métier</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Kit de démarrage (10 templates)</span>
-                        </li>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">3h de formation</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Jusqu'à 15 participants</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Kit 10 templates</span></li>
                     </ul>
-                    
-                    <div class="text-center text-sm text-gray-600 mb-6">
-                        ⏱️ Durée : 3h • 👥 15 pers. max
-                    </div>
-                    
-                    <a href="../index.html#contact" class="block w-full bg-gray-200 hover:bg-gray-300 text-center text-gray-900 px-6 py-3 rounded-lg font-semibold transition">
-                        Réserver cette formation
-                    </a>
+                    <a href="../index.html#contact" class="block w-full bg-gray-200 hover:bg-gray-300 text-center text-gray-900 px-6 py-3 rounded-lg font-semibold transition">Réserver</a>
                 </div>
 
-                <!-- 1 Jour (Recommandé) -->
-                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-cyan-600 hover:border-cyan-700 transition relative">
+                <!-- Intensif -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-cyan-600 relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-cyan-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
-                            ⭐ Recommandé
-                        </span>
+                        <span class="bg-cyan-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">⭐ Recommandé</span>
                     </div>
-                    
                     <div class="text-center mb-6 mt-4">
-                        <div class="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full font-semibold text-sm mb-4">
-                            Intensif
-                        </div>
+                        <div class="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full font-semibold text-sm mb-4">Intensif</div>
                         <div class="text-5xl font-bold text-cyan-600 mb-2">1 500€</div>
                         <p class="text-gray-600">1 journée complète (7h)</p>
                     </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700"><strong>7 heures</strong> de formation complète</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Jusqu'à <strong>20 participants</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700"><strong>Prompt Engineering avancé</strong></span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Automatisation avec Zapier/Make</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Cas pratiques de votre secteur</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700"><strong>Kit complet</strong> (50+ templates)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Support 30 jours post-formation</span>
-                        </li>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm"><strong>7h</strong> de formation</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Jusqu'à <strong>20 participants</strong></span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Kit <strong>50+ templates</strong></span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">30 jours support</span></li>
                     </ul>
-                    
-                    <div class="text-center text-sm text-gray-600 mb-6">
-                        ⏱️ Durée : 7h • 👥 20 pers. max
-                    </div>
-                    
-                    <a href="../index.html#contact" class="block w-full bg-cyan-600 hover:bg-cyan-700 text-center text-white px-6 py-4 rounded-lg font-semibold transition shadow-lg">
-                        Réserver cette formation
-                    </a>
+                    <a href="../index.html#contact" class="block w-full bg-cyan-600 hover:bg-cyan-700 text-center text-white px-6 py-4 rounded-lg font-semibold transition shadow-lg">Réserver</a>
                 </div>
 
-                <!-- 2-3 Jours -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-200 hover:border-blue-500 transition">
+                <!-- Master Class -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-200 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-center mb-6">
-                        <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold text-sm mb-4">
-                            Master Class
-                        </div>
+                        <div class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold text-sm mb-4">Master Class</div>
                         <div class="text-5xl font-bold text-blue-600 mb-2">3 000€</div>
                         <p class="text-gray-600">2-3 jours (14-21h)</p>
                     </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">2-3 jours de formation approfondie</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Jusqu'à 30 participants</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Tous les modules avancés</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">RAG & IA conversationnelle</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Projet fil rouge personnalisé</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Kit premium (100+ ressources)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                            </svg>
-                            <span class="text-sm text-gray-700">Support 90 jours + 2 sessions suivi</span>
-                        </li>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">2-3 jours complets</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Jusqu'à 30 participants</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Kit 100+ ressources</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">90 jours support</span></li>
                     </ul>
-                    
-                    <div class="text-center text-sm text-gray-600 mb-6">
-                        ⏱️ Durée : 2-3 jours • 👥 30 pers. max
-                    </div>
-                    
-                    <a href="../index.html#contact" class="block w-full bg-blue-600 hover:bg-blue-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">
-                        Réserver cette formation
-                    </a>
+                    <a href="../index.html#contact" class="block w-full bg-blue-600 hover:bg-blue-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Réserver</a>
                 </div>
             </div>
 
-            <!-- Info supplémentaire -->
-            <div class="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-8 text-white text-center max-w-4xl mx-auto">
+            <!-- Info Inter-entreprises -->
+            <div class="mt-12 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-8 text-white text-center max-w-4xl mx-auto">
                 <div class="text-4xl mb-4">📚</div>
                 <h3 class="text-2xl font-bold mb-4">Formation Inter-Entreprises</h3>
                 <p class="text-lg opacity-90 mb-6">
-                    Vous êtes une petite équipe (1-5 personnes) ? Rejoignez nos <strong>sessions inter-entreprises mensuelles</strong> à partir de <strong>300€/personne</strong> pour la journée complète.
+                    Petites équipes (1-5 pers.) ? Rejoignez nos <strong>sessions mensuelles</strong> à partir de <strong>300€/personne</strong>
                 </p>
-                <a href="../index.html#contact" class="inline-block bg-white text-cyan-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                    Voir les prochaines dates
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programme Détaillé -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-6 text-gray-900">Programme de Formation (1 jour)</h2>
-                <p class="text-xl text-gray-600">Exemple de contenu pour la formule Intensif (7h)</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Matin -->
-                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                            AM
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900">Matinée (4h)</h3>
-                            <p class="text-gray-600">9h00 - 13h00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">1. Introduction (30min)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• État des lieux de l'IA en 2024</li>
-                                <li>• ChatGPT, Claude, Gemini : différences</li>
-                                <li>• Cas d'usage par métier</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">2. Prompt Engineering (1h30)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• Techniques de base (clarté, contexte)</li>
-                                <li>• Techniques avancées (few-shot, CoT)</li>
-                                <li>• Exercices pratiques</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">3. Cas pratiques métier (2h)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• Rédaction (emails, articles, posts)</li>
-                                <li>• Analyse (documents, données, feedback)</li>
-                                <li>• Création (présentations, rapports)</li>
-                                <li>• Automatisation (workflows simples)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Après-midi -->
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                            PM
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900">Après-midi (3h)</h3>
-                            <p class="text-gray-600">14h00 - 17h00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">4. Automatisation IA (1h30)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• Introduction Zapier & Make</li>
-                                <li>• Connexion ChatGPT/Claude</li>
-                                <li>• Workflows emails, Slack, sheets</li>
-                                <li>• Exercice pratique guidé</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">5. Best Practices & Pièges (45min)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• Erreurs courantes à éviter</li>
-                                <li>• Sécurité et confidentialité</li>
-                                <li>• Limites de l'IA</li>
-                                <li>• Checklist qualité</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg p-4 shadow-sm">
-                            <h4 class="font-bold text-gray-900 mb-2">6. Plan d'action & Kit (45min)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1 ml-4">
-                                <li>• Identification use cases prioritaires</li>
-                                <li>• Roadmap 30-60-90 jours</li>
-                                <li>• Remise kit complet</li>
-                                <li>• Q&A finale</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <a href="../index.html#contact" class="inline-block bg-white text-cyan-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Voir les dates</a>
             </div>
         </div>
     </section>
@@ -489,34 +221,31 @@
     <!-- CTA Final -->
     <section class="py-20 px-4 bg-gradient-to-br from-cyan-900 to-blue-900 text-white">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Prêt à former vos équipes à l'IA ?
-            </h2>
-            <p class="text-xl text-gray-200 mb-8">
-                Réservez une session de formation ou demandez un programme sur-mesure
-            </p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Prêt à former vos équipes à l'IA ?</h2>
+            <p class="text-xl text-gray-200 mb-8">Réservez une session ou demandez un programme sur-mesure</p>
             <a href="../index.html#contact" class="inline-block bg-white text-cyan-900 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-xl text-lg">
-                Demander un devis personnalisé
+                Demander un devis
             </a>
-            <p class="text-sm text-gray-300 mt-6">
-                📅 Prochaines sessions disponibles • 🎯 Contenu adapté à votre secteur • 💼 Devis sous 24h
-            </p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-gray-400 mb-4">&copy; 2024 AI & Beyond. Tous droits réservés.</p>
-            <div class="flex justify-center gap-6 text-sm">
-                <a href="../index.html" class="text-gray-400 hover:text-white transition">Accueil</a>
-                <a href="services.html" class="text-gray-400 hover:text-white transition">Services</a>
-                <a href="../index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a>
-            </div>
-        </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="../assets/js/header-scroll.js"></script>
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
+        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+    <script src="../assets/js/bot-config.js"></script>
+    <script src="../assets/js/ai-chat-bot.js"></script>
 </body>
 </html>
