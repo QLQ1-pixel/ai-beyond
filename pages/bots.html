@@ -4,52 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bots IA | AI & Beyond</title>
-    <meta name="description" content="Bots IA conversationnels - Assistants intelligents 24/7 pour automatiser votre support client.">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }</script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
     
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        header.header-full { height: 80px; }
+        header.header-mini { height: 64px; }
+        
+        .logo-slogan-container {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            max-height: 100px;
+            overflow: hidden;
+        }
+        
+        header.header-mini .logo-slogan-container {
+            opacity: 0;
+            max-height: 0;
+            pointer-events: none;
+        }
+        
+        .slogan-ia {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .slogan-text {
+            font-family: 'Shadows Into Light', cursive;
+            color: #475569;
+        }
+        
+        @media (max-width: 768px) {
+            .slogan-ia { font-size: 1.125rem; }
+            .slogan-text { font-size: 1rem; }
+        }
     </style>
 </head>
 <body class="bg-slate-50">
-    
-    <!-- HEADER COMPACT UNIFIÉ -->
-    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm">
+    <header id="main-header" class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 header-full">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-4">
-                    <a href="../index.html" class="flex-shrink-0">
+            <div class="flex justify-between items-center" style="min-height: 64px;">
+                <div class="logo-slogan-container flex items-center gap-4">
+                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2">
                         <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-14 w-auto">
                     </a>
-                    <span class="hidden md:block text-lg font-semibold gradient-text font-rajdhani tracking-wide">
-                        L'IA au service de votre croissance
-                    </span>
+                    <div class="hidden lg:block">
+                        <span class="slogan-ia text-xl">IA</span>
+                        <span class="slogan-text text-lg"> "au service de votre croissance"</span>
+                    </div>
                 </div>
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="services.html" class="text-gray-600 hover:text-primary font-medium transition">Services</a>
-                    <a href="rag.html" class="text-gray-600 hover:text-primary font-medium transition">RAG</a>
-                    <a href="livres.html" class="text-gray-600 hover:text-primary font-medium transition">Livres</a>
-                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-secondary transition shadow-md">Contact</a>
-                </nav>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html#services" class="text-gray-700 hover:text-primary transition">Services</a>
+                    <a href="rag.html" class="text-gray-700 hover:text-primary transition">RAG</a>
+                    <a href="livres.html" class="text-gray-700 hover:text-primary transition">Livres</a>
+                    <a href="../index.html#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition">Contact</a>
+                </div>
                 <button id="mobile-menu-btn" class="md:hidden text-gray-700 p-2">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
                 </button>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-4 space-y-2">
-                <a href="services.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Services</a>
+                <a href="../index.html#services" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Services</a>
                 <a href="rag.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">RAG</a>
                 <a href="livres.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Livres</a>
                 <a href="../index.html#contact" class="block px-4 py-2 bg-primary text-white rounded text-center">Contact</a>
@@ -57,141 +101,164 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-900 to-cyan-900 text-white">
-        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
-            <div class="text-6xl mb-6">🤖</div>
-            <h1 class="text-5xl font-bold mb-6">Bots IA Conversationnels</h1>
-            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
-                Assistants intelligents 24/7 pour automatiser votre support et qualifier vos leads
+    <section class="pt-36 pb-20 px-4 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-6">🤖 Bots Conversationnels IA</h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+                Assistants intelligents pour automatiser votre support, vos ventes et vos opérations
             </p>
         </div>
     </section>
 
-    <!-- Texte vendeur -->
-    <section class="py-12 px-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-b border-blue-100">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+    <!-- Texte vendeur intro -->
+    <section class="py-12 px-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-indigo-100">
+        <div class="max-w-4xl mx-auto text-center">
             <p class="text-xl text-gray-700 leading-relaxed">
-                <span class="font-semibold text-blue-700">Vos clients attendent des réponses instantanées, 24h/24.</span> Nos bots IA qualifient vos leads, répondent aux questions fréquentes et libèrent votre équipe. <span class="font-semibold text-cyan-700">Satisfaction client en hausse, coûts en baisse.</span>
+                <span class="font-semibold text-indigo-700">Vos clients attendent des réponses instantanées, 24h/24.</span> Nos bots IA qualifient vos leads, répondent aux questions fréquentes et libèrent votre équipe pour les tâches à haute valeur. <span class="font-semibold text-purple-700">Résultat : satisfaction client en hausse, coûts en baisse.</span>
             </p>
         </div>
     </section>
 
-    <!-- Bots Grid -->
     <section class="py-20 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Bot Support -->
-                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-blue-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
                     <div class="text-5xl mb-4">💬</div>
-                    <h3 class="text-xl font-bold mb-2">Bot Support Client</h3>
-                    <div class="text-blue-600 font-bold text-2xl mb-4">3-5K€</div>
-                    <p class="text-gray-600 text-sm mb-4">Réponses instantanées 24/7 aux questions fréquentes</p>
-                    <div class="space-y-2 text-sm text-left">
-                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> FAQ automatisée</div>
-                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> Tickets réduits de 60%</div>
-                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> Multi-langues</div>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Bot Support Client</h3>
+                    <p class="text-gray-600 mb-4">Réponses instantanées 24/7 à vos clients</p>
+                    <div class="text-indigo-600 font-bold text-2xl mb-4">3-5K€</div>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>✓ FAQ automatisée</li>
+                        <li>✓ Tickets réduits de 60%</li>
+                        <li>✓ Multi-langues</li>
+                        <li>✓ Intégration CRM</li>
+                    </ul>
                 </div>
 
                 <!-- Bot Lead Gen -->
-                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-purple-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8">
                     <div class="text-5xl mb-4">🎯</div>
-                    <h3 class="text-xl font-bold mb-2">Bot Lead Generation</h3>
+                    <h3 class="text-2xl font-bold mb-3">Bot Lead Generation</h3>
+                    <p class="text-gray-600 mb-4">Qualifiez vos prospects automatiquement</p>
                     <div class="text-purple-600 font-bold text-2xl mb-4">3-6K€</div>
-                    <p class="text-gray-600 text-sm mb-4">Qualifiez vos prospects automatiquement</p>
-                    <div class="space-y-2 text-sm text-left">
-                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> Qualification auto</div>
-                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> +40% conversion</div>
-                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> Scoring leads</div>
-                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>✓ Qualification auto</li>
+                        <li>✓ +40% conversion</li>
+                        <li>✓ LinkedIn/Web intégré</li>
+                        <li>✓ Scoring leads</li>
+                    </ul>
                 </div>
 
-                <!-- Bot Réservation -->
-                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-cyan-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="300">
+                <!-- Bot Booking -->
+                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8">
                     <div class="text-5xl mb-4">📅</div>
-                    <h3 class="text-xl font-bold mb-2">Bot Réservation</h3>
+                    <h3 class="text-2xl font-bold mb-3">Bot Réservation</h3>
+                    <p class="text-gray-600 mb-4">Gérez rendez-vous et bookings</p>
                     <div class="text-cyan-600 font-bold text-2xl mb-4">2-4K€</div>
-                    <p class="text-gray-600 text-sm mb-4">Gérez rendez-vous et bookings automatiquement</p>
-                    <div class="space-y-2 text-sm text-left">
-                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Prise RDV auto</div>
-                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Calendrier sync</div>
-                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Rappels SMS/Email</div>
-                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>✓ Prise RDV auto</li>
+                        <li>✓ Calendrier sync</li>
+                        <li>✓ Rappels SMS/Email</li>
+                        <li>✓ Paiement intégré</li>
+                    </ul>
                 </div>
 
-                <!-- Assistant Interne -->
-                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-emerald-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="400">
+                <!-- Bot Interne -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8">
                     <div class="text-5xl mb-4">🏢</div>
-                    <h3 class="text-xl font-bold mb-2">Assistant Interne</h3>
-                    <div class="text-emerald-600 font-bold text-2xl mb-4">4-8K€</div>
-                    <p class="text-gray-600 text-sm mb-4">RH, admin, IT helpdesk automatisé</p>
-                    <div class="space-y-2 text-sm text-left">
-                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Onboarding auto</div>
-                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> IT tickets</div>
-                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Slack/Teams intégré</div>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Assistant Interne</h3>
+                    <p class="text-gray-600 mb-4">RH, admin, IT helpdesk automatisé</p>
+                    <div class="text-green-600 font-bold text-2xl mb-4">4-8K€</div>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li>✓ Onboarding auto</li>
+                        <li>✓ IT tickets résolus</li>
+                        <li>✓ Docs accessibles</li>
+                        <li>✓ Slack/Teams intégré</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comment ça marche -->
-    <section class="py-20 px-4 bg-slate-100">
+    <section class="py-20 px-4 bg-slate-50">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Comment ça marche ?</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-                    <h3 class="font-bold mb-2">Analyse</h3>
-                    <p class="text-gray-600 text-sm">Nous analysons vos besoins et définissons les scénarios conversationnels</p>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Comment ça marche ?</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-indigo-600">1</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Audit</h3>
+                    <p class="text-sm text-gray-600">Analyse de vos besoins et cas d'usage</p>
                 </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-purple-600">2</span>
+                    </div>
                     <h3 class="font-bold mb-2">Développement</h3>
-                    <p class="text-gray-600 text-sm">Création et entraînement du bot avec vos données et votre ton</p>
+                    <p class="text-sm text-gray-600">Création et entraînement du bot</p>
                 </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-cyan-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-                    <h3 class="font-bold mb-2">Déploiement</h3>
-                    <p class="text-gray-600 text-sm">Intégration sur votre site, WhatsApp, Messenger ou Slack</p>
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-cyan-600">3</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Intégration</h3>
+                    <p class="text-sm text-gray-600">Déploiement sur vos plateformes</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl font-bold text-green-600">4</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Optimisation</h3>
+                    <p class="text-sm text-gray-600">Formation et amélioration continue</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-20 px-4 bg-gradient-to-br from-blue-600 to-cyan-600 text-white">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-6">Prêt à automatiser avec un bot IA ?</h2>
-            <p class="text-xl mb-8 text-blue-100">Discutons de votre projet. Démo gratuite de 30 minutes.</p>
-            <a href="../index.html#contact" class="bg-white text-blue-600 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-lg inline-block">Demander une démo</a>
+            <p class="text-xl mb-8 text-gray-200">
+                Discutons de votre projet. Démo gratuite de 30 minutes.
+            </p>
+            <a href="../index.html#contact" class="bg-white text-indigo-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition inline-block">
+                Demander une démo
+            </a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto"></a>
-            <p class="text-sm text-gray-400 mb-2 font-rajdhani">L'IA au service de votre croissance</p>
-            <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
+    <footer class="bg-slate-950 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm">© 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
-
-    <!-- Scroll to Top -->
-    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-    </button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        AOS.init({ duration: 800, once: true, offset: 100 });
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-        const scrollTopBtn = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
-        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const header = document.getElementById('main-header');
+        let lastScrollTop = 0;
+        let scrollThreshold = 150;
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > scrollThreshold) {
+                header.classList.add('header-mini');
+                header.classList.remove('header-full');
+            } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+                header.classList.remove('header-mini');
+                header.classList.add('header-full');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
     </script>
-    <script src="../assets/js/bot-config.js"></script>
-    <script src="../assets/js/ai-chat-bot.js"></script>
 </body>
 </html>

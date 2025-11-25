@@ -11,30 +11,89 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-handwritten { font-family: 'Shadows Into Light', cursive; }
+        
+        .gradient-text { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        
+        /* HEADER SCROLL BEHAVIOR */
+        header {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        header.header-full {
+            height: 80px;
+        }
+        
+        header.header-mini {
+            height: 64px;
+        }
+        
+        .logo-slogan-container {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            max-height: 100px;
+            overflow: hidden;
+        }
+        
+        header.header-mini .logo-slogan-container {
+            opacity: 0;
+            max-height: 0;
+            pointer-events: none;
+        }
+        
+        .slogan-ia {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .slogan-text {
+            font-family: 'Shadows Into Light', cursive;
+            color: #475569;
+        }
+        
         .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+        
+        @media (max-width: 768px) {
+            .slogan-ia { font-size: 1.125rem; }
+            .slogan-text { font-size: 1rem; }
+        }
+        
+        @media (max-width: 375px) {
+            .slogan-ia { font-size: 1rem; }
+            .slogan-text { font-size: 0.875rem; }
+        }
     </style>
 </head>
 <body class="bg-slate-50">
     
-    <!-- HEADER COMPACT UNIFIÉ -->
-    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm">
+    <!-- HEADER SOPHISTIQUÉ UNIFIÉ -->
+    <header id="main-header" class="fixed w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm header-full">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-4">
+            <div class="flex items-center justify-between" style="min-height: 64px;">
+                <div class="logo-slogan-container flex items-center gap-4">
                     <a href="../index.html" class="flex-shrink-0">
                         <img src="../assets/images/logo.png" alt="AI & Beyond" class="h-14 w-auto">
                     </a>
-                    <span class="hidden md:block text-lg font-semibold gradient-text font-rajdhani tracking-wide">
-                        L'IA au service de votre croissance
-                    </span>
+                    <div class="hidden lg:block">
+                        <span class="slogan-ia text-xl">IA</span>
+                        <span class="slogan-text text-lg"> "au service de votre croissance"</span>
+                    </div>
                 </div>
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="services.html" class="text-gray-600 hover:text-primary font-medium transition">Services</a>
@@ -87,15 +146,15 @@
                     
                     <div class="space-y-4">
                         <div class="flex items-start gap-4 bg-cyan-50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-cyan-600 text-white rounded-lg flex items-center justify-center font-bold">1</div>
+                            <div class="w-10 h-10 bg-cyan-600 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0">1</div>
                             <div><h4 class="font-semibold">Indexation</h4><p class="text-gray-600 text-sm">Vos documents sont analysés et découpés en chunks intelligents</p></div>
                         </div>
                         <div class="flex items-start gap-4 bg-indigo-50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold">2</div>
+                            <div class="w-10 h-10 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0">2</div>
                             <div><h4 class="font-semibold">Recherche</h4><p class="text-gray-600 text-sm">L'IA trouve les passages les plus pertinents à votre question</p></div>
                         </div>
                         <div class="flex items-start gap-4 bg-purple-50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-purple-600 text-white rounded-lg flex items-center justify-center font-bold">3</div>
+                            <div class="w-10 h-10 bg-purple-600 text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0">3</div>
                             <div><h4 class="font-semibold">Génération</h4><p class="text-gray-600 text-sm">Réponse précise basée sur vos données, avec sources citées</p></div>
                         </div>
                     </div>
@@ -136,8 +195,175 @@
         </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- EXEMPLE JURISTE - NOUVEAU (PÉDAGOGIQUE)                 -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-cyan-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-semibold mb-4">
+                    ⚖️ Cas Pratique
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Le RAG pour Juristes : Un Exemple Concret</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Découvrez comment un cabinet d'avocats utilise le RAG pour traiter 1000+ dossiers en toute efficacité
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Problème AVANT -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-red-100" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-2xl">😰</div>
+                        <h3 class="text-2xl font-bold text-red-700">Avant RAG</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl flex-shrink-0">✗</span>
+                            <p class="text-gray-700"><strong>Recherche manuelle :</strong> 2-3h par dossier pour retrouver jurisprudences et précédents</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl flex-shrink-0">✗</span>
+                            <p class="text-gray-700"><strong>Risque d'oubli :</strong> Clauses importantes non détectées dans 1000+ pages</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl flex-shrink-0">✗</span>
+                            <p class="text-gray-700"><strong>Expertise inaccessible :</strong> Collaborateurs juniors sans accès rapide aux précédents</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl flex-shrink-0">✗</span>
+                            <p class="text-gray-700"><strong>Facturation :</strong> Heures perdues = manque à gagner</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-red-50 rounded-lg">
+                        <p class="text-sm text-gray-600"><strong>Coût estimé :</strong></p>
+                        <p class="text-2xl font-bold text-red-700">15-20h/semaine perdues</p>
+                    </div>
+                </div>
+                
+                <!-- Solution APRÈS -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-emerald-100" data-aos="fade-left">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-2xl">🎯</div>
+                        <h3 class="text-2xl font-bold text-emerald-700">Avec RAG</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-500 text-xl flex-shrink-0">✓</span>
+                            <p class="text-gray-700"><strong>Recherche instantanée :</strong> "Jurisprudence licenciement économique 2020-2024" → Résultats en 3 sec</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-500 text-xl flex-shrink-0">✓</span>
+                            <p class="text-gray-700"><strong>Citations précises :</strong> Références exactes avec numéro de page et date</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-500 text-xl flex-shrink-0">✓</span>
+                            <p class="text-gray-700"><strong>Démocratisation :</strong> Tous les collaborateurs accèdent à l'expertise senior</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-500 text-xl flex-shrink-0">✓</span>
+                            <p class="text-gray-700"><strong>ROI direct :</strong> +40% de dossiers traités avec la même équipe</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-emerald-50 rounded-lg">
+                        <p class="text-sm text-gray-600"><strong>Gain mesuré :</strong></p>
+                        <p class="text-2xl font-bold text-emerald-700">12h/semaine économisées</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question Exemple -->
+            <div class="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white" data-aos="fade-up">
+                <div class="max-w-3xl mx-auto">
+                    <h4 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <span class="text-3xl">💬</span>
+                        Question type posée au RAG :
+                    </h4>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-5 mb-4 border border-white/20">
+                        <p class="text-lg italic">"Quels sont les précédents dans notre cabinet concernant des licenciements pour inaptitude professionnelle avec proposition de reclassement refusée, entre 2020 et 2024 ?"</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-5 border border-white/20">
+                        <p class="text-sm mb-3"><strong>Réponse RAG en 3 secondes :</strong></p>
+                        <ul class="space-y-2 text-sm">
+                            <li>✓ 12 dossiers similaires identifiés</li>
+                            <li>✓ 8 jugements favorables, 4 défavorables</li>
+                            <li>✓ Arguments clés : proposition écrite de reclassement + délai de réponse respecté</li>
+                            <li>✓ Sources : Dossiers #2457, #3021, #3892... avec dates et juges</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transition vers cas d'usage -->
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-gray-600 text-lg">
+                    Ce type de gain est reproductible dans <strong class="text-indigo-600">tous les secteurs à forte documentation</strong> 👇
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CAS D'USAGES (existant - gardé tel quel)                -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section class="py-20 px-4 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Cas d'Usages RAG</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Cabinet Comptable -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-bold text-lg mb-2">Cabinet Comptable</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        "Quelle est la fiscalité applicable pour ce type de SCI ?"
+                    </p>
+                    <div class="text-xs text-cyan-600 font-semibold">→ Réponse avec articles du CGI</div>
+                </div>
+                
+                <!-- Artisan -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="font-bold text-lg mb-2">Artisan Plombier</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        "Comment installer cette chaudière modèle XYZ ?"
+                    </p>
+                    <div class="text-xs text-cyan-600 font-semibold">→ Notice technique + photos</div>
+                </div>
+                
+                <!-- Pharmacie -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">💊</div>
+                    <h3 class="font-bold text-lg mb-2">Pharmacie</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        "Interactions médicamenteuses entre ces 3 molécules ?"
+                    </p>
+                    <div class="text-xs text-cyan-600 font-semibold">→ Base Vidal + alertes</div>
+                </div>
+                
+                <!-- Restaurant -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl mb-4">🍽️</div>
+                    <h3 class="font-bold text-lg mb-2">Restaurant</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        "Recette du plat signature avec les proportions exactes ?"
+                    </p>
+                    <div class="text-xs text-cyan-600 font-semibold">→ Fichier recettes + coûts</div>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-600 mt-12 text-lg" data-aos="fade-up">
+                <strong>Chaque secteur</strong> possède sa documentation critique. <strong>RAG la rend exploitable instantanément.</strong>
+            </p>
+        </div>
+    </section>
+
     <!-- Offres -->
-    <section class="py-20 px-4 bg-slate-100">
+    <section class="py-20 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Nos Offres RAG</h2>
             
@@ -200,28 +426,71 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <a href="../index.html" class="inline-block mb-4"><img src="../assets/images/logo.png" alt="AI & Beyond" class="h-16 w-auto mx-auto"></a>
-            <p class="text-sm text-gray-400 mb-2 font-rajdhani">L'IA au service de votre croissance</p>
-            <p class="text-sm text-gray-500">© 2025 AI & Beyond. Tous droits réservés.</p>
+    <footer class="bg-slate-950 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm">&copy; 2025 AI & Beyond. Tous droits réservés.</p>
         </div>
     </footer>
-
-    <!-- Scroll to Top -->
-    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-cyan-500 to-indigo-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    
+    <!-- Scroll to top -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 bg-gradient-to-r from-cyan-500 to-indigo-500 text-white p-4 rounded-full shadow-2xl z-40 hover:scale-110 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
     </button>
-
+    
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true, offset: 100 });
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        
+        // Header scroll behavior
+        const header = document.getElementById('main-header');
+        let lastScrollTop = 0;
+        let scrollThreshold = 150;
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > scrollThreshold) {
+                header.classList.add('header-mini');
+                header.classList.remove('header-full');
+            } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+                header.classList.remove('header-mini');
+                header.classList.add('header-full');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Scroll to top
         const scrollTopBtn = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
-        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
-    <script src="../assets/js/bot-config.js"></script>
-    <script src="../assets/js/ai-chat-bot.js"></script>
 </body>
 </html>
