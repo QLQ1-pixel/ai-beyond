@@ -1,12 +1,14 @@
 /**
  * =========================================
  * LYRA - Bot Premium AI & Beyond
- * Version 2.0 - WOW Edition
+ * Version 2.1 - Claude AI Powered
  * =========================================
  * 
  * Fonctionnalités :
  * - Design glassmorphism premium
  * - Support multilingue (FR/EN/PT)
+ * - Intelligence Claude AI (Haiku 3.5)
+ * - Fallback intelligent si API indisponible
  * - Qualification intelligente de leads
  * - Génération de devis automatique
  * - Intégration Calendly/WhatsApp/Email
@@ -27,13 +29,16 @@ class LyraChatBot {
       whatsapp: '+351920833889',
       calendlyUrl: 'https://calendly.com/ai-and-beyond',
       showBadge: true,
-      autoOpenDelay: null, // null = pas d'ouverture auto
+      autoOpenDelay: null,
+      useClaudeAPI: true, // Activer l'API Claude
+      apiEndpoint: '/.netlify/functions/lyra-chat',
       ...config
     };
 
     // État du bot
     this.isOpen = false;
     this.conversationHistory = [];
+    this.apiConversationHistory = []; // Historique pour l'API Claude
     this.collectedInfo = {
       email: null,
       phone: null,
@@ -46,11 +51,12 @@ class LyraChatBot {
     };
     this.conversationStage = 'initial';
     this.leadScore = 0;
+    this.useAPI = this.config.useClaudeAPI;
 
     // Détection de la langue
     this.lang = this.detectLanguage();
 
-    // Services et tarifs
+    // Services et tarifs (pour fallback et quick replies)
     this.services = {
       bots: { 
         priceMin: 2000, priceMax: 8000, 
@@ -84,84 +90,29 @@ class LyraChatBot {
       }
     };
 
-    // Messages multilingues
-    this.messages = {
+    // Messages pour fallback et quick replies
+    this.messages = this.initMessages();
+
+    // Initialisation
+    this.init();
+  }
+
+  /**
+   * Initialisation des messages multilingues
+   */
+  initMessages() {
+    return {
       fr: {
         welcome: `👋 Bonjour ! Je suis ${this.config.botName}, votre assistante IA chez ${this.config.companyName}.\n\nComment puis-je vous aider aujourd'hui ?`,
         quickReplies: {
           initial: ['Découvrir vos services', 'Obtenir un devis', 'Prendre rendez-vous'],
           services: ['Bots IA', 'Automatisation', 'RAG', 'Formation'],
           quote: ['Recevoir par email', 'Prendre RDV', "J'ai des questions"],
-          thanks: ['Autre question', 'Prendre RDV', 'Contact']
+          thanks: ['Autre question', 'Prendre RDV', 'Contact'],
+          afterResponse: ['En savoir plus', 'Obtenir un devis', 'Prendre RDV']
         },
-        greetings: {
-          response: "Bonjour ! 👋 Comment puis-je vous aider aujourd'hui ?",
-          keywords: ['bonjour', 'salut', 'hello', 'hey', 'coucou', 'bonsoir']
-        },
-        services: {
-          title: "🚀 Nos Services IA",
-          list: `Voici nos solutions pour transformer votre entreprise :\n\n🤖 **Bots IA** (2-8K€) - Assistants intelligents\n⚡ **Automatisation** (3-15K€) - Workflows optimisés\n🧠 **RAG Cloud** (1.5-10K€/mois) - IA sur vos données\n🖥️ **RAG Local** (8-25K€) - Solution 100% privée\n📚 **Formation** (0.8-3K€) - Prompt Engineering\n🔍 **Audit IA** (0.5-5K€) - Stratégie transformation`,
-          keywords: ['service', 'proposez', 'offre', 'faites', 'quoi']
-        },
-        quote: {
-          askEmail: "Parfait ! 📝 Pour vous envoyer un devis personnalisé, quel est votre email ?",
-          askService: "Quel type de projet vous intéresse ?",
-          keywords: ['devis', 'prix', 'coût', 'tarif', 'combien', 'budget', 'estimation']
-        },
-        bots: {
-          response: `🤖 **Bots Conversationnels IA**\n\n• Support client 24/7 intelligent\n• Qualification automatique de leads\n• Prise de RDV et FAQ automatisées\n• Intégration WhatsApp, site web, CRM\n\n💰 **Tarifs** : 2 000€ - 8 000€`,
-          keywords: ['bot', 'chatbot', 'assistant']
-        },
-        automation: {
-          response: `⚡ **Automatisation Intelligente**\n\n• Emails et suivis automatiques\n• Connexion outils (CRM, ERP, APIs)\n• Reporting et alertes automatiques\n• Workflows sur mesure\n\n💰 **Tarifs** : 3 000€ - 15 000€`,
-          keywords: ['automatisation', 'automatiser', 'workflow', 'automation']
-        },
-        rag: {
-          response: `🧠 **RAG-as-a-Service**\n\n• IA avec accès à vos documents\n• Recherche intelligente instantanée\n• Base de connaissances IA\n• Conformité RGPD\n\n💰 **Tarifs** : 1 500€ - 10 000€/mois`,
-          keywords: ['rag', 'données', 'documents', 'knowledge', 'recherche']
-        },
-        ragLocal: {
-          response: `🖥️ **RAG Physique (On-Premise)**\n\n• Mac Studio/Mini dédié à votre entreprise\n• 100% local, données jamais dans le cloud\n• Installation + formation incluses\n• Maintenance et support\n\n💰 **Tarifs** : 8 000€ - 25 000€`,
-          keywords: ['mac', 'studio', 'mini', 'local', 'physique', 'matériel', 'on-premise']
-        },
-        formation: {
-          response: `📚 **Formation Prompt Engineering**\n\n• Techniques avancées de prompting\n• Cas pratiques adaptés à votre métier\n• Ateliers hands-on interactifs\n• Certification incluse\n\n💰 **Tarifs** : 800€ - 3 000€`,
-          keywords: ['formation', 'former', 'apprendre', 'cours', 'training', 'prompt']
-        },
-        consulting: {
-          response: `🔍 **Audit & Consulting IA**\n\n• Analyse de vos processus actuels\n• Identification opportunités IA\n• Roadmap transformation digitale\n• Accompagnement personnalisé\n\n💰 **Tarifs** : 500€ - 5 000€`,
-          keywords: ['audit', 'conseil', 'consulting', 'stratégie']
-        },
-        meeting: {
-          response: `📅 Excellent choix ! Je vous ouvre notre calendrier de réservation.\n\nChoisissez un créneau de 30 min pour un appel découverte gratuit.`,
-          action: 'calendly',
-          keywords: ['rendez-vous', 'rdv', 'appel', 'rencontrer', 'call', 'calendly', 'réserver']
-        },
-        whatsapp: {
-          response: `📱 Je vous redirige vers WhatsApp pour discuter directement avec notre équipe.`,
-          action: 'whatsapp',
-          keywords: ['whatsapp', 'wa', 'téléphone', 'sms']
-        },
-        contact: {
-          response: `📧 **Nos coordonnées :**\n\n📩 Email : contact@aiandbeyond.eu\n📱 WhatsApp : +351 920 833 889\n📅 Calendly : calendly.com/ai-and-beyond\n🌐 Site : aiandbeyond.eu`,
-          keywords: ['contact', 'email', 'humain', 'personne', 'coordonnées']
-        },
-        thanks: {
-          response: `Avec plaisir ! 😊 N'hésitez pas si vous avez d'autres questions.`,
-          keywords: ['merci', 'thanks', 'super', 'parfait', 'génial', 'excellent']
-        },
-        confirm: {
-          askConfirm: "Je transmets votre demande à notre équipe ? Vous recevrez un retour sous 24-48h.",
-          confirmed: `🎉 **Demande transmise !**\n\nNotre équipe vous contactera très rapidement à l'adresse {email}.\n\nMerci de votre confiance !`,
-          keywords: ['oui', 'ok', "d'accord", 'yes', 'allons-y', 'envoyez', 'confirme']
-        },
-        decline: {
-          response: `Pas de problème ! 😊 Je reste disponible si besoin. N'hésitez pas à revenir.`,
-          keywords: ['non', 'pas maintenant', 'plus tard', 'annuler']
-        },
-        needEmail: "Pour continuer, j'aurais besoin de votre email 📧",
-        default: "Je peux vous aider avec nos services IA. Que recherchez-vous exactement ?",
-        placeholder: "Tapez votre message..."
+        placeholder: "Tapez votre message...",
+        thinking: "Lyra réfléchit..."
       },
       en: {
         welcome: `👋 Hello! I'm ${this.config.botName}, your AI assistant at ${this.config.companyName}.\n\nHow can I help you today?`,
@@ -169,76 +120,11 @@ class LyraChatBot {
           initial: ['Discover our services', 'Get a quote', 'Book a meeting'],
           services: ['AI Bots', 'Automation', 'RAG', 'Training'],
           quote: ['Receive by email', 'Book a call', 'I have questions'],
-          thanks: ['Another question', 'Book a call', 'Contact']
+          thanks: ['Another question', 'Book a call', 'Contact'],
+          afterResponse: ['Learn more', 'Get a quote', 'Book a meeting']
         },
-        greetings: {
-          response: "Hello! 👋 How can I help you today?",
-          keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon']
-        },
-        services: {
-          title: "🚀 Our AI Services",
-          list: `Here are our solutions to transform your business:\n\n🤖 **AI Bots** (€2-8K) - Smart assistants\n⚡ **Automation** (€3-15K) - Optimized workflows\n🧠 **RAG Cloud** (€1.5-10K/mo) - AI on your data\n🖥️ **RAG Local** (€8-25K) - 100% private solution\n📚 **Training** (€0.8-3K) - Prompt Engineering\n🔍 **AI Audit** (€0.5-5K) - Transformation strategy`,
-          keywords: ['service', 'offer', 'provide', 'do you', 'what']
-        },
-        quote: {
-          askEmail: "Perfect! 📝 To send you a personalized quote, what's your email?",
-          askService: "What type of project interests you?",
-          keywords: ['quote', 'price', 'cost', 'rate', 'how much', 'budget', 'estimate']
-        },
-        bots: {
-          response: `🤖 **AI Conversational Bots**\n\n• 24/7 intelligent customer support\n• Automatic lead qualification\n• Appointment booking & FAQ\n• WhatsApp, website, CRM integration\n\n💰 **Pricing**: €2,000 - €8,000`,
-          keywords: ['bot', 'chatbot', 'assistant']
-        },
-        automation: {
-          response: `⚡ **Intelligent Automation**\n\n• Automatic emails and follow-ups\n• Tool integration (CRM, ERP, APIs)\n• Automatic reporting and alerts\n• Custom workflows\n\n💰 **Pricing**: €3,000 - €15,000`,
-          keywords: ['automation', 'automate', 'workflow', 'process']
-        },
-        rag: {
-          response: `🧠 **RAG-as-a-Service**\n\n• AI with access to your documents\n• Instant intelligent search\n• AI knowledge base\n• GDPR compliant\n\n💰 **Pricing**: €1,500 - €10,000/month`,
-          keywords: ['rag', 'data', 'documents', 'knowledge', 'search']
-        },
-        ragLocal: {
-          response: `🖥️ **Physical RAG (On-Premise)**\n\n• Dedicated Mac Studio/Mini for your company\n• 100% local, data never in the cloud\n• Installation + training included\n• Maintenance and support\n\n💰 **Pricing**: €8,000 - €25,000`,
-          keywords: ['mac', 'studio', 'mini', 'local', 'physical', 'hardware', 'on-premise']
-        },
-        formation: {
-          response: `📚 **Prompt Engineering Training**\n\n• Advanced prompting techniques\n• Practical cases for your industry\n• Interactive hands-on workshops\n• Certification included\n\n💰 **Pricing**: €800 - €3,000`,
-          keywords: ['training', 'learn', 'course', 'prompt', 'workshop']
-        },
-        consulting: {
-          response: `🔍 **AI Audit & Consulting**\n\n• Analysis of your current processes\n• AI opportunity identification\n• Digital transformation roadmap\n• Personalized support\n\n💰 **Pricing**: €500 - €5,000`,
-          keywords: ['audit', 'consulting', 'strategy', 'advice']
-        },
-        meeting: {
-          response: `📅 Excellent choice! I'm opening our booking calendar.\n\nChoose a 30-min slot for a free discovery call.`,
-          action: 'calendly',
-          keywords: ['meeting', 'appointment', 'call', 'book', 'calendly', 'schedule']
-        },
-        whatsapp: {
-          response: `📱 I'm redirecting you to WhatsApp to chat directly with our team.`,
-          action: 'whatsapp',
-          keywords: ['whatsapp', 'wa', 'phone', 'sms']
-        },
-        contact: {
-          response: `📧 **Our contact details:**\n\n📩 Email: contact@aiandbeyond.eu\n📱 WhatsApp: +351 920 833 889\n📅 Calendly: calendly.com/ai-and-beyond\n🌐 Website: aiandbeyond.eu`,
-          keywords: ['contact', 'email', 'human', 'person', 'coordinates']
-        },
-        thanks: {
-          response: `You're welcome! 😊 Feel free to ask if you have more questions.`,
-          keywords: ['thanks', 'thank you', 'great', 'perfect', 'excellent', 'awesome']
-        },
-        confirm: {
-          askConfirm: "Should I send your request to our team? You'll receive a response within 24-48h.",
-          confirmed: `🎉 **Request submitted!**\n\nOur team will contact you very soon at {email}.\n\nThank you for your trust!`,
-          keywords: ['yes', 'ok', 'sure', 'go ahead', 'send', 'confirm']
-        },
-        decline: {
-          response: `No problem! 😊 I'm here if you need anything. Feel free to come back.`,
-          keywords: ['no', 'not now', 'later', 'cancel']
-        },
-        needEmail: "To continue, I would need your email 📧",
-        default: "I can help you with our AI services. What are you looking for exactly?",
-        placeholder: "Type your message..."
+        placeholder: "Type your message...",
+        thinking: "Lyra is thinking..."
       },
       pt: {
         welcome: `👋 Olá! Sou ${this.config.botName}, sua assistente de IA na ${this.config.companyName}.\n\nComo posso ajudá-lo hoje?`,
@@ -246,93 +132,23 @@ class LyraChatBot {
           initial: ['Descobrir serviços', 'Pedir orçamento', 'Agendar reunião'],
           services: ['Bots IA', 'Automação', 'RAG', 'Formação'],
           quote: ['Receber por email', 'Agendar chamada', 'Tenho dúvidas'],
-          thanks: ['Outra pergunta', 'Agendar chamada', 'Contacto']
+          thanks: ['Outra pergunta', 'Agendar chamada', 'Contacto'],
+          afterResponse: ['Saber mais', 'Pedir orçamento', 'Agendar reunião']
         },
-        greetings: {
-          response: "Olá! 👋 Como posso ajudá-lo hoje?",
-          keywords: ['olá', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'hey']
-        },
-        services: {
-          title: "🚀 Nossos Serviços IA",
-          list: `Aqui estão nossas soluções para transformar seu negócio:\n\n🤖 **Bots IA** (€2-8K) - Assistentes inteligentes\n⚡ **Automação** (€3-15K) - Workflows otimizados\n🧠 **RAG Cloud** (€1.5-10K/mês) - IA nos seus dados\n🖥️ **RAG Local** (€8-25K) - Solução 100% privada\n📚 **Formação** (€0.8-3K) - Prompt Engineering\n🔍 **Auditoria IA** (€0.5-5K) - Estratégia de transformação`,
-          keywords: ['serviço', 'oferecem', 'fazem', 'o que']
-        },
-        quote: {
-          askEmail: "Perfeito! 📝 Para enviar um orçamento personalizado, qual é o seu email?",
-          askService: "Que tipo de projeto lhe interessa?",
-          keywords: ['orçamento', 'preço', 'custo', 'tarifa', 'quanto', 'budget', 'estimativa']
-        },
-        bots: {
-          response: `🤖 **Bots Conversacionais IA**\n\n• Suporte ao cliente 24/7 inteligente\n• Qualificação automática de leads\n• Agendamento e FAQ automatizados\n• Integração WhatsApp, site, CRM\n\n💰 **Preços**: €2.000 - €8.000`,
-          keywords: ['bot', 'chatbot', 'assistente']
-        },
-        automation: {
-          response: `⚡ **Automação Inteligente**\n\n• Emails e follow-ups automáticos\n• Integração de ferramentas (CRM, ERP, APIs)\n• Relatórios e alertas automáticos\n• Workflows personalizados\n\n💰 **Preços**: €3.000 - €15.000`,
-          keywords: ['automação', 'automatizar', 'workflow', 'processo']
-        },
-        rag: {
-          response: `🧠 **RAG-as-a-Service**\n\n• IA com acesso aos seus documentos\n• Pesquisa inteligente instantânea\n• Base de conhecimento IA\n• Conformidade RGPD\n\n💰 **Preços**: €1.500 - €10.000/mês`,
-          keywords: ['rag', 'dados', 'documentos', 'conhecimento', 'pesquisa']
-        },
-        ragLocal: {
-          response: `🖥️ **RAG Físico (On-Premise)**\n\n• Mac Studio/Mini dedicado à sua empresa\n• 100% local, dados nunca na nuvem\n• Instalação + formação incluídas\n• Manutenção e suporte\n\n💰 **Preços**: €8.000 - €25.000`,
-          keywords: ['mac', 'studio', 'mini', 'local', 'físico', 'hardware', 'on-premise']
-        },
-        formation: {
-          response: `📚 **Formação Prompt Engineering**\n\n• Técnicas avançadas de prompting\n• Casos práticos para seu setor\n• Workshops práticos interativos\n• Certificação incluída\n\n💰 **Preços**: €800 - €3.000`,
-          keywords: ['formação', 'treinamento', 'aprender', 'curso', 'workshop']
-        },
-        consulting: {
-          response: `🔍 **Auditoria & Consultoria IA**\n\n• Análise dos seus processos atuais\n• Identificação de oportunidades IA\n• Roadmap de transformação digital\n• Acompanhamento personalizado\n\n💰 **Preços**: €500 - €5.000`,
-          keywords: ['auditoria', 'consultoria', 'estratégia', 'conselho']
-        },
-        meeting: {
-          response: `📅 Excelente escolha! Estou abrindo nosso calendário de reservas.\n\nEscolha um horário de 30 min para uma chamada de descoberta gratuita.`,
-          action: 'calendly',
-          keywords: ['reunião', 'encontro', 'chamada', 'agendar', 'calendly', 'marcar']
-        },
-        whatsapp: {
-          response: `📱 Estou redirecionando para o WhatsApp para conversar diretamente com nossa equipe.`,
-          action: 'whatsapp',
-          keywords: ['whatsapp', 'wa', 'telefone', 'sms']
-        },
-        contact: {
-          response: `📧 **Nossos contactos:**\n\n📩 Email: contact@aiandbeyond.eu\n📱 WhatsApp: +351 920 833 889\n📅 Calendly: calendly.com/ai-and-beyond\n🌐 Site: aiandbeyond.eu`,
-          keywords: ['contacto', 'email', 'humano', 'pessoa', 'coordenadas']
-        },
-        thanks: {
-          response: `De nada! 😊 Não hesite se tiver mais perguntas.`,
-          keywords: ['obrigado', 'obrigada', 'ótimo', 'perfeito', 'excelente', 'muito bom']
-        },
-        confirm: {
-          askConfirm: "Devo enviar seu pedido para nossa equipe? Receberá uma resposta em 24-48h.",
-          confirmed: `🎉 **Pedido enviado!**\n\nNossa equipe entrará em contacto muito em breve em {email}.\n\nObrigado pela confiança!`,
-          keywords: ['sim', 'ok', 'claro', 'pode ser', 'enviar', 'confirmar']
-        },
-        decline: {
-          response: `Sem problema! 😊 Estou aqui se precisar. Volte quando quiser.`,
-          keywords: ['não', 'agora não', 'mais tarde', 'cancelar']
-        },
-        needEmail: "Para continuar, precisaria do seu email 📧",
-        default: "Posso ajudá-lo com nossos serviços de IA. O que procura exatamente?",
-        placeholder: "Digite sua mensagem..."
+        placeholder: "Digite sua mensagem...",
+        thinking: "Lyra está pensando..."
       }
     };
-
-    // Initialisation
-    this.init();
   }
 
   /**
    * Détection automatique de la langue
    */
   detectLanguage() {
-    // 1. Vérifier l'URL
     const path = window.location.pathname;
     if (path.startsWith('/en/') || path.includes('/en/')) return 'en';
     if (path.startsWith('/pt/') || path.includes('/pt/')) return 'pt';
     
-    // 2. Vérifier l'attribut lang du HTML
     const htmlLang = document.documentElement.lang;
     if (htmlLang) {
       if (htmlLang.startsWith('en')) return 'en';
@@ -340,13 +156,11 @@ class LyraChatBot {
       if (htmlLang.startsWith('fr')) return 'fr';
     }
     
-    // 3. Vérifier le localStorage
     const storedLang = localStorage.getItem('preferred-language');
     if (storedLang && ['fr', 'en', 'pt'].includes(storedLang)) {
       return storedLang;
     }
     
-    // Par défaut : français
     return 'fr';
   }
 
@@ -377,19 +191,16 @@ class LyraChatBot {
       }, this.config.autoOpenDelay);
     }
 
-    // Log pour debug
-    console.log(`🤖 Lyra initialized (${this.lang})`);
+    console.log(`🤖 Lyra v2.1 initialized (${this.lang}) - Claude API: ${this.useAPI ? 'enabled' : 'disabled'}`);
   }
 
   /**
    * Injection du CSS (fallback si fichier externe non chargé)
    */
   injectCSS() {
-    // Vérifier si le CSS est déjà chargé
     const existingLink = document.querySelector('link[href*="lyra-premium.css"]');
     if (existingLink) return;
 
-    // Sinon injecter le lien
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/assets/css/lyra-premium.css';
@@ -403,7 +214,6 @@ class LyraChatBot {
     const widget = document.createElement('div');
     widget.id = 'lyra-widget';
     widget.innerHTML = `
-      <!-- Bouton déclencheur -->
       <button id="lyra-trigger" class="pulse" aria-label="Open chat with ${this.config.botName}">
         ${this.config.showBadge ? '<span class="lyra-badge">1</span>' : ''}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -411,9 +221,7 @@ class LyraChatBot {
         </svg>
       </button>
 
-      <!-- Conteneur Chat -->
       <div id="lyra-container" role="dialog" aria-label="Chat with ${this.config.botName}">
-        <!-- Header -->
         <div id="lyra-header">
           <div class="lyra-avatar-wrapper">
             <div class="lyra-avatar">
@@ -434,10 +242,8 @@ class LyraChatBot {
           </button>
         </div>
 
-        <!-- Messages -->
         <div id="lyra-messages"></div>
 
-        <!-- Input -->
         <div id="lyra-input-area">
           <input 
             type="text" 
@@ -452,9 +258,8 @@ class LyraChatBot {
           </button>
         </div>
 
-        <!-- Powered by -->
         <div class="lyra-powered">
-          Powered by <a href="https://aiandbeyond.eu" target="_blank">AI & Beyond</a>
+          Powered by <a href="https://aiandbeyond.eu" target="_blank">AI & Beyond</a> ✨ Claude AI
         </div>
       </div>
     `;
@@ -465,17 +270,13 @@ class LyraChatBot {
    * Attacher les événements
    */
   attachEventListeners() {
-    // Toggle chat
     document.getElementById('lyra-trigger').addEventListener('click', () => this.toggleChat());
     document.getElementById('lyra-close').addEventListener('click', () => this.toggleChat());
-    
-    // Send message
     document.getElementById('lyra-send').addEventListener('click', () => this.handleSend());
     document.getElementById('lyra-input').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') this.handleSend();
     });
 
-    // Fermer avec Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isOpen) this.toggleChat();
     });
@@ -494,11 +295,7 @@ class LyraChatBot {
       container.classList.add('active');
       trigger.style.display = 'none';
       document.getElementById('lyra-input').focus();
-      
-      // Masquer le badge après ouverture
       if (badge) badge.style.display = 'none';
-      
-      // Analytics
       this.trackEvent('chat_opened');
     } else {
       container.classList.add('closing');
@@ -525,178 +322,237 @@ class LyraChatBot {
   /**
    * Traitement du message utilisateur
    */
-  processUserMessage(message) {
+  async processUserMessage(message) {
     this.addUserMessage(message);
     this.showTyping();
     
-    // Extraction d'informations
+    // Extraction d'informations pour qualification
     this.extractInfo(message);
     
-    // Générer réponse avec délai réaliste
-    const delay = 600 + Math.random() * 600;
-    setTimeout(() => {
-      this.hideTyping();
-      const response = this.generateResponse(message);
-      this.addBotMessage(response.message, response.quickReplies);
+    // Ajouter à l'historique API
+    this.apiConversationHistory.push({
+      role: 'user',
+      content: message
+    });
+
+    try {
+      let response;
       
-      // Actions spéciales
-      if (response.action === 'calendly') {
-        setTimeout(() => window.open(this.config.calendlyUrl, '_blank'), 800);
+      if (this.useAPI) {
+        // Appel à l'API Claude
+        response = await this.callClaudeAPI(message);
+      } else {
+        // Mode fallback
+        response = this.generateFallbackResponse(message);
       }
-      if (response.action === 'whatsapp') {
-        setTimeout(() => window.open(`https://wa.me/${this.config.whatsapp.replace(/[^0-9]/g, '')}`, '_blank'), 800);
+      
+      this.hideTyping();
+      
+      // Ajouter la réponse à l'historique API
+      if (response.message) {
+        this.apiConversationHistory.push({
+          role: 'assistant',
+          content: response.message
+        });
       }
-    }, delay);
+      
+      // Afficher le message avec quick replies contextuels
+      const quickReplies = this.getContextualQuickReplies(message, response.message);
+      this.addBotMessage(response.message, quickReplies);
+      
+      // Actions spéciales basées sur le contenu
+      this.handleSpecialActions(response.message);
+      
+    } catch (error) {
+      console.error('Error processing message:', error);
+      this.hideTyping();
+      
+      // Fallback en cas d'erreur
+      const fallbackResponse = this.generateFallbackResponse(message);
+      this.addBotMessage(fallbackResponse.message, fallbackResponse.quickReplies);
+    }
   }
 
   /**
-   * Génération de la réponse
+   * Appel à l'API Claude via Netlify Function
    */
-  generateResponse(message) {
+  async callClaudeAPI(message) {
+    try {
+      const response = await fetch(this.config.apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: message }],
+          conversationHistory: this.apiConversationHistory.slice(-10) // Limiter l'historique
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      // Si fallback activé côté serveur
+      if (data.fallback) {
+        console.log('API fallback activated');
+        this.useAPI = false; // Désactiver temporairement l'API
+        return { message: data.message, quickReplies: this.t('quickReplies').initial };
+      }
+
+      // Log usage pour monitoring
+      if (data.usage) {
+        console.log(`📊 Claude API usage - Input: ${data.usage.input_tokens}, Output: ${data.usage.output_tokens}`);
+      }
+
+      return { message: data.message };
+      
+    } catch (error) {
+      console.error('Claude API error:', error);
+      
+      // Basculer vers fallback
+      this.useAPI = false;
+      return this.generateFallbackResponse(message);
+    }
+  }
+
+  /**
+   * Génération de réponse fallback (sans API)
+   */
+  generateFallbackResponse(message) {
     const lower = message.toLowerCase();
     const msgs = this.messages[this.lang];
 
     // Salutations
-    if (this.matchKeywords(lower, msgs.greetings.keywords)) {
-      return { message: msgs.greetings.response, quickReplies: msgs.quickReplies.initial };
-    }
-
-    // Services
-    if (this.matchKeywords(lower, msgs.services.keywords)) {
-      return { message: msgs.services.list, quickReplies: msgs.quickReplies.services };
-    }
-
-    // Devis
-    if (this.matchKeywords(lower, msgs.quote.keywords)) {
-      if (!this.collectedInfo.email) {
-        this.conversationStage = 'collecting_email';
-        return { message: msgs.quote.askEmail, quickReplies: [] };
-      }
-      return { message: msgs.quote.askService, quickReplies: msgs.quickReplies.services };
-    }
-
-    // Bots
-    if (this.matchKeywords(lower, msgs.bots.keywords)) {
-      this.collectedInfo.service = 'bots';
-      return { message: msgs.bots.response, quickReplies: ['Obtenir un devis', 'Prendre RDV'] };
-    }
-
-    // Automatisation
-    if (this.matchKeywords(lower, msgs.automation.keywords)) {
-      this.collectedInfo.service = 'automation';
-      return { message: msgs.automation.response, quickReplies: ['Obtenir un devis', 'Prendre RDV'] };
-    }
-
-    // RAG
-    if (this.matchKeywords(lower, msgs.rag.keywords)) {
-      this.collectedInfo.service = 'rag';
-      return { message: msgs.rag.response, quickReplies: ['Obtenir un devis', 'RAG Local'] };
-    }
-
-    // RAG Local
-    if (this.matchKeywords(lower, msgs.ragLocal.keywords)) {
-      this.collectedInfo.service = 'ragPhysique';
-      return { message: msgs.ragLocal.response, quickReplies: ['Obtenir un devis', 'Prendre RDV'] };
-    }
-
-    // Formation
-    if (this.matchKeywords(lower, msgs.formation.keywords)) {
-      this.collectedInfo.service = 'formation';
-      return { message: msgs.formation.response, quickReplies: ['Obtenir un devis', 'Programme'] };
-    }
-
-    // Consulting
-    if (this.matchKeywords(lower, msgs.consulting.keywords)) {
-      this.collectedInfo.service = 'consulting';
-      return { message: msgs.consulting.response, quickReplies: ['Prendre RDV', 'Obtenir un devis'] };
-    }
-
-    // RDV / Meeting
-    if (this.matchKeywords(lower, msgs.meeting.keywords)) {
-      return { message: msgs.meeting.response, quickReplies: ['WhatsApp', 'Email'], action: 'calendly' };
-    }
-
-    // WhatsApp
-    if (this.matchKeywords(lower, msgs.whatsapp.keywords)) {
-      return { message: msgs.whatsapp.response, quickReplies: [], action: 'whatsapp' };
-    }
-
-    // Contact
-    if (this.matchKeywords(lower, msgs.contact.keywords)) {
-      return { message: msgs.contact.response, quickReplies: ['Calendly', 'WhatsApp'] };
-    }
-
-    // Merci
-    if (this.matchKeywords(lower, msgs.thanks.keywords)) {
-      return { message: msgs.thanks.response, quickReplies: msgs.quickReplies.thanks };
-    }
-
-    // Confirmation
-    if (this.matchKeywords(lower, msgs.confirm.keywords)) {
-      if (this.collectedInfo.email && this.conversationStage === 'closing') {
-        this.sendLead();
-        const confirmed = msgs.confirm.confirmed.replace('{email}', this.collectedInfo.email);
-        return { message: confirmed, quickReplies: [] };
-      }
-      return { message: msgs.default, quickReplies: msgs.quickReplies.initial };
-    }
-
-    // Refus
-    if (this.matchKeywords(lower, msgs.decline.keywords)) {
-      this.conversationStage = 'initial';
-      return { message: msgs.decline.response, quickReplies: msgs.quickReplies.initial };
-    }
-
-    // Email détecté
-    if (this.containsEmail(message)) {
-      const email = this.extractEmail(message);
-      this.collectedInfo.email = email;
-      this.conversationStage = 'qualifying';
-      this.leadScore += 3;
-      
-      let response = this.lang === 'fr' ? `Parfait ! 📧 J'ai noté ${email}.\n\nQuel est votre besoin principal ?` :
-                     this.lang === 'en' ? `Perfect! 📧 I've noted ${email}.\n\nWhat's your main need?` :
-                     `Perfeito! 📧 Anotei ${email}.\n\nQual é sua principal necessidade?`;
-      
-      return { message: response, quickReplies: msgs.quickReplies.services };
-    }
-
-    // Collecte email en cours
-    if (this.conversationStage === 'collecting_email') {
-      return { message: msgs.needEmail, quickReplies: [] };
-    }
-
-    // Qualification en cours
-    if (this.conversationStage === 'qualifying') {
-      this.collectedInfo.need = message;
-      this.conversationStage = 'closing';
-      
-      // Génération estimation si service sélectionné
-      let estimate = '';
-      if (this.collectedInfo.service && this.services[this.collectedInfo.service]) {
-        const s = this.services[this.collectedInfo.service];
-        const suffix = s.monthly ? '/mois' : '';
-        estimate = `\n\n💼 Estimation : ${s.priceMin.toLocaleString()}€ - ${s.priceMax.toLocaleString()}€${suffix}`;
-      }
-      
+    if (/bonjour|salut|hello|hi|hey|olá|oi|bom dia/.test(lower)) {
       return { 
-        message: (this.lang === 'fr' ? `Merci pour ces détails ! 📝${estimate}\n\n` : 
-                  this.lang === 'en' ? `Thanks for these details! 📝${estimate}\n\n` :
-                  `Obrigado por estes detalhes! 📝${estimate}\n\n`) + msgs.confirm.askConfirm,
-        quickReplies: msgs.quickReplies.quote
+        message: this.lang === 'fr' ? "Bonjour ! 👋 Comment puis-je vous aider aujourd'hui ?" :
+                 this.lang === 'en' ? "Hello! 👋 How can I help you today?" :
+                 "Olá! 👋 Como posso ajudá-lo hoje?",
+        quickReplies: msgs.quickReplies.initial 
       };
     }
 
+    // Services
+    if (/service|offre|propose|offer|serviço/.test(lower)) {
+      const servicesMsg = this.lang === 'fr' 
+        ? `🚀 **Nos Services IA :**\n\n🤖 Bots IA (2-8K€)\n⚡ Automatisation (3-15K€)\n🧠 RAG Cloud (1.5-10K€/mois)\n🖥️ RAG Local (8-25K€)\n📚 Formation (0.8-3K€)\n🔍 Audit (0.5-5K€)\n\nQuel service vous intéresse ?`
+        : this.lang === 'en'
+        ? `🚀 **Our AI Services:**\n\n🤖 AI Bots (€2-8K)\n⚡ Automation (€3-15K)\n🧠 RAG Cloud (€1.5-10K/mo)\n🖥️ RAG Local (€8-25K)\n📚 Training (€0.8-3K)\n🔍 Audit (€0.5-5K)\n\nWhich service interests you?`
+        : `🚀 **Nossos Serviços IA:**\n\n🤖 Bots IA (€2-8K)\n⚡ Automação (€3-15K)\n🧠 RAG Cloud (€1.5-10K/mês)\n🖥️ RAG Local (€8-25K)\n📚 Formação (€0.8-3K)\n🔍 Auditoria (€0.5-5K)\n\nQual serviço lhe interessa?`;
+      
+      return { message: servicesMsg, quickReplies: msgs.quickReplies.services };
+    }
+
+    // Devis
+    if (/devis|prix|quote|price|orçamento|preço|combien|how much|quanto/.test(lower)) {
+      const quoteMsg = this.lang === 'fr'
+        ? "Pour vous proposer un devis personnalisé, pourriez-vous me donner votre email et décrire brièvement votre projet ?"
+        : this.lang === 'en'
+        ? "To provide you with a personalized quote, could you give me your email and briefly describe your project?"
+        : "Para fornecer um orçamento personalizado, pode dar-me o seu email e descrever brevemente o seu projeto?";
+      
+      return { message: quoteMsg, quickReplies: [] };
+    }
+
+    // RDV
+    if (/rdv|rendez-vous|meeting|call|appointment|reunião|chamada|calendly/.test(lower)) {
+      const rdvMsg = this.lang === 'fr'
+        ? "📅 Parfait ! Réservez un créneau de 30 min pour un appel découverte gratuit.\n\n👉 calendly.com/ai-and-beyond"
+        : this.lang === 'en'
+        ? "📅 Perfect! Book a 30-min slot for a free discovery call.\n\n👉 calendly.com/ai-and-beyond"
+        : "📅 Perfeito! Reserve um horário de 30 min para uma chamada de descoberta gratuita.\n\n👉 calendly.com/ai-and-beyond";
+      
+      return { message: rdvMsg, quickReplies: ['WhatsApp', 'Email'] };
+    }
+
+    // Contact
+    if (/contact|email|whatsapp|téléphone|phone/.test(lower)) {
+      const contactMsg = this.lang === 'fr'
+        ? `📧 **Contact :**\n\n📩 contact@aiandbeyond.eu\n📱 WhatsApp: +351 920 833 889\n📅 calendly.com/ai-and-beyond`
+        : this.lang === 'en'
+        ? `📧 **Contact:**\n\n📩 contact@aiandbeyond.eu\n📱 WhatsApp: +351 920 833 889\n📅 calendly.com/ai-and-beyond`
+        : `📧 **Contacto:**\n\n📩 contact@aiandbeyond.eu\n📱 WhatsApp: +351 920 833 889\n📅 calendly.com/ai-and-beyond`;
+      
+      return { message: contactMsg, quickReplies: ['Calendly', 'WhatsApp'] };
+    }
+
+    // Merci
+    if (/merci|thanks|thank|obrigado|obrigada/.test(lower)) {
+      const thanksMsg = this.lang === 'fr'
+        ? "Avec plaisir ! 😊 N'hésitez pas si vous avez d'autres questions."
+        : this.lang === 'en'
+        ? "You're welcome! 😊 Feel free to ask if you have more questions."
+        : "De nada! 😊 Não hesite se tiver mais perguntas.";
+      
+      return { message: thanksMsg, quickReplies: msgs.quickReplies.thanks };
+    }
+
     // Réponse par défaut
-    return { message: msgs.default, quickReplies: msgs.quickReplies.initial };
+    const defaultMsg = this.lang === 'fr'
+      ? "Je peux vous aider avec nos services IA : bots, automatisation, RAG, formation... Que recherchez-vous ?"
+      : this.lang === 'en'
+      ? "I can help you with our AI services: bots, automation, RAG, training... What are you looking for?"
+      : "Posso ajudá-lo com nossos serviços de IA: bots, automação, RAG, formação... O que procura?";
+
+    return { message: defaultMsg, quickReplies: msgs.quickReplies.initial };
   }
 
   /**
-   * Vérifier si des mots-clés correspondent
+   * Quick replies contextuels basés sur la conversation
    */
-  matchKeywords(text, keywords) {
-    if (!keywords) return false;
-    return keywords.some(kw => text.includes(kw.toLowerCase()));
+  getContextualQuickReplies(userMessage, botResponse) {
+    const msgs = this.messages[this.lang];
+    const lower = (userMessage + ' ' + botResponse).toLowerCase();
+
+    // Si on parle de services spécifiques
+    if (/bot|chatbot|assistant/.test(lower)) {
+      return this.lang === 'fr' ? ['Obtenir un devis', 'Voir une démo', 'Prendre RDV'] :
+             this.lang === 'en' ? ['Get a quote', 'See a demo', 'Book a call'] :
+             ['Pedir orçamento', 'Ver demo', 'Agendar chamada'];
+    }
+
+    if (/rag|document|knowledge/.test(lower)) {
+      return this.lang === 'fr' ? ['RAG Cloud', 'RAG Local', 'Obtenir un devis'] :
+             this.lang === 'en' ? ['RAG Cloud', 'RAG Local', 'Get a quote'] :
+             ['RAG Cloud', 'RAG Local', 'Pedir orçamento'];
+    }
+
+    if (/formation|training|cours/.test(lower)) {
+      return this.lang === 'fr' ? ['Programme détaillé', 'Tarifs', 'Prendre RDV'] :
+             this.lang === 'en' ? ['Detailed program', 'Pricing', 'Book a call'] :
+             ['Programa detalhado', 'Preços', 'Agendar chamada'];
+    }
+
+    // Si email mentionné dans le bot response
+    if (/email|contact@/.test(lower)) {
+      return this.lang === 'fr' ? ['Prendre RDV', 'WhatsApp', 'Autre question'] :
+             this.lang === 'en' ? ['Book a call', 'WhatsApp', 'Another question'] :
+             ['Agendar chamada', 'WhatsApp', 'Outra pergunta'];
+    }
+
+    // Par défaut
+    return msgs.quickReplies.afterResponse;
+  }
+
+  /**
+   * Gérer les actions spéciales basées sur le contenu
+   */
+  handleSpecialActions(message) {
+    const lower = message.toLowerCase();
+
+    // Ouvrir Calendly si mentionné
+    if (/calendly\.com|réservez un créneau|book a slot|reserve um horário/.test(lower)) {
+      setTimeout(() => {
+        if (confirm(this.lang === 'fr' ? 'Ouvrir Calendly pour réserver ?' : 
+                    this.lang === 'en' ? 'Open Calendly to book?' : 
+                    'Abrir Calendly para reservar?')) {
+          window.open(this.config.calendlyUrl, '_blank');
+        }
+      }, 1500);
+    }
   }
 
   /**
@@ -704,9 +560,9 @@ class LyraChatBot {
    */
   extractInfo(message) {
     // Email
-    const email = this.extractEmail(message);
-    if (email) {
-      this.collectedInfo.email = email;
+    const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w{2,}/);
+    if (emailMatch) {
+      this.collectedInfo.email = emailMatch[0].toLowerCase();
       this.leadScore += 3;
     }
     
@@ -718,29 +574,25 @@ class LyraChatBot {
     }
     
     // Budget mentionné
-    if (/\d+\s*[kK€$]|\d{4,}/.test(message)) {
+    if (/\d+\s*[kK€$]|\d{4,}|budget/.test(message)) {
       this.leadScore += 2;
     }
     
     // Urgence
-    if (/urgent|rapidement|vite|asap|quickly|soon/i.test(message)) {
+    if (/urgent|rapidement|vite|asap|quickly|soon|urgente/.test(message.toLowerCase())) {
       this.leadScore += 1;
     }
-  }
 
-  /**
-   * Vérifier si le message contient un email
-   */
-  containsEmail(text) {
-    return /[\w.-]+@[\w.-]+\.\w{2,}/.test(text);
-  }
+    // Nom d'entreprise potentiel
+    const companyMatch = message.match(/(?:chez|at|para|company|entreprise|empresa)\s+([A-Z][a-zA-Z]+)/);
+    if (companyMatch) {
+      this.collectedInfo.company = companyMatch[1];
+    }
 
-  /**
-   * Extraire l'email du message
-   */
-  extractEmail(text) {
-    const match = text.match(/[\w.-]+@[\w.-]+\.\w{2,}/);
-    return match ? match[0].toLowerCase() : null;
+    // Si lead score élevé, envoyer notification
+    if (this.leadScore >= 5 && this.collectedInfo.email) {
+      this.sendLead();
+    }
   }
 
   /**
@@ -754,7 +606,6 @@ class LyraChatBot {
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
     
-    // Historique
     this.conversationHistory.push({ role: 'user', content: text, timestamp: Date.now() });
   }
 
@@ -764,13 +615,11 @@ class LyraChatBot {
   addBotMessage(text, quickReplies = []) {
     const container = document.getElementById('lyra-messages');
     
-    // Message
     const div = document.createElement('div');
     div.className = 'lyra-message bot';
     div.innerHTML = this.formatMessage(text);
     container.appendChild(div);
     
-    // Quick replies
     if (quickReplies && quickReplies.length > 0) {
       const qrDiv = document.createElement('div');
       qrDiv.className = 'lyra-quick-replies';
@@ -790,19 +639,20 @@ class LyraChatBot {
     }
     
     container.scrollTop = container.scrollHeight;
-    
-    // Historique
     this.conversationHistory.push({ role: 'bot', content: text, timestamp: Date.now() });
   }
 
   /**
-   * Formater le message (markdown simplifié)
+   * Formater le message (markdown simplifié + liens cliquables)
    */
   formatMessage(text) {
     return text
       .replace(/\n/g, '<br>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>');
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')
+      .replace(/(calendly\.com\/[^\s<]+)/g, '<a href="https://$1" target="_blank" rel="noopener">$1</a>')
+      .replace(/(\+351[\s\d]+)/g, '<a href="https://wa.me/351920833889" target="_blank" rel="noopener">$1</a>');
   }
 
   /**
@@ -827,21 +677,19 @@ class LyraChatBot {
   }
 
   /**
-   * Envoi du lead
+   * Envoi du lead vers Netlify Forms
    */
   sendLead() {
     const data = {
       ...this.collectedInfo,
       leadScore: this.leadScore,
       language: this.lang,
-      conversationHistory: this.conversationHistory,
       source: window.location.href,
       timestamp: new Date().toISOString()
     };
     
     console.log('📧 Lead Lyra:', data);
     
-    // Netlify Forms
     const formData = new URLSearchParams();
     formData.append('form-name', 'lyra-leads');
     Object.entries(data).forEach(([key, value]) => {
@@ -849,8 +697,7 @@ class LyraChatBot {
         formData.append(key, value);
       }
     });
-    // Ajouter l'historique en JSON
-    formData.append('conversation', JSON.stringify(this.conversationHistory));
+    formData.append('conversation', JSON.stringify(this.conversationHistory.slice(-20)));
     
     fetch('/', {
       method: 'POST',
@@ -870,15 +717,12 @@ class LyraChatBot {
    * Tracking analytics
    */
   trackEvent(eventName, data = {}) {
-    // Google Analytics 4
     if (typeof gtag === 'function') {
       gtag('event', eventName, {
         event_category: 'Lyra Chat',
         ...data
       });
     }
-    
-    // Console pour debug
     console.log(`📊 Event: ${eventName}`, data);
   }
 }
@@ -887,14 +731,10 @@ class LyraChatBot {
 // INITIALISATION AUTOMATIQUE
 // =========================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Fusionner avec config externe si présente
   const config = window.LYRA_CONFIG || window.AI_BOT_CONFIG || {};
-  
-  // Créer l'instance
   window.lyra = new LyraChatBot(config);
 });
 
-// Export pour modules
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = LyraChatBot;
 }
