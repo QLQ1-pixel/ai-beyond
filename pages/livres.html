@@ -21,27 +21,62 @@
         .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .scroll-top-btn.visible { opacity: 1; visibility: visible; }
         .book-shadow { box-shadow: 20px 20px 60px rgba(0,0,0,0.2), -5px -5px 20px rgba(255,255,255,0.8); }
+        
+        /* Header Glassmorphism Premium */
+        .header-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link-glass {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link-glass::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link-glass:hover::after {
+            width: 100%;
+        }
+        .logo-container-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+        .logo-container-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     
-    <!-- HEADER FIXE - Style V14 avec gradient comme index -->
-    <nav class="fixed w-full bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 shadow-lg z-50">
+    <!-- HEADER GLASSMORPHISM PREMIUM -->
+    <header class="fixed w-full z-50 header-glass">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-32">
-                <div class="flex items-center gap-4">
-                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2">
-                        <img src="../assets/images/logo-dark.png" alt="AI & Beyond" class="h-28 w-auto">
-                    </a>
-                    <span class="hidden lg:block text-xl font-semibold text-white font-exo">L'IA au service de votre croissance</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="../index.html" class="text-white hover:text-white/80 transition font-semibold">Accueil</a>
-                    <a href="services.html" class="text-white/90 hover:text-white transition">Services</a>
-                    <a href="rag.html" class="text-white/90 hover:text-white transition">RAG</a>
-                    <a href="bots.html" class="text-white/90 hover:text-white transition">Bots</a>
-                    <a href="contact.html" class="bg-white text-indigo-600 px-6 py-2 rounded-full hover:bg-gray-100 transition">Contact</a>
-                </div>
+            <div class="flex justify-between items-center h-20">
+                <a href="../index.html" class="logo-container-glass flex items-center gap-3">
+                    <img src="../assets/images/logo-light.png" alt="AI & Beyond" class="h-12 w-auto">
+                    <span class="hidden lg:block text-white font-semibold font-exo">AI & Beyond</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="nav-link-glass text-gray-300 font-medium">Accueil</a>
+                    <a href="services.html" class="nav-link-glass text-gray-300 font-medium">Services</a>
+                    <a href="rag.html" class="nav-link-glass text-gray-300 font-medium">RAG</a>
+                    <a href="bots.html" class="nav-link-glass text-gray-300 font-medium">Bots</a>
+                    <a href="livres.html" class="nav-link-glass text-white font-semibold">Livres</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition">Contact</a>
+                </nav>
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white p-2">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -49,19 +84,20 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-indigo-700 border-t border-white/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10">
             <div class="px-4 py-4 space-y-2">
-                <a href="../index.html" class="block px-4 py-2 text-white bg-white/20 hover:bg-white/30 rounded font-semibold">Accueil</a>
-                <a href="services.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">Services</a>
-                <a href="rag.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">RAG</a>
-                <a href="bots.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">Bots</a>
-                <a href="contact.html" class="block px-4 py-2 bg-white text-indigo-600 rounded text-center">Contact</a>
+                <a href="../index.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Accueil</a>
+                <a href="services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Services</a>
+                <a href="rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">RAG</a>
+                <a href="bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Bots</a>
+                <a href="livres.html" class="block px-4 py-3 text-white bg-white/20 hover:bg-white/30 rounded-lg font-semibold">Livres</a>
+                <a href="contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- HERO -->
-    <section class="pt-40 pb-20 px-4 bg-gradient-to-br from-white via-amber-50/50 to-orange-50">
+    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-white via-amber-50/50 to-orange-50">
         <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
             <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/80 backdrop-blur border border-amber-200 shadow-sm mb-8">
                 <span class="text-2xl mr-3">📚</span>
