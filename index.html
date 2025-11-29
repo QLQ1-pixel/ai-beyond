@@ -444,87 +444,89 @@
             <div class="flex items-center justify-between py-4 md:py-6">
                 <!-- Logo à gauche -->
                 <a href="/" class="flex-shrink-0 group">
-                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300 group-hover:scale-105">
+                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-14 sm:h-16 md:h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300 group-hover:scale-105">
                 </a>
                 
-                <!-- Panneau Néon Centré -->
-                <div class="neon-panel text-center flex-grow mx-4 md:mx-8">
-                    <!-- Nom AI & BEYOND en néon violet -->
-                    <h1 class="neon-title text-xl sm:text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3">
+                <!-- Panneau Néon Centré - Caché sur très petit mobile -->
+                <div class="neon-panel text-center flex-grow mx-2 sm:mx-4 md:mx-8 hidden sm:block">
+                    <h1 class="neon-title text-lg sm:text-xl md:text-3xl lg:text-5xl mb-1 md:mb-3">
                         AI & Beyond
                     </h1>
-                    <!-- Slogan en néon cyan cursif - Font manuscrite -->
-                    <p class="neon-slogan text-base sm:text-lg md:text-xl lg:text-2xl">
+                    <p class="neon-slogan text-sm sm:text-base md:text-lg lg:text-2xl">
                         L'IA au service de votre croissance
                     </p>
                 </div>
                 
-                <!-- Sélecteur de langue -->
-                <div class="flex-shrink-0 relative" id="lang-selector">
-                    <button id="lang-btn" class="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300">
-                        <span class="text-lg">🇫🇷</span>
-                        <span class="text-sm font-medium text-white/80 hidden sm:inline">FR</span>
-                        <svg class="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <!-- Contrôles droite : Langue + Menu Mobile -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Sélecteur de langue -->
+                    <div class="relative" id="lang-selector">
+                        <button type="button" id="lang-btn" class="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300 cursor-pointer" aria-haspopup="true" aria-expanded="false">
+                            <span class="text-base sm:text-lg">🇫🇷</span>
+                            <span class="text-xs sm:text-sm font-medium text-white/80 hidden sm:inline">FR</span>
+                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <!-- Dropdown Langue -->
+                        <div id="lang-dropdown" class="absolute right-0 top-full mt-2 bg-slate-900 border border-white/20 rounded-xl shadow-2xl overflow-hidden min-w-[140px] z-[100]" style="display: none;">
+                            <a href="index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition bg-white/5 text-white">
+                                <span class="text-lg">🇫🇷</span>
+                                <span class="text-sm font-medium">Français</span>
+                            </a>
+                            <a href="en/index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition text-white/80 hover:text-white">
+                                <span class="text-lg">🇬🇧</span>
+                                <span class="text-sm font-medium">English</span>
+                            </a>
+                            <a href="pt/index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition text-white/80 hover:text-white">
+                                <span class="text-lg">🇧🇷</span>
+                                <span class="text-sm font-medium">Português</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button type="button" id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all duration-300">
+                        <svg id="menu-icon-open" class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="menu-icon-close" class="h-5 w-5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
-                    <!-- Dropdown -->
-                    <div id="lang-dropdown" class="hidden absolute right-0 top-full mt-2 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl overflow-hidden min-w-[140px] z-50">
-                        <a href="index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition bg-white/5">
-                            <span class="text-lg">🇫🇷</span>
-                            <span class="text-sm font-medium text-white">Français</span>
-                        </a>
-                        <a href="en/index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition">
-                            <span class="text-lg">🇬🇧</span>
-                            <span class="text-sm font-medium text-white/80">English</span>
-                        </a>
-                        <a href="pt/index.html" class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 transition">
-                            <span class="text-lg">🇧🇷</span>
-                            <span class="text-sm font-medium text-white/80">Português</span>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Navigation -->
-        <nav class="bg-slate-900/80 backdrop-blur-md border-t border-white/10">
+        <!-- Navigation Desktop -->
+        <nav class="hidden md:block bg-slate-900/80 backdrop-blur-md border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-center items-center h-14">
-                    <div class="hidden md:flex items-center space-x-10">
+                    <div class="flex items-center space-x-8 lg:space-x-10">
                         <a href="/" class="nav-link text-white font-semibold text-sm uppercase tracking-wider">Accueil</a>
                         <a href="pages/services.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Services</a>
                         <a href="pages/rag.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">RAG</a>
                         <a href="pages/livres.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Livres</a>
                         <a href="pages/bots.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Bots IA</a>
                         <a href="pages/formations.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Formations</a>
-                        <a href="pages/contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-7 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition text-sm uppercase tracking-wider">Contact</a>
+                        <a href="pages/contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition text-sm uppercase tracking-wider">Contact</a>
                     </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <div class="md:hidden">
-                        <button id="mobile-menu-btn" class="text-white p-2">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10">
-                <div class="px-4 pt-2 pb-4 space-y-2">
-                    <a href="/" class="block px-4 py-3 text-white bg-white/10 hover:bg-white/20 rounded-lg transition font-semibold">Accueil</a>
-                    <a href="pages/services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Services</a>
-                    <a href="pages/rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">RAG</a>
-                    <a href="pages/livres.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Livres</a>
-                    <a href="pages/bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Bots IA</a>
-                    <a href="pages/formations.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Formations</a>
-                    <a href="pages/contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
                 </div>
             </div>
         </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-white/10" style="display: none;">
+            <div class="px-4 py-4 space-y-2">
+                <a href="/" class="block px-4 py-3 text-white bg-white/10 hover:bg-white/20 rounded-lg transition font-semibold">Accueil</a>
+                <a href="pages/services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Services</a>
+                <a href="pages/rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">RAG</a>
+                <a href="pages/livres.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Livres</a>
+                <a href="pages/bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Bots IA</a>
+                <a href="pages/formations.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Formations</a>
+                <a href="pages/contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold mt-4">Contact</a>
+            </div>
+        </div>
     </header>
     
     <!-- ═══════════════════════════════════════════════════════════════ -->
@@ -936,11 +938,6 @@
             offset: 100
         });
         
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -948,7 +945,7 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    mobileMenu.classList.add('hidden');
+                    if (mobileMenu) mobileMenu.style.display = 'none';
                 }
             });
         });
@@ -983,24 +980,45 @@
             langBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                // Toggle visibility
-                if (langDropdown.classList.contains('hidden')) {
-                    langDropdown.classList.remove('hidden');
-                    langDropdown.style.display = 'block';
-                } else {
-                    langDropdown.classList.add('hidden');
-                    langDropdown.style.display = 'none';
-                }
+                const isOpen = langDropdown.style.display === 'block';
+                langDropdown.style.display = isOpen ? 'none' : 'block';
             });
-            
-            // Close on click outside
-            document.addEventListener('click', function(e) {
-                if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
-                    langDropdown.classList.add('hidden');
-                    langDropdown.style.display = 'none';
+        }
+        
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const isOpen = mobileMenu.style.display === 'block';
+                mobileMenu.style.display = isOpen ? 'none' : 'block';
+                if (menuIconOpen && menuIconClose) {
+                    menuIconOpen.classList.toggle('hidden', !isOpen);
+                    menuIconClose.classList.toggle('hidden', isOpen);
                 }
             });
         }
+        
+        // Close dropdowns on click outside
+        document.addEventListener('click', function(e) {
+            // Close language dropdown
+            if (langDropdown && langBtn && !langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+                langDropdown.style.display = 'none';
+            }
+            // Close mobile menu when clicking outside
+            if (mobileMenu && mobileMenuBtn && !mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.style.display = 'none';
+                if (menuIconOpen && menuIconClose) {
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                }
+            }
+        });
     </script>
 
     <!-- Bot Lyra -->
