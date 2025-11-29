@@ -123,8 +123,19 @@
         .neon-slogan {
             font-family: 'Great Vibes', cursive;
             color: #fff;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
+            font-weight: 400;
             animation: neon-slogan-flicker 7s infinite;
+        }
+        
+        /* Style spécial pour rendre L'IA plus lisible */
+        .neon-slogan-text {
+            display: inline;
+        }
+        .neon-slogan-highlight {
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            font-style: normal;
         }
         
         @keyframes neon-slogan-flicker {
@@ -180,15 +191,10 @@
         }
         
         /* ═══════════════════════════════════════════════════════════════ */
-        /* GOOEY BUTTONS - Version fonctionnelle                           */
+        /* BOUTONS PREMIUM                                                 */
         /* ═══════════════════════════════════════════════════════════════ */
         
-        .gooey-btn-container {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .gooey-btn {
+        .btn-premium {
             position: relative;
             display: inline-block;
             padding: 1.1rem 2.5rem;
@@ -199,79 +205,50 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            overflow: visible;
+            overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1;
         }
         
-        .gooey-btn-primary {
+        .btn-premium-violet {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
         
-        .gooey-btn-secondary {
+        .btn-premium-cyan {
             background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
             box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
         }
         
-        .gooey-btn::before,
-        .gooey-btn::after {
+        .btn-premium::before {
             content: '';
             position: absolute;
-            border-radius: 50%;
-            background: inherit;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            z-index: -1;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
         }
         
-        .gooey-btn::before {
-            width: 25px;
-            height: 25px;
-            left: 50%;
-            top: -5px;
-            transform: translateX(-50%) scale(0);
+        .btn-premium:hover::before {
+            left: 100%;
         }
         
-        .gooey-btn::after {
-            width: 20px;
-            height: 20px;
-            left: 50%;
-            bottom: -5px;
-            transform: translateX(-50%) scale(0);
+        .btn-premium:hover {
+            transform: translateY(-3px) scale(1.02);
         }
         
-        .gooey-btn:hover {
-            transform: scale(1.08);
-        }
-        
-        .gooey-btn-primary:hover {
+        .btn-premium-violet:hover {
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6), 0 0 50px rgba(139, 92, 246, 0.3);
         }
         
-        .gooey-btn-secondary:hover {
+        .btn-premium-cyan:hover {
             box-shadow: 0 8px 30px rgba(6, 182, 212, 0.6), 0 0 50px rgba(6, 182, 212, 0.3);
         }
         
-        .gooey-btn:hover::before {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-            top: -15px;
-        }
-        
-        .gooey-btn:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-            bottom: -12px;
-        }
-        
-        .gooey-btn:active {
-            transform: scale(1.02);
-        }
-        
-        /* SVG Goo Filter */
-        .gooey-filter-container {
-            filter: url('#goo-filter');
+        .btn-premium:active {
+            transform: translateY(-1px) scale(1.01);
         }
         
         /* Cards */
@@ -416,24 +393,27 @@
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <header class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Header avec Logo + Panneau Néon -->
-            <div class="flex items-center justify-center gap-6 md:gap-10 py-4 md:py-6">
-                <!-- Logo à gauche uniquement -->
-                <a href="/" class="flex-shrink-0 hidden md:block group">
-                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300 group-hover:scale-105">
+            <!-- Header avec Logo à gauche + Panneau Néon centré -->
+            <div class="flex items-center justify-between py-4 md:py-6">
+                <!-- Logo à gauche -->
+                <a href="/" class="flex-shrink-0 group">
+                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-16 md:h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300 group-hover:scale-105">
                 </a>
                 
-                <!-- Panneau Néon Central -->
-                <div class="neon-panel text-center">
+                <!-- Panneau Néon Centré -->
+                <div class="neon-panel text-center flex-grow mx-4 md:mx-8">
                     <!-- Nom AI & BEYOND en néon violet -->
-                    <h1 class="neon-title text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3">
+                    <h1 class="neon-title text-xl sm:text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3">
                         AI & Beyond
                     </h1>
                     <!-- Slogan en néon cyan cursif - Font manuscrite -->
-                    <p class="neon-slogan text-lg md:text-xl lg:text-2xl">
+                    <p class="neon-slogan text-base sm:text-lg md:text-xl lg:text-2xl">
                         L'IA au service de votre croissance
                     </p>
                 </div>
+                
+                <!-- Espace vide à droite pour équilibrer (même largeur que le logo) -->
+                <div class="w-16 md:w-20 lg:w-24 flex-shrink-0 hidden md:block"></div>
             </div>
         </div>
         
@@ -447,7 +427,7 @@
                         <a href="pages/rag.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">RAG</a>
                         <a href="pages/livres.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Livres</a>
                         <a href="pages/bots.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Bots IA</a>
-                        <a href="#about" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">À propos</a>
+                        <a href="pages/formations.html" class="nav-link text-white/80 hover:text-white font-medium text-sm uppercase tracking-wider">Formations</a>
                         <a href="pages/contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-7 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition text-sm uppercase tracking-wider">Contact</a>
                     </div>
                     
@@ -470,7 +450,7 @@
                     <a href="pages/rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">RAG</a>
                     <a href="pages/livres.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Livres</a>
                     <a href="pages/bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Bots IA</a>
-                    <a href="#about" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">À propos</a>
+                    <a href="pages/formations.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Formations</a>
                     <a href="pages/contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
                 </div>
             </div>
@@ -507,32 +487,14 @@
                     Automatisation intelligente, bots conversationnels et RAG-as-a-Service pour entreprises ambitieuses. <strong class="text-white">Des solutions concrètes, un ROI mesurable.</strong>
                 </p>
                 
-                <!-- CTA Buttons with Gooey Effect -->
+                <!-- CTA Buttons Premium -->
                 <div class="flex flex-wrap justify-center gap-6 mb-14" data-aos="fade-up" data-aos-delay="400">
-                    <!-- SVG Filter for Gooey -->
-                    <svg style="visibility: hidden; position: absolute;" width="0" height="0">
-                        <defs>
-                            <filter id="goo-filter">
-                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-                            </filter>
-                        </defs>
-                    </svg>
-                    
-                    <!-- Bouton Violet -->
-                    <div class="gooey-btn-container gooey-filter-container">
-                        <a href="pages/contact.html" class="gooey-btn gooey-btn-primary">
-                            Demander un audit gratuit
-                        </a>
-                    </div>
-                    
-                    <!-- Bouton Cyan -->
-                    <div class="gooey-btn-container gooey-filter-container">
-                        <a href="pages/services.html" class="gooey-btn gooey-btn-secondary">
-                            Découvrir nos services
-                        </a>
-                    </div>
+                    <a href="pages/contact.html" class="btn-premium btn-premium-violet">
+                        Demander un audit gratuit
+                    </a>
+                    <a href="pages/services.html" class="btn-premium btn-premium-cyan">
+                        Découvrir nos services
+                    </a>
                 </div>
                 
                 <!-- Trust Badges -->
