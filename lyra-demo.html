@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyra - Démo Bot IA | AI & Beyond</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lyra CSS -->
+    <link rel="stylesheet" href="assets/css/lyra-premium.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        .demo-container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #06b6d4;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        .instruction {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 12px;
+            color: #67e8f9;
+        }
+        
+        .instruction p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animation du titre */
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(6, 182, 212, 0.4); }
+        }
+        
+        .logo {
+            animation: glow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="logo">AI & Beyond</div>
+        
+        <h1>Rencontrez <span class="highlight">Lyra</span> ✨</h1>
+        
+        <p class="subtitle">
+            Notre assistante IA de nouvelle génération.<br>
+            Qualification de leads, devis automatiques et expérience client exceptionnelle.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>Intelligence Conversationnelle</h3>
+                <p>Comprend les besoins et guide vers la solution adaptée</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Lead Scoring</h3>
+                <p>Qualification automatique et priorisation des prospects</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Devis Instantanés</h3>
+                <p>Génération d'estimations personnalisées en temps réel</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h3>Multilingue</h3>
+                <p>Support natif FR, EN, PT avec détection automatique</p>
+            </div>
+        </div>
+        
+        <div class="instruction">
+            <p>👉 Cliquez sur le bouton violet en bas à droite pour discuter avec Lyra</p>
+        </div>
+        
+        <a href="index.html" class="cta-button">
+            ← Retour au site
+        </a>
+        
+        <footer>
+            <p>© 2024 AI & Beyond • <a href="https://aiandbeyond.eu">aiandbeyond.eu</a></p>
+            <p style="margin-top: 0.5rem;">Démo du Bot Conversationnel Lyra v2.0</p>
+        </footer>
+    </div>
+    
+    <!-- Bot Lyra Premium -->
+    <script>
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'Assistante IA',
+            companyName: 'AI & Beyond',
+            email: 'contact@aiandbeyond.eu',
+            whatsapp: '+351920833889',
+            calendlyUrl: 'https://calendly.com/ai-and-beyond',
+            showBadge: true,
+            autoOpenDelay: 3000 // Ouverture auto après 3 secondes sur la démo
+        };
+    </script>
+    <script src="assets/js/lyra-premium.js"></script>
+</body>
+</html>

@@ -425,13 +425,21 @@
 </head>
 <body class="bg-slate-950 text-white">
     
-    <!-- Netlify Forms Hidden -->
+    <!-- Netlify Forms Hidden - Lyra Leads -->
     <form name="lyra-leads" netlify netlify-honeypot="bot-field" hidden>
-        <input type="text" name="email" />
-        <input type="text" name="phone" />
+        <input type="text" name="bot-field" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <input type="text" name="name" />
+        <input type="text" name="company" />
         <input type="text" name="service" />
         <input type="text" name="need" />
         <input type="text" name="budget" />
+        <input type="text" name="timeline" />
+        <input type="number" name="leadScore" />
+        <input type="text" name="language" />
+        <input type="text" name="source" />
+        <textarea name="conversation"></textarea>
         <input type="text" name="timestamp" />
     </form>
     
@@ -979,9 +987,22 @@
         });
     </script>
 
-    <!-- Bot Lyra -->
-    <script src="assets/js/bot-config.js"></script>
-    <script src="assets/js/ai-chat-bot.js"></script>
+    <!-- Bot Lyra Premium -->
+    <link rel="stylesheet" href="assets/css/lyra-premium.css">
+    <script>
+        // Configuration Lyra (peut être modifiée)
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'Assistante IA',
+            companyName: 'AI & Beyond',
+            email: 'contact@aiandbeyond.eu',
+            whatsapp: '+351920833889',
+            calendlyUrl: 'https://calendly.com/ai-and-beyond',
+            showBadge: true,
+            autoOpenDelay: null // null = pas d'ouverture auto, ou délai en ms
+        };
+    </script>
+    <script src="assets/js/lyra-premium.js"></script>
 
 </body>
 </html>

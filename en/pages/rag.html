@@ -897,9 +897,18 @@
     </footer>
     
     <!-- 🤖 BOT LYRA - AI Assistant -->
-    <script src="../../assets/js/bot-config.js"></script>
+    <!-- Bot Lyra Premium -->
+    <link rel="stylesheet" href="../../assets/css/lyra-premium.css">
+    <script>
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'AI Assistant',
+            companyName: 'AI & Beyond',
+            showBadge: true
+        };
+    </script>
     
-    <script src="../../assets/js/ai-chat-bot.js"></script>
+    <script src="../../assets/js/lyra-premium.js"></script>
     <script src="../../assets/js/header-scroll.js"></script>
 </body>
 </html>

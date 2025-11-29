@@ -217,8 +217,17 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ duration: 800, once: true });</script>
-    <script src="../../assets/js/bot-config.js"></script>
-    <script src="../../assets/js/ai-chat-bot.js"></script>
+    <!-- Bot Lyra Premium -->
+    <link rel="stylesheet" href="../../assets/css/lyra-premium.css">
+    <script>
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'AI Assistant',
+            companyName: 'AI & Beyond',
+            showBadge: true
+        };
+    </script>
+    <script src="../../assets/js/lyra-premium.js"></script>
     
     <!-- Mobile Menu Toggle -->
     <script>

@@ -233,7 +233,16 @@
         window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
         scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     </script>
-    <script src="../assets/js/bot-config.js"></script>
-    <script src="../assets/js/ai-chat-bot.js"></script>
+    <!-- Bot Lyra Premium -->
+    <link rel="stylesheet" href="../assets/css/lyra-premium.css">
+    <script>
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'Assistante IA',
+            companyName: 'AI & Beyond',
+            showBadge: true
+        };
+    </script>
+    <script src="../assets/js/lyra-premium.js"></script>
 </body>
 </html>
