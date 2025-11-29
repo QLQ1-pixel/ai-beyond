@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bots IA | AI & Beyond</title>
+    <meta name="description" content="Bots IA conversationnels - Assistants intelligents 24/7 pour automatiser votre support client et qualifier vos leads.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+        
+        /* Header Glassmorphism Premium */
+        .header-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link-glass {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link-glass::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link-glass:hover::after {
+            width: 100%;
+        }
+        .logo-container-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+        .logo-container-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    
+    <!-- HEADER GLASSMORPHISM PREMIUM -->
+    <header class="fixed w-full z-50 header-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="../index.html" class="logo-container-glass flex items-center group">
+                    <img src="../../assets/images/logo-light.png" alt="AI & Beyond" class="h-16 lg:h-20 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(139,92,246,0.7)] group-hover:scale-105">
+                    
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="nav-link-glass text-gray-300 font-medium">Accueil</a>
+                    <a href="services.html" class="nav-link-glass text-gray-300 font-medium">Services</a>
+                    <a href="rag.html" class="nav-link-glass text-gray-300 font-medium">RAG</a>
+                    <a href="bots.html" class="nav-link-glass text-white font-semibold">Bots</a>
+                    <a href="livres.html" class="nav-link-glass text-gray-300 font-medium">Livres</a>
+                    <a href="formations.html" class="nav-link-glass text-gray-300 font-medium">Formations</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10">
+            <div class="px-4 py-4 space-y-2">
+                <a href="../index.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Accueil</a>
+                <a href="services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Services</a>
+                <a href="rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">RAG</a>
+                <a href="bots.html" class="block px-4 py-3 text-white bg-white/20 hover:bg-white/30 rounded-lg font-semibold">Bots</a>
+                <a href="livres.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Livres</a>
+                <a href="formations.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Formations</a>
+                <a href="contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-blue-900 to-cyan-900 text-white">
+        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+            <div class="text-6xl mb-6">🤖</div>
+            <h1 class="text-5xl font-bold mb-6">Bots IA Conversationnels</h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                Assistants intelligents 24/7 pour automatiser votre support et qualifier vos leads
+            </p>
+        </div>
+    </section>
+
+    <!-- Texte vendeur -->
+    <section class="py-12 px-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-b border-blue-100">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <p class="text-xl text-gray-700 leading-relaxed">
+                <span class="font-semibold text-blue-700">Vos clients attendent des réponses instantanées, 24h/24.</span> Nos bots IA qualifient vos leads, répondent aux questions fréquentes et libèrent votre équipe pour les tâches à haute valeur. <span class="font-semibold text-cyan-700">Résultat : satisfaction client en hausse, coûts en baisse.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Bots Grid -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bot Support -->
+                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-blue-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-2">Bot Support Client</h3>
+                    <div class="text-blue-600 font-bold text-2xl mb-4">3-5K€</div>
+                    <p class="text-gray-600 text-sm mb-4">Réponses instantanées 24/7 aux questions fréquentes</p>
+                    <div class="space-y-2 text-sm text-left">
+                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> FAQ automatisée</div>
+                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> Tickets réduits de 60%</div>
+                        <div class="flex items-center gap-2"><span class="text-blue-500">✓</span> Multi-langues</div>
+                    </div>
+                </div>
+
+                <!-- Bot Lead Gen -->
+                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-purple-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-2">Bot Lead Generation</h3>
+                    <div class="text-purple-600 font-bold text-2xl mb-4">3-6K€</div>
+                    <p class="text-gray-600 text-sm mb-4">Qualifiez vos prospects automatiquement</p>
+                    <div class="space-y-2 text-sm text-left">
+                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> Qualification auto</div>
+                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> +40% conversion</div>
+                        <div class="flex items-center gap-2"><span class="text-purple-500">✓</span> Scoring leads</div>
+                    </div>
+                </div>
+
+                <!-- Bot Réservation -->
+                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-cyan-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl mb-4">📅</div>
+                    <h3 class="text-xl font-bold mb-2">Bot Réservation</h3>
+                    <div class="text-cyan-600 font-bold text-2xl mb-4">2-4K€</div>
+                    <p class="text-gray-600 text-sm mb-4">Gérez rendez-vous et bookings automatiquement</p>
+                    <div class="space-y-2 text-sm text-left">
+                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Prise RDV auto</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Calendrier sync</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-500">✓</span> Rappels SMS/Email</div>
+                    </div>
+                </div>
+
+                <!-- Assistant Interne -->
+                <div class="border-2 border-slate-200 rounded-2xl p-6 hover:border-emerald-500 transition hover:shadow-xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl mb-4">🏢</div>
+                    <h3 class="text-xl font-bold mb-2">Assistant Interne</h3>
+                    <div class="text-emerald-600 font-bold text-2xl mb-4">4-8K€</div>
+                    <p class="text-gray-600 text-sm mb-4">RH, admin, IT helpdesk automatisé</p>
+                    <div class="space-y-2 text-sm text-left">
+                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Onboarding auto</div>
+                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> IT tickets</div>
+                        <div class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Slack/Teams intégré</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comment ça marche -->
+    <section class="py-20 px-4 bg-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Comment ça marche ?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="font-bold mb-2">Analyse</h3>
+                    <p class="text-gray-600 text-sm">Nous analysons vos besoins et définissons les scénarios conversationnels</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="font-bold mb-2">Développement</h3>
+                    <p class="text-gray-600 text-sm">Création et entraînement du bot avec vos données et votre ton</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-cyan-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="font-bold mb-2">Déploiement</h3>
+                    <p class="text-gray-600 text-sm">Intégration sur votre site, WhatsApp, Messenger ou Slack</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4 bg-gradient-to-br from-blue-600 to-cyan-600 text-white">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-6">Prêt à automatiser avec un bot IA ?</h2>
+            <p class="text-xl mb-8 text-blue-100">Discutons de votre projet. Démo gratuite de 30 minutes.</p>
+            <a href="contact.html" class="bg-white text-blue-600 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-lg inline-block">Demander une démo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <img src="../../assets/images/logo-light.png" alt="AI & Beyond" class="h-16 mb-4">
+                    <p class="text-gray-400 text-sm italic font-exo">« L'IA au service de votre croissance »</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="bots.html" class="hover:text-white transition">Bots IA</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Automatisation</a></li>
+                        <li><a href="rag.html" class="hover:text-white transition">RAG-as-a-Service</a></li>
+                        <li><a href="formations.html" class="hover:text-white transition">Formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Ressources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="livres.html" class="hover:text-white transition">Livres</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition">À propos</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Légal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../mentions-legales.html" class="hover:text-white transition">Mentions légales</a></li>
+                        <li><a href="../cgv.html" class="hover:text-white transition">CGV</a></li>
+                        <li><a href="../confidentialite.html" class="hover:text-white transition">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+                © 2025 AI & Beyond. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
+        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+    <script src="../../assets/js/bot-config.js"></script>
+    <script src="../../assets/js/ai-chat-bot.js"></script>
+</body>
+</html>

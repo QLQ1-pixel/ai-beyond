@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Bible du Prompt Engineering d'Image - Le guide ultime pour maîtriser la génération d'images par IA. 195 pages de techniques avancées.">
+    <title>Livres & Ressources | AI & Beyond</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' } } } }</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+        .book-shadow { box-shadow: 20px 20px 60px rgba(0,0,0,0.2), -5px -5px 20px rgba(255,255,255,0.8); }
+        
+        /* Header Glassmorphism Premium */
+        .header-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link-glass {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link-glass::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .nav-link-glass:hover::after {
+            width: 100%;
+        }
+        .logo-container-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+        .logo-container-glass:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+    <!-- HEADER GLASSMORPHISM PREMIUM -->
+    <header class="fixed w-full z-50 header-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="../index.html" class="logo-container-glass flex items-center group">
+                    <img src="../../assets/images/logo-light.png" alt="AI & Beyond" class="h-16 lg:h-20 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(139,92,246,0.7)] group-hover:scale-105">
+                    
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="nav-link-glass text-gray-300 font-medium">Accueil</a>
+                    <a href="services.html" class="nav-link-glass text-gray-300 font-medium">Services</a>
+                    <a href="rag.html" class="nav-link-glass text-gray-300 font-medium">RAG</a>
+                    <a href="bots.html" class="nav-link-glass text-gray-300 font-medium">Bots</a>
+                    <a href="livres.html" class="nav-link-glass text-white font-semibold">Livres</a>
+                    <a href="formations.html" class="nav-link-glass text-gray-300 font-medium">Formations</a>
+                    <a href="contact.html" class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-violet-500/30 transition">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10">
+            <div class="px-4 py-4 space-y-2">
+                <a href="../index.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition">Accueil</a>
+                <a href="services.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Services</a>
+                <a href="rag.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">RAG</a>
+                <a href="bots.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Bots</a>
+                <a href="livres.html" class="block px-4 py-3 text-white bg-white/20 hover:bg-white/30 rounded-lg font-semibold">Livres</a>
+                <a href="formations.html" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg">Formations</a>
+                <a href="contact.html" class="block px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg text-center font-semibold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-white via-amber-50/50 to-orange-50">
+        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/80 backdrop-blur border border-amber-200 shadow-sm mb-8">
+                <span class="text-2xl mr-3">📚</span>
+                <span class="text-sm text-gray-700 font-medium">Ressources & Publications</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900">Livres & <span class="gradient-text">Guides IA</span></h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Maîtrisez la génération d'images par IA avec nos publications expertes</p>
+        </div>
+    </section>
+
+    <!-- LIVRE PRINCIPAL -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Book Visual -->
+                <div class="relative" data-aos="fade-right">
+                    <div class="relative mx-auto w-72 md:w-80">
+                        <div class="bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-lg p-8 book-shadow transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <div class="bg-white rounded p-6 text-center">
+                                <div class="text-5xl mb-3">🎨</div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-1">La Bible du</h3>
+                                <h2 class="text-2xl font-black gradient-text leading-tight">Prompt Engineering d'Image</h2>
+                                <div class="mt-4 pt-4 border-t border-gray-200">
+                                    <p class="text-xs text-gray-500">Le guide ultime de la génération d'images par IA</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-indigo-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">195 PAGES</div>
+                    </div>
+                </div>
+                
+                <!-- Book Info -->
+                <div data-aos="fade-left">
+                    <span class="text-amber-600 text-sm uppercase tracking-widest font-semibold">📖 Ouvrage Spécialisé</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-6 text-gray-900">La Bible du Prompt Engineering d'Image</h2>
+                    
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6">
+                        <p class="text-lg text-gray-700 font-medium">
+                            Le guide <strong>le plus complet</strong> en français sur la génération d'images par IA. 
+                            <span class="text-amber-600">195 pages</span> de techniques avancées, extrêmement précis et détaillé.
+                        </p>
+                    </div>
+                    
+                    <p class="text-xl text-gray-600 mb-6">Maîtrisez Midjourney, DALL-E, Stable Diffusion et tous les outils de génération d'images.</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center"><span class="text-amber-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">Syntaxe & Structure des prompts</h4><p class="text-gray-600 text-sm">Formuler des prompts précis et efficaces</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center"><span class="text-orange-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">200+ Styles artistiques</h4><p class="text-gray-600 text-sm">Artistes, mouvements et références expliqués</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"><span class="text-red-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">Paramètres avancés</h4><p class="text-gray-600 text-sm">Chaos, stylize, seed et tous les paramètres techniques</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"><span class="text-purple-600">✓</span></div>
+                            <div><h4 class="font-semibold text-gray-900">100+ Templates prêts à l'emploi</h4><p class="text-gray-600 text-sm">Prompts testés pour tous les usages</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div><div class="text-2xl font-bold text-amber-600">195</div><div class="text-xs text-gray-500">Pages</div></div>
+                            <div><div class="text-2xl font-bold text-orange-600">100+</div><div class="text-xs text-gray-500">Templates</div></div>
+                            <div><div class="text-2xl font-bold text-red-600">200+</div><div class="text-xs text-gray-500">Styles</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#notify" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition text-lg">🔔 Être notifié à la sortie</a>
+                        <div class="bg-white border border-gray-200 px-6 py-4 rounded-full shadow-sm"><span class="text-gray-600 text-sm">Sortie : <strong class="text-gray-900">T1 2025</strong></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOMMAIRE -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-indigo-600 text-sm uppercase tracking-widest font-semibold">Ce que vous allez apprendre</span>
+                <h2 class="text-4xl font-bold mt-4 text-gray-900">Sommaire détaillé</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-3xl mb-4">🎯</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 1 : Fondamentaux</h3>
+                    <p class="text-gray-600 text-sm">Comment fonctionne la génération d'images, anatomie d'un prompt parfait</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 2 : Styles & Esthétiques</h3>
+                    <p class="text-gray-600 text-sm">Photo, illustration, 3D, anime, peinture et 200+ styles détaillés</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-3xl mb-4">⚙️</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 3 : Paramètres Avancés</h3>
+                    <p class="text-gray-600 text-sm">Chaos, stylize, seed, weights, negative prompts</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="250">
+                    <div class="text-3xl mb-4">🖼️</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 4 : Composition</h3>
+                    <p class="text-gray-600 text-sm">Cadrage, éclairage, profondeur de champ, angles de caméra</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-3xl mb-4">💼</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Partie 5 : Use Cases Pro</h3>
+                    <p class="text-gray-600 text-sm">Marketing, e-commerce, branding, réseaux sociaux</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm" data-aos="fade-up" data-aos-delay="350">
+                    <div class="text-3xl mb-4">📋</div>
+                    <h3 class="font-bold mb-2 text-lg text-gray-900">Annexes : Templates</h3>
+                    <p class="text-gray-600 text-sm">100+ prompts prêts à copier/coller, cheatsheets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUIDES GRATUITS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-indigo-600 text-sm uppercase tracking-widest font-semibold">Ressources Gratuites</span>
+                <h2 class="text-4xl font-bold mt-4 text-gray-900">Guides & Templates</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🇫🇷</span></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">100+ Prompts IA</h3>
+                    <p class="text-gray-600 text-sm mb-4">Pack de prompts optimisés en français pour ChatGPT, Claude et autres LLMs.</p>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
+                    </div>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
+                </div>
+
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🇬🇧</span></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">100+ AI Prompts</h3>
+                    <p class="text-gray-600 text-sm mb-4">Optimized prompt pack in English for ChatGPT, Claude and other LLMs.</p>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs font-semibold">FREE</span>
+                    </div>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Download</a>
+                </div>
+
+                <div class="card-light rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-6"><span class="text-2xl">🎨</span></div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Cheatsheet Image Gen</h3>
+                    <p class="text-gray-600 text-sm mb-4">Fiche mémo avec les paramètres Midjourney, DALL-E, Stable Diffusion.</p>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-xs font-semibold">PDF</span>
+                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">GRATUIT</span>
+                    </div>
+                    <a href="#" class="block w-full bg-gray-100 hover:bg-gray-200 text-center text-gray-800 px-6 py-3 rounded-lg font-semibold transition">Télécharger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="notify" class="py-24 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="bg-white rounded-3xl p-8 md:p-12 text-center shadow-xl border border-gray-100" data-aos="fade-up">
+                <div class="w-20 h-24 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6"><span class="text-4xl">🔔</span></div>
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Soyez le premier informé</h2>
+                <p class="text-gray-600 mb-8">Recevez une notification dès la sortie du livre + un chapitre gratuit en avant-première.</p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" name="newsletter" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <input type="email" name="email" required placeholder="votre@email.com" class="flex-1 px-6 py-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition">
+                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition whitespace-nowrap">S'inscrire</button>
+                </form>
+                
+                <p class="text-xs text-gray-400 mt-4">Pas de spam. Désinscription en 1 clic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 text-white">
+        <div class="max-w-4xl mx-auto text-center px-4" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-6">Besoin d'une formation personnalisée ?</h2>
+            <p class="text-xl mb-8 text-amber-100">Nos experts forment vos équipes à la génération d'images par IA.</p>
+            <a href="services.html" class="bg-white text-amber-600 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-lg shadow-lg">Découvrir nos formations</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <img src="../../assets/images/logo-light.png" alt="AI & Beyond" class="h-16 mb-4">
+                    <p class="text-gray-400 text-sm italic font-exo">« L'IA au service de votre croissance »</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="bots.html" class="hover:text-white transition">Bots IA</a></li>
+                        <li><a href="services.html" class="hover:text-white transition">Automatisation</a></li>
+                        <li><a href="rag.html" class="hover:text-white transition">RAG-as-a-Service</a></li>
+                        <li><a href="formations.html" class="hover:text-white transition">Formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Ressources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="livres.html" class="hover:text-white transition">Livres</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition">À propos</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider">Légal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../mentions-legales.html" class="hover:text-white transition">Mentions légales</a></li>
+                        <li><a href="../cgv.html" class="hover:text-white transition">CGV</a></li>
+                        <li><a href="../confidentialite.html" class="hover:text-white transition">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-sm text-gray-500">
+                © 2025 AI & Beyond. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
+        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+    <script src="../../assets/js/bot-config.js"></script>
+    <script src="../../assets/js/ai-chat-bot.js"></script>
+</body>
+</html>
