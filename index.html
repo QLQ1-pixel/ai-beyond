@@ -36,10 +36,17 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
+        /* Font Neon personnalisée comme CodePen sammirae422 */
+        @font-face {
+            font-family: 'Neon';
+            src: url('https://dl.dropbox.com/s/df4zz9y6lmhocr9/England.otf?dl=0') format('opentype');
+            font-display: swap;
+        }
+        
         body { font-family: 'Inter', sans-serif; }
         .font-exo { font-family: 'Exo 2', sans-serif; }
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        .font-cursive { font-family: 'Dancing Script', cursive; }
+        .font-neon { font-family: 'Neon', 'Dancing Script', cursive; }
         
         /* ═══════════════════════════════════════════════════════════════ */
         /* NEON HEADER EFFECTS                                             */
@@ -119,9 +126,9 @@
             }
         }
         
-        /* Slogan en néon cyan avec flicker */
+        /* Slogan en néon cyan avec flicker - Font Neon exacte du CodePen */
         .neon-slogan {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Neon', 'Dancing Script', cursive;
             color: #fff;
             animation: neon-slogan-flicker 7s infinite;
         }
@@ -129,13 +136,31 @@
         @keyframes neon-slogan-flicker {
             0%, 9%, 11%, 12%, 13%, 66%, 75%, 76%, 100% {
                 text-shadow:
-                    0 0 0.5rem var(--neon-cyan),
-                    0 0 1rem var(--neon-cyan),
-                    0 0 2rem var(--neon-cyan),
-                    0 0 4rem var(--neon-cyan);
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 1vh var(--neon-cyan);
                 filter: brightness(1);
             }
-            10%, 67% {
+            10% {
+                text-shadow: none;
+                filter: brightness(0.4);
+            }
+            11% {
+                text-shadow:
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 0.5vh var(--neon-cyan),
+                    0 0 1vh var(--neon-cyan);
+                filter: brightness(1);
+            }
+            12% {
+                text-shadow: none;
+                filter: brightness(0.4);
+            }
+            67% {
                 text-shadow: none;
                 filter: brightness(0.4);
             }
@@ -163,81 +188,167 @@
         }
         
         /* ═══════════════════════════════════════════════════════════════ */
-        /* GOOEY BUTTONS                                                   */
+        /* GOOEY BUTTONS - Exact CodePen cobra_winfrey                     */
         /* ═══════════════════════════════════════════════════════════════ */
+        
+        :root {
+            --elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --gooey-light-purple: #f897d5;
+            --gooey-purple: #f567c2;
+            --gooey-dark: #755ad0;
+            --gooey-darkest: #1a2a6c;
+            --gooey-light-cyan: #7dd3fc;
+            --gooey-cyan: #06b6d4;
+            --gooey-dark-cyan: #0891b2;
+            --gooey-darkest-cyan: #164e63;
+        }
+        
+        .gooey-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
         
         .gooey-container {
             position: relative;
+            overflow: hidden;
+            padding: 0.5rem;
+            mix-blend-mode: normal;
+        }
+        
+        .gooey-inner {
             display: inline-block;
-            filter: url(#goo);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gooey-inner::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: 0;
+            left: 0;
+            filter: blur(2px) brightness(0);
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, transparent 20%),
+                        radial-gradient(circle at center, var(--gooey-light-purple), var(--gooey-purple) 5%, var(--gooey-dark) 30%, var(--gooey-darkest) 50%),
+                        var(--gooey-darkest);
+            background-size: 0px 0px, 0px 0px, 100%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            opacity: 1;
+            mix-blend-mode: lighten;
+            z-index: 2;
+            transition: transform 0.5s var(--elastic), background-size 0.25s ease-in-out, filter 0.5s ease-in-out;
+            transform: translate(calc(var(--x, 50%) - 50%), calc(var(--y, 50%) - 50%));
+            pointer-events: none;
+        }
+        
+        .gooey-inner:hover::before {
+            filter: blur(2px) brightness(1);
+            background-size: 0px 0px, 100% 100%, 100%;
+        }
+        
+        .gooey-inner:active::before {
+            background-size: 35% 60%, 100% 100%, 100%;
+        }
+        
+        .gooey-inner.cyan::before {
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, transparent 20%),
+                        radial-gradient(circle at center, var(--gooey-light-cyan), var(--gooey-cyan) 5%, var(--gooey-dark-cyan) 30%, var(--gooey-darkest-cyan) 50%),
+                        var(--gooey-darkest-cyan);
+            background-size: 0px 0px, 0px 0px, 100%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
         }
         
         .gooey-btn {
-            position: relative;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
+            padding: 1.2rem 2.5rem;
             border: none;
-            border-radius: 50px;
+            font-size: 1rem;
+            position: relative;
+            background: transparent;
+            color: #fff;
+            z-index: 2;
             cursor: pointer;
-            overflow: visible;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        
-        .gooey-btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
-        
-        .gooey-btn-secondary {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-        }
-        
-        .gooey-btn::before,
-        .gooey-btn::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: inherit;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            z-index: -1;
-        }
-        
-        .gooey-btn::before {
-            left: 50%;
-            top: -8px;
-            transform: translateX(-50%) scale(0);
-        }
-        
-        .gooey-btn::after {
-            left: 50%;
-            bottom: -8px;
-            transform: translateX(-50%) scale(0);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 0 transparent;
+            transition: text-shadow 500ms var(--elastic), transform 0.3s ease;
         }
         
         .gooey-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         
-        .gooey-btn:hover::before {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-            top: -12px;
+        .gooey-blob {
+            position: absolute;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #fff;
+            filter: blur(12px) contrast(25);
+            z-index: 1;
         }
         
-        .gooey-btn:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-            bottom: -12px;
+        .gooey-blob::before {
+            content: "";
+            position: absolute;
+            background: #000;
+            width: 15%;
+            aspect-ratio: 1/1;
+            z-index: 2;
+            transition: transform 750ms var(--elastic), box-shadow 500ms var(--elastic);
+            box-shadow: 0 0 0 0.75rem #fff, 0 -8rem 0 -2rem #fff, 0 8rem 0 -2rem #fff;
+            left: 0;
+            top: 0;
+            border-radius: 100%;
+            transform: translate(calc(clamp(10%, var(--x, 50%) - 50%, 550%)), calc(clamp(1rem, var(--y, 50%) - 50%, 5rem))) scale(0);
         }
         
-        .gooey-btn:active {
-            transform: scale(0.98);
+        .gooey-blob::after {
+            content: "";
+            position: absolute;
+            background: #000;
+            width: calc(100% - 4rem);
+            height: calc(100% - 4rem);
+            top: 2rem;
+            left: 2rem;
+            border-radius: 5rem;
+            box-shadow: 0 0 0 8rem #fff;
+        }
+        
+        .gooey-inner:hover .gooey-blob::before {
+            transform: translate(calc(clamp(5%, var(--x, 50%) - 50%, 550%)), calc(clamp(1rem, var(--y, 50%) - 50%, 5rem))) scale(1.25);
+            box-shadow: 0 0 0 0.05rem #fff, 0 -6rem 0 1.25rem #fff, 0 6rem 0 1.25rem #fff;
+        }
+        
+        .gooey-inner:active .gooey-blob::before {
+            box-shadow: 0 0 0 0rem #fff, 0 -5rem 0 1.75rem #fff, 0 5rem 0 1.75rem #fff;
+            transform: translate(calc(clamp(5%, var(--x, 50%) - 50%, 550%)), calc(clamp(calc(50% + 1rem), var(--y, 50%) - 50%, calc(50% + 1.5rem)))) scale(1);
+        }
+        
+        /* Version simplifiée pour mobile */
+        @media (max-width: 768px) {
+            .gooey-container {
+                filter: none;
+            }
+            .gooey-inner::before,
+            .gooey-blob {
+                display: none;
+            }
+            .gooey-btn {
+                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                border-radius: 50px;
+                padding: 1rem 2rem;
+            }
+            .gooey-inner.cyan .gooey-btn {
+                background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            }
         }
         
         /* Cards */
@@ -393,18 +504,29 @@
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <header class="fixed w-full z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Panneau Néon Central -->
-            <div class="flex flex-col items-center py-6 md:py-8">
+            <!-- Header avec Logo + Panneau Néon -->
+            <div class="flex items-center justify-center gap-6 md:gap-10 py-4 md:py-6">
+                <!-- Logo à gauche -->
+                <a href="/" class="flex-shrink-0 hidden md:block">
+                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.6)] transition-all duration-300">
+                </a>
+                
+                <!-- Panneau Néon Central -->
                 <div class="neon-panel text-center">
                     <!-- Nom AI & BEYOND en néon violet -->
-                    <h1 class="neon-title text-3xl md:text-5xl lg:text-6xl mb-3 md:mb-4">
+                    <h1 class="neon-title text-2xl md:text-4xl lg:text-5xl mb-2 md:mb-3">
                         AI & Beyond
                     </h1>
-                    <!-- Slogan en néon cyan cursif -->
-                    <p class="neon-slogan text-xl md:text-2xl lg:text-3xl">
+                    <!-- Slogan en néon cyan cursif - Font Neon -->
+                    <p class="neon-slogan text-lg md:text-xl lg:text-2xl">
                         L'IA au service de votre croissance
                     </p>
                 </div>
+                
+                <!-- Logo à droite (symétrie) -->
+                <a href="/" class="flex-shrink-0 hidden md:block">
+                    <img src="assets/images/logo-light.png" alt="AI & Beyond" class="h-20 lg:h-24 w-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.6)] transition-all duration-300">
+                </a>
             </div>
         </div>
         
@@ -479,16 +601,25 @@
                 </p>
                 
                 <!-- CTA Buttons with Gooey Effect -->
-                <div class="flex flex-wrap justify-center gap-5 mb-14" data-aos="fade-up" data-aos-delay="400">
-                    <div class="gooey-container">
-                        <a href="#contact" class="gooey-btn gooey-btn-primary inline-block text-lg">
-                            Demander un audit gratuit
-                        </a>
+                <div class="flex flex-wrap justify-center gap-4 mb-14" data-aos="fade-up" data-aos-delay="400">
+                    <!-- Bouton Violet -->
+                    <div class="gooey-wrapper">
+                        <div class="gooey-container">
+                            <div class="gooey-inner">
+                                <a href="#contact" class="gooey-btn">Demander un audit gratuit</a>
+                                <div class="gooey-blob"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gooey-container">
-                        <a href="#services" class="gooey-btn gooey-btn-secondary inline-block text-lg">
-                            Découvrir nos services
-                        </a>
+                    
+                    <!-- Bouton Cyan -->
+                    <div class="gooey-wrapper">
+                        <div class="gooey-container">
+                            <div class="gooey-inner cyan">
+                                <a href="#services" class="gooey-btn">Découvrir nos services</a>
+                                <div class="gooey-blob"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -892,6 +1023,20 @@
             const btn = this.querySelector('button[type="submit"]');
             btn.textContent = 'Envoi en cours...';
             btn.disabled = true;
+        });
+        
+        // Gooey Buttons - Mouse tracking
+        document.querySelectorAll('.gooey-inner').forEach((button) => {
+            button.onmousemove = (e) => {
+                const target = e.currentTarget;
+                const rect = target.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                target.style.setProperty('--x', `${x}px`);
+                target.style.setProperty('--y', `${y}px`);
+                target.style.setProperty('--height', `${rect.height}px`);
+                target.style.setProperty('--width', `${rect.width}px`);
+            };
         });
     </script>
 
