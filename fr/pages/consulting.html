@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services IA | AI & Beyond</title>
+    <meta name="description" content="Services IA - Automatisation, consulting et formation pour transformer votre entreprise avec l'intelligence artificielle.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', dark: '#0f172a', accent: '#06b6d4' } } } }</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .scroll-top-btn { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .scroll-top-btn.visible { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body class="bg-slate-50">
+    
+    <!-- HEADER FIXE - Style V14 avec gradient comme index -->
+    <nav class="fixed w-full bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-32">
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="flex items-center bg-slate-800 rounded-xl p-2">
+                        <img src="../../assets/images/logo-dark.png" alt="AI & Beyond" class="h-28 w-auto">
+                    </a>
+                    <span class="hidden lg:block text-xl font-semibold text-white font-exo">L'IA au service de votre croissance</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-white hover:text-white/80 transition font-semibold">Accueil</a>
+                    <a href="services.html" class="text-white/90 hover:text-white transition">Services</a>
+                    <a href="rag.html" class="text-white/90 hover:text-white transition">RAG</a>
+                    <a href="bots.html" class="text-white/90 hover:text-white transition">Bots</a>
+                    <a href="livres.html" class="text-white/90 hover:text-white transition">Livres</a>
+                    <a href="contact.html" class="bg-white text-indigo-600 px-6 py-2 rounded-full hover:bg-gray-100 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-indigo-700 border-t border-white/20">
+            <div class="px-4 py-4 space-y-2">
+                <a href="../index.html" class="block px-4 py-2 text-white bg-white/20 hover:bg-white/30 rounded font-semibold">Accueil</a>
+                <a href="services.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">Services</a>
+                <a href="rag.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">RAG</a>
+                <a href="bots.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">Bots</a>
+                <a href="livres.html" class="block px-4 py-2 text-white hover:bg-white/10 rounded">Livres</a>
+                <a href="contact.html" class="block px-4 py-2 bg-white text-indigo-600 rounded text-center">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="pt-48 pb-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-7xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full font-semibold text-sm mb-6">
+                💼 Consulting IA Premium
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Transformez votre entreprise avec l'IA</h1>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8">
+                Audit complet, roadmap stratégique et accompagnement personnalisé pour intégrer l'IA dans votre organisation
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="contact.html" class="bg-white text-indigo-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">
+                    Réserver un audit gratuit
+                </a>
+                <a href="#tarifs" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition">
+                    Voir les tarifs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-6 text-gray-900">Pourquoi faire appel à notre consulting ?</h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        L'intelligence artificielle transforme tous les secteurs, mais <strong class="text-indigo-700">par où commencer ?</strong> Nos experts analysent votre situation et créent une roadmap claire.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-indigo-50 rounded-lg">
+                            <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Audit approfondi</h4>
+                                <p class="text-gray-600 text-sm">Analyse de vos processus et identification des opportunités</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-purple-50 rounded-lg">
+                            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Roadmap stratégique</h4>
+                                <p class="text-gray-600 text-sm">Document 20-30 pages avec priorisation et ROI estimé</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 bg-cyan-50 rounded-lg">
+                            <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Accompagnement</h4>
+                                <p class="text-gray-600 text-sm">Support pour concrétiser les quick wins identifiés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-3xl p-8 shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900">Ce que vous obtenez</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Audit complet de votre usage IA</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">10-20 use cases identifiés et chiffrés</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Roadmap détaillée priorisée</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <span class="text-gray-700">Présentation exécutive</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600">
+                        <p class="text-sm text-gray-700">
+                            <strong class="text-indigo-700">Garantie :</strong> Si < 3 opportunités à 3x l'investissement → remboursement
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section id="tarifs" class="py-20 px-4 bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Nos Formules de Consulting</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Choisissez la formule adaptée à votre niveau de maturité IA</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-indigo-500 transition" data-aos="fade-up">
+                    <div class="text-center mb-6">
+                        <div class="inline-block px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-semibold text-sm mb-4">Starter</div>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">500€</div>
+                        <p class="text-gray-600">Audit rapide</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">1 journée d'audit</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">5-8 use cases</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Document 8-10 pages</span></li>
+                    </ul>
+                    <a href="contact.html" class="block w-full bg-gray-200 hover:bg-gray-300 text-center text-gray-900 px-6 py-3 rounded-lg font-semibold transition">Choisir Starter</a>
+                </div>
+
+                <!-- Pro -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-indigo-600 relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-indigo-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">⭐ Recommandé</span>
+                    </div>
+                    <div class="text-center mb-6 mt-4">
+                        <div class="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-semibold text-sm mb-4">Pro</div>
+                        <div class="text-5xl font-bold text-indigo-600 mb-2">1 000€</div>
+                        <p class="text-gray-600">Audit complet + Roadmap</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm"><strong>1 semaine</strong> d'audit</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm"><strong>10-20 use cases</strong> chiffrés</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Roadmap 20-30 pages</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">30 jours support</span></li>
+                    </ul>
+                    <a href="contact.html" class="block w-full bg-indigo-600 hover:bg-indigo-700 text-center text-white px-6 py-4 rounded-lg font-semibold transition shadow-lg">Choisir Pro</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-2 border-purple-200 hover:border-purple-500 transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold text-sm mb-4">Enterprise</div>
+                        <div class="text-5xl font-bold text-purple-600 mb-2">Sur devis</div>
+                        <p class="text-gray-600">Transformation complète</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Audit multi-départements</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Roadmap 3 ans</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg><span class="text-sm">Support dédié</span></li>
+                    </ul>
+                    <a href="contact.html" class="block w-full bg-purple-600 hover:bg-purple-700 text-center text-white px-6 py-3 rounded-lg font-semibold transition">Discutons</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-4 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Prêt à transformer votre entreprise avec l'IA ?</h2>
+            <p class="text-xl text-gray-200 mb-8">Réservez un appel de 30 minutes (gratuit et sans engagement)</p>
+            <a href="contact.html" class="inline-block bg-white text-indigo-900 px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-xl text-lg">
+                Réserver un appel gratuit
+            </a>
+        </div>
+    </section>
+
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="scroll-top-btn fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); });
+        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+    <!-- Bot Lyra Premium -->
+    <link rel="stylesheet" href="../../assets/css/lyra-premium.css">
+    <script>
+        window.LYRA_CONFIG = {
+            botName: 'Lyra',
+            botRole: 'Assistante IA',
+            companyName: 'AI & Beyond',
+            showBadge: true
+        };
+    </script>
+    <script src="../../assets/js/lyra-premium.js"></script>
+</body>
+</html>
